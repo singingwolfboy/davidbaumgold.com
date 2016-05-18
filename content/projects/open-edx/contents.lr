@@ -1,0 +1,24 @@
+name: Open edX
+---
+_hidden: yes
+---
+website: https://open.edx.org
+---
+repository: https://github.com/edx/edx-platform
+---
+documentation: http://docs.edx.org/
+---
+start_date: 2013-05-01
+---
+end_date: 2016-01-01
+---
+description:
+
+I used to work for [edX](https://edx.org/), the company behind Open edX.
+I worked as a software engineer for about a year, and helped clean up and
+organize the project's Javascript, turning it from a tangled mess of `<script>`
+tags into a modern, modular system using [require.js](http://www.requirejs.org/).
+Then I switched over to the open source team to help the open source community,
+and ended up writing [a bot](https://github.com/edx/openedx-webhooks) to
+integrate GitHub and JIRA so that edX and the community could be more productive
+and communicative.

@@ -1,0 +1,19 @@
+name: Flask-Admin
+---
+_hidden: yes
+---
+website: https://flask-admin.readthedocs.io
+---
+repository: https://github.com/flask-admin/flask-admin
+---
+documentation: https://flask-admin.readthedocs.io
+---
+start_date: 2015-11-14
+---
+end_date: 2016-03-27
+---
+description:
+
+I added
+[GeoAlchemy support](https://flask-admin.readthedocs.io/en/latest/advanced/#managing-geographical-models)
+to Flask-Admin.

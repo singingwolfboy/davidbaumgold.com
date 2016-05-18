@@ -1,20 +1,31 @@
 {% extends "layout.html" %}
-{% from "macros/project.html" import project_span %}
+{% from "macros/project.html" import project_span, project_repo_icon %}
 {% block title %}Projects | {{ super() }}{% endblock %}
 {% block body %}
   <h1>Projects</h1>
-  <div class="projects">
-  {% for project in this.children %}
-    <div class="project">
-      {% set image = project.attachments.images.first() %}
-      {% if image %}
-        <img src="{{ image.thumbnail(320)|url }}" alt="">
-      {% endif %}
-      <h2><a href="{{ project|url }}">{{ project.name }}</a>
-        <em>({{ project_span(project) }})</em>
-      </h2>
-      <p><strong>{{ project.type }}</strong></p>
-    </div>
+  {{ this.description }}
+  {% set projects = site.query('/projects').include_undiscoverable(True).all() %}
+  <ul class="projects">
+  {% for project in projects %}
+    <li id="{{ project._id }}">
+      <h2><a href="{{ project.website }}">{{ project.name }}</a></h2>
+      {{ project.description }}
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="{{ project.repository }}" title="Repository">
+            {{ project_repo_icon(project) }}
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="{{ project.documentation }}" title="Documentation">
+            <i class="fa fa-lg fa-book"></i>
+          </a>
+        </li>
+        <li class="list-inline-item font-italic">
+          {{ project_span(project) }}
+        </li>
+      </ul>
+    </li>
   {% endfor %}
-  </div>
+  </ul>
 {% endblock %}

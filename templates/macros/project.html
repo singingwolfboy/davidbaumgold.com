@@ -28,3 +28,19 @@
     {%- endif %}
   {%- endif %}
 {%- endmacro %}
+
+{%- macro project_repo_icon(project) -%}
+  {%- if project.repository %}
+    {% if project.repository.host == "github.com" %}
+      <i class="fa fa-lg fa-github"></i>
+    {% elif project.repository.host == "gitlab.com" %}
+      <i class="fa fa-lg fa-gitlab"></i>
+    {% elif project.repository.host == "bitbucket.com" %}
+      <i class="fa fa-lg fa-bitbucket"></i>
+    {% else %}
+      <i class="fa fa-lg fa-code"></i>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+
+

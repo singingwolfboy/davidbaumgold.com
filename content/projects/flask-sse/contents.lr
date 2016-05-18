@@ -1,0 +1,22 @@
+name: Flask-SSE
+---
+_hidden: yes
+---
+website: https://flask-sse.readthedocs.io
+---
+repository: https://github.com/singingwolfboy/flask-sse
+---
+documentation: https://flask-sse.readthedocs.io
+---
+start_date: 2016-04-11
+---
+description:
+
+[Server-sent events](http://www.html5rocks.com/en/tutorials/eventsource/basics/)
+are great for doing push-notification style events in JavaScript, but Flask
+didn't have a dedicated extension for using it. I found
+[some example code](https://github.com/DazWorrall/flask-sse) that worked
+pretty well, but it was verbose and overly complex.
+I cleaned up this code, simplified it, added a few new features, some automated
+tests, some documentation, and put it up on
+[PyPI](https://pypi.python.org/pypi/flask-sse).

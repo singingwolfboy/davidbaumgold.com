@@ -1,11 +1,26 @@
 name: Flask-Dance
 ---
+_hidden: yes
+---
 website: https://flask-dance.readthedocs.io
 ---
 repository: https://github.com/singingwolfboy/flask-dance
+---
+documentation: https://flask-dance.readthedocs.io
 ---
 start_date: 2014-09-15
 ---
 description:
 
-OAuth extension for Flask
+I created this project out of a sense of frustration: although there were
+several [Flask](http://flask.pocoo.org/) extensions for doing
+[OAuth](http://oauth.net/) with Flask,
+none of them had the concise, powerful API that I knew was possible.
+So, I wrote it myself.
+Many people have told me that it's far easier to use than
+[Flask-OAuth](https://pythonhosted.org/Flask-OAuth/) or
+[Flask-OAuthlib](https://flask-oauthlib.readthedocs.io),
+and it's been growing in popularity.
+I would like to teach Flask-Dance how to operate as an OAuth provider,
+instead of just as an OAuth consumer,
+but I haven't yet had a need to do so. Anyone want to help?
