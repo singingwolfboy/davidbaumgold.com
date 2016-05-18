@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% from "macros/project.html" import project_span %}
+{% block title %}{{ this.name }} | {{ super() }}{% endblock %}
+{% block body %}
+  <h1>{{ this.name }}</h1>
+  <dl>
+    <dt>Since</dt>
+    <dd>{{ this.start_date|dateformat }}</dd>
+    {% if this.website %}
+    <dt>Website</dt>
+    <dd><a href="{{ this.website }}">{{ this.website.host }}</a></dd>
+    {% endif %}
+    {% if this.repository %}
+    <dt>Repository</dt>
+    <dd><a href="{{ this.repository }}">{{ this.repository.host }}</a></dd>
+    {% endif %}
+  </dl>
+  <h2>Description</h2>
+  <div class="description">{{ this.description }}</div>
+  {% set images = this.attachments.images.all() %}
+  {% if images %}
+    <h2>Images</h2>
+    {% for image in images %}
+      <div class="image">
+        <img src="{{ image.thumbnail(640)|url }}" alt="">
+        {% if image.exif %}
+        <p class=meta>
+          {{ image.exif.camera }}
+          {% if image.exif.created_at %}
+            ({{ image.exif.created_at|dateformat }})
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

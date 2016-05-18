@@ -1,0 +1,13 @@
+$font-family-base: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$headings-font-family: "Palatino", Georgia, "Times New Roman", Times, serif;
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/scss/font-awesome';
+
+.logo {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.page {
+    padding-top: 2rem;
+}

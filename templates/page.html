@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {%- if this.html_title -%}
+    {{ this.html_title }}
+  {%- elif this.title -%}
+    {{ this.title }} | {{ super() }}
+  {%- else -%}
+    {{ super() }}
+  {%- endif -%}
+{% endblock %}
+
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  {{ this.body }}
+{% endblock %}

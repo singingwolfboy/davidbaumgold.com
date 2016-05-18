@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- Generated CSS, including Bootstrap -->
+  <link href="{{ '/static/gen/styles.css'|asseturl }}" rel="stylesheet" type="text/css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css">
+  <!-- Other things -->
+  <title>{% block title %}David Baumgold{% endblock %}</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <header class="col-sm-3">
+        <div class="display-1 text-xs-center logo">DB</div>
+        <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
+        <ul class="list-inline text-xs-center">
+          <li class="list-inline-item"><i class="fa fa-lg fa-envelope"></i></li>
+          <li class="list-inline-item"><i class="fa fa-lg fa-twitter"></i></li>
+          <li class="list-inline-item"><i class="fa fa-lg fa-github"></i></li>
+        </ul>
+
+        <hr />
+
+        <nav class="container">
+          <ul class="nav">
+            {% for href, title in [
+              ['/projects', 'Projects'],
+              ['/tutorials', 'Tutorials'],
+              ['/blog', 'Blog'],
+              ['/names', 'Names'],
+            ] %}
+              <li class="nav-item">
+                <a class="nav-link {% if this.is_child_of(href) %}active{% endif
+                %}"
+                   href="{{ href|url }}">{{ title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <hr />
+
+        <ul class="list-unstyled container">
+          <li>Training &amp; Consulting</li>
+          <li>Hypnosis</li>
+        </ul>
+
+      </header>
+      <div class="col-sm-9 page">
+        {% block body %}{% endblock %}
+      </div>
+  </div>
+  <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
+</body>
+</html>

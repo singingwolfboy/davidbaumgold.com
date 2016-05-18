@@ -1,0 +1,5 @@
+[project]
+name = davidbaumgold.com
+
+[packages]
+lektor-webpack-support = 0.1

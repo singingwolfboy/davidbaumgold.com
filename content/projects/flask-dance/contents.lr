@@ -1,0 +1,11 @@
+name: Flask-Dance
+---
+website: https://flask-dance.readthedocs.io
+---
+repository: https://github.com/singingwolfboy/flask-dance
+---
+start_date: 2014-09-15
+---
+description:
+
+OAuth extension for Flask

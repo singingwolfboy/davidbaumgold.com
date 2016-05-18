@@ -1,0 +1,30 @@
+{%- macro project_span(project, month=false) -%}
+  {%- if project.start_date and project.end_date %}
+    {%- if month %}
+      {%- if project.start_date.month == project.end_date.month and
+            project.start_date.year == project.end_date.year -%}
+        {{project.start_date.month}}, {{ project.start_date.year }}
+      {%- else -%}
+        {{project.start_date.month}}, {{ project.start_date.year }} to {{project.end_date.month}}, {{ project.end_date.year }}
+      {%- endif %}
+    {%- else %}
+      {%- if project.start_date.year == project.end_date.year -%}
+        {{ project.start_date.year }}
+      {%- else -%}
+        {{ project.start_date.year }} to {{ project.end_date.year }}
+      {%- endif %}
+    {%- endif %}
+  {%- elif project.start_date %}
+    {%- if month -%}
+      since {{ project.start_date.month }}, {{ project.start_date.year }}
+    {%- else -%}
+      since {{ project.start_date.year }}
+    {%- endif -%}
+  {%- elif project.end_date %}
+    {%- if month -%}
+      until {{ project.end_date.month }}, {{ project.end_date.year }}
+    {%- else -%}
+      until {{ project.end_date.year }}
+    {%- endif %}
+  {%- endif %}
+{%- endmacro %}
