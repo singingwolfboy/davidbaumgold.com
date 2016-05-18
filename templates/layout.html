@@ -7,8 +7,6 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <!-- Generated CSS, including Bootstrap -->
   <link href="{{ '/static/gen/styles.css'|asseturl }}" rel="stylesheet" type="text/css">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css">
   <!-- Other things -->
   <title>{% block title %}David Baumgold{% endblock %}</title>
 </head>
@@ -16,7 +14,10 @@
   <div class="container">
     <div class="row">
       <header class="col-sm-3">
-        <div class="display-1 text-xs-center logo">DB</div>
+        <img class="display-1 center-block logo" width="120px" alt="DB"
+             src="{{ '/static/images/db.png'|asseturl }}"
+             srcset="{{ '/static/images/db.svg'|asseturl }}"
+        />
         <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
         <ul class="list-inline text-xs-center">
           <li class="list-inline-item"><i class="fa fa-lg fa-envelope"></i></li>
