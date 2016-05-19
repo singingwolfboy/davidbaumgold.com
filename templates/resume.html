@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% from "macros/project.html" import humanize_timespan %}
+{% block title %}Resume | {{ super() }}{% endblock %}
+{% block body %}
+  <h1>Resume</h1>
+  {{ this.description }}
+  {% set jobs = site.query('/resume').include_undiscoverable(True).all() %}
+  <h2>Experience</h2>
+  <ol class="resume-jobs list-unstyled">
+  {% for job in jobs %}
+    <li id="{{ job._id }}">
+      <div class="title">{{ job.title }} at <a href="{{ job.website }}">{{ job.company }}</a></div>
+      <em>{{ humanize_timespan(job, true) }}</em>
+      {{ job.description }}
+    </li>
+  {% endfor %}
+  </ol>
+  <h2>Education</h2>
+  <ol class="resume-education list-unstyled">
+    <li>
+      <div class="title">Masters degree in Computer Science</div>
+      <p><a href="https://www.brandeis.edu/">Brandeis University</a>, <em>Spring 2010 to Summer 2010</em></p>
+    </li>
+    <li>
+      <div class="title">Bachelors degree in Computer Science</div>
+      <p><a href="https://www.brandeis.edu/">Brandeis University</a>, <em>Fall 2006 to Fall 2009</em></p>
+    </li>
+    <li>
+      <div class="title">Bachelors degree in Psychology</div>
+      <p><a href="https://www.brandeis.edu/">Brandeis University</a>, <em>Fall 2006 to Fall 2009</em></p>
+    </li>
+  </ol>
+{% endblock %}

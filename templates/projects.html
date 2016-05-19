@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros/project.html" import project_span, project_repo_icon %}
+{% from "macros/project.html" import humanize_timespan, project_repo_icon %}
 {% block title %}Projects | {{ super() }}{% endblock %}
 {% block body %}
   <h1>Projects</h1>
@@ -22,7 +22,7 @@
           </a>
         </li>
         <li class="list-inline-item font-italic">
-          {{ project_span(project) }}
+          {{ humanize_timespan(project) }}
         </li>
       </ul>
     </li>

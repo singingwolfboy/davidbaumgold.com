@@ -1,0 +1,15 @@
+company: CloudLock
+---
+_hidden: yes
+---
+website: https://www.cloudlock.com
+---
+title: Software Engineer
+---
+start_date: 2011-09-01
+---
+end_date: 2013-04-01
+---
+description:
+
+Python web application running on Google App Engine. Assisted with a major architectural restructuring to work with App Engine’s eventually-consistent datastore. Increased developer productivity through communication, education, tooling, and automated testing.
