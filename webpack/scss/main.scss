@@ -5,6 +5,21 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome';
 @import '../css/pygments.css';
 
+.logo-link {
+  color: $gray-dark;
+
+  &:hover {
+    color: $gray-dark;
+    text-decoration: none;
+  }
+}
+.contact-icons a {
+  color: $gray-dark;
+  &:hover {
+    color: $gray;
+  }
+}
+
 .logo {
   margin: 1.5rem auto;
 }
