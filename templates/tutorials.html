@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% from "macros/project.html" import project_span, project_repo_icon %}
+{% block title %}Tutorials | {{ super() }}{% endblock %}
+{% block body %}
+  <h1>Tutorials</h1>
+  {{ this.description }}
+  <ul class="tutorials">
+  {% for tutorial in this.children %}
+    <li id="{{ tutorial._id }}">
+      <a href="{{ tutorial|url }}">{{ tutorial.title }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock %}
