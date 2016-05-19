@@ -1,6 +1,7 @@
 $font-family-base: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
 $headings-font-family: "Palatino", Georgia, "Times New Roman", Times, serif;
 $fa-font-path: "../node_modules/font-awesome/fonts";
+
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/scss/font-awesome';
 @import '../css/pygments.css';
@@ -40,3 +41,6 @@ ul.projects {
   }
 }
 
+ol.toc {
+  list-style-type: disc;
+}

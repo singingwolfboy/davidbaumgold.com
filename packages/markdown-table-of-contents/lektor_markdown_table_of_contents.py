@@ -1,18 +1,22 @@
 from lektor.pluginsystem import Plugin
-from lektor.types.formats import MarkdownType
 from mistune import BlockLexer
 from markupsafe import Markup
 from textwrap import indent
+try:
+    from slugify import slugify
+except ImportError:
+    slugify = None
+
 
 def headings(text):
     """
     Given Markdown-formatted text, return a list of heading tokens.
     """
     tokens = BlockLexer().parse(text)
-    headings = [token for token in tokens if token['type'] == 'heading']
-    for heading in headings:
-        del heading['type']
-    return headings
+    htokens = [token for token in tokens if token['type'] == 'heading']
+    for token in htokens:
+        del token['type']
+    return htokens
 
 
 def nested_headings(headings):
@@ -74,53 +78,98 @@ def nested_headings(headings):
     return ordered_list
 
 
-def html_from_nested_headings(nested_headings, slug_links=False, list_class=""):
-    if slug_links:
-        from slugify import slugify
-        def link_target(heading):
-            return slugify(heading['text'])
+def html_from_nested_headings(
+        nested_headings, links=True, slug_links=False,
+        toc_class="", list_class="", list_item_class="",
+        position=None,
+    ):
+    """
+    Recursive function to generate HTML from a list of nested headings.
+
+    Arguments:
+        nested_headings: List of nested heading tokens
+        links: Should the table of contents include links to the section on
+            the page?
+        slug_links: Link to slugified text, instead of heading position.
+            Only used if `links` is True. Requires the `slugify` module
+            to be installed.
+        toc_class: The CSS class(es) to apply to the outermost <ol> element
+            in the table of contents.
+        list_class: The CSS class(es) to apply to *every* <ol> element in the
+            table of contents, including all nested <ol>s.
+        list_item_class: The CSS class(es) to apply to *every* <li> element
+            in the table of contents, including all nested <li>s.
+        position: A tuple of positional indicators, used for generating
+            non-slug links. Do not pass this yourself; it is used for keeping
+            track of position with recursion.
+    """
+    ol = "<ol>"
+
+    if not position:
+        position = []
+        # this is the outermost <ol>, so include the toc_class
+        if toc_class or list_class:
+            ol = '<ol class="{toc_class} {list_class}">'.format(
+                toc_class=toc_class,
+                list_class=list_class,
+            )
     else:
-        def link_target(heading):
-            return "heading-{level}".format(level=heading['level'])
+        if list_class:
+            ol = '<ol class="{list_class}">'.format(list_class=list_class)
 
-    ol = '<ol class="{list_class}">'.format(list_class=list_class)
+    depth = len(position)
+
     lines = [ol]
-    for heading in nested_headings:
+    for index, heading in enumerate(nested_headings, start=1):
         if heading['children']:
-            subhtml = recursive_html(heading['children'], link_target)
+            subpos = position.copy()
+            subpos.append(index)
+            subhtml = html_from_nested_headings(
+                nested_headings=heading['children'],
+                links=links, slug_links=slug_links, toc_class=toc_class,
+                list_class=list_class, list_item_class=list_item_class,
+                position=subpos,
+            )
         else:
             subhtml = ""
-        item_html = '  <li><a href="#{target}">{text}</a>{subhtml}</li>'.format(
-            text=heading['text'],
-            target=link_target(heading),
-            subhtml=subhtml,
-        )
-        lines.append(item_html)
-    lines.append("</ol>")
-    return Markup("\n".join(lines))
 
-
-def recursive_html(headings, link_target, depth=1):
-    lines = ["<ol>"]
-    for heading in headings:
-        if heading['children']:
-            subhtml = recursive_html(headings['children'], link_target, depth+1)
+        item_html = ["  "]  # indent li
+        if list_item_class:
+            li = '<li class="{li_class}">'.format(li_class=list_item_class)
         else:
-            subhtml = ""
-        item_html = '  <li><a href="#{target}">{text}</a>{subhtml}</li>'.format(
-            text=heading['text'],
-            target=link_target(heading),
-            subhtml=subhtml,
-        )
-        lines.append(item_html)
+            li = '<li>'
+        item_html.append(li)
+        if links:
+            if slug_links:
+                target = slugify(heading['text'])
+            else:
+                strpos = [str(i) for i in position]
+                strpos.insert(0, "heading")
+                strpos.append(str(index))
+                target = "-".join(strpos)
+            item_html.append('<a href="#{target}">'.format(target=target))
+        item_html.append(heading['text'])
+        if links:
+            item_html.append('</a>')
+        item_html.append(subhtml)
+        item_html.append('</li>')
+
+        lines.append("".join(item_html))
+
     lines.append("</ol>")
-    return indent("\n".join(lines), "  "*depth)
+    indented = indent("\n".join(lines), "  " * depth)
+    return Markup(indented)
 
 
-def render_table_of_contents(field, slug_links=False, list_class=""):
+def render_table_of_contents(
+        field, links=True, slug_links=False,
+        toc_class="", list_class="", list_item_class=""
+    ):
     nh = nested_headings(headings(field.source))
     return html_from_nested_headings(
-        nh, slug_links=slug_links, list_class=list_class,
+        nh, links=links, slug_links=slug_links,
+        toc_class=toc_class, list_class=list_class,
+        list_item_class=list_item_class,
     )
 
 
@@ -129,15 +178,23 @@ class MarkdownTOCPlugin(Plugin):
     description = 'Generate a table of contents from a Markdown field.'
 
     def on_setup_env(self, **extra):
-        list_class = self.get_config().get("class", "toc")
-        links = self.get_config().get("links")
+        config = self.get_config()
+        links = config.get("links", "index")
+        use_links = (links.lower() not in ("no", "none"))
         slug_links = (links == "slug")
+        toc_class = config.get("class", "toc")
+        list_class = config.get("list_class", "")
+        list_item_class = config.get("list_item_class", "")
+
         if slug_links:
+            # throw ImportError if not installed
             from slugify import slugify
 
         def render_toc(field):
             return render_table_of_contents(
-                field, slug_links=slug_links, list_class=list_class,
+                field=field, links=use_links, slug_links=slug_links,
+                toc_class=toc_class, list_class=list_class,
+                list_item_class=list_item_class,
             )
 
         self.env.jinja_env.globals['render_toc'] = render_toc
