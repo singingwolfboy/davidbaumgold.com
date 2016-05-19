@@ -113,7 +113,7 @@ tremendously difficult.
 Fortunately, Homebrew itself is simple to install: just open up the
 Terminal and run this command:
 
-```
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
@@ -131,7 +131,7 @@ Installing Homebrew should only take a few seconds or minutes
 the Terminal will say that the installation was successful, and ask you to
 run brew doctor. Do as it suggests:
 
-```
+```bash
 brew doctor
 ```
 
@@ -145,7 +145,7 @@ of the tutorial.
 Note: If Homebrew tells you that you need to agree to the Xcode license,
 you can do that by running:
 
-```
+```bash
 sudo xcodebuild -license
 ```
 
@@ -157,7 +157,7 @@ read it, type agree and hit enter to agree to the license.
 Homebrew uses an extension called [Homebrew Cask](https://caskroom.io/)
 to install other programs. Install the Cask extension by running:
 
-```
+```bash
 brew tap caskroom/cask
 ```
 
@@ -167,7 +167,7 @@ Wine needs both [Java](https://www.java.com/) and [XQuartz](http://www.xquartz.o
 to run correctly, and the easiest way to install them is with Homebrew Cask.
 Run the following command:
 
-```
+```bash
 brew cask install java xquartz
 ```
 
@@ -187,7 +187,7 @@ a new command. Onto the next step!
 Now we get to actually install Wine! We'll let Homebrew do all the work,
 all you have to do is tell it what you want with this command:
 
-```
+```bash
 brew install wine
 ```
 
@@ -223,14 +223,14 @@ you should learn how to use the command line before using Wine.)
 Once you are in the correct directory, run the installer through Wine
 by running the following command in the Terminal:
 
-```
+```bash
 wine $INSTALLER.exe
 ```
 
 Where `$INSTALLER` is the name of the installer file. For example,
 if the installer file is named `setup.exe`, you would run:
 
-```
+```bash
 wine setup.exe
 ```
 
@@ -241,7 +241,7 @@ a regular graphical Windows installer. Click through it, and you're done!
 
 Open up the Terminal and run this to get to your Program Files folder:
 
-```
+```bash
 cd ~/.wine/drive_c/Program\ Files/
 ```
 
@@ -252,7 +252,7 @@ If you're having problems, try using tab autocomplete.)
 There should be a file that ends in `.exe`: this is the program file.
 Type this into Terminal:
 
-```
+```bash
 wine $PROGRAM.exe
 ```
 
@@ -294,7 +294,7 @@ Open up the Script Editor. You should see a window with a large area
 you can type in near the top: this is where you write your AppleScript.
 In that area, type the following text:
 
-```
+```applescript
 tell application "Terminal"
     do script "/usr/local/bin/wine ~/.wine/drive_c/Program\\ Files/$PATH_TO_PROGRAM.exe"
 end tell
@@ -330,7 +330,7 @@ get those improvements, so it's generally a good idea to check for updates
 every so often. We can use Homebrew to keep Wine up to date: it's easy!
 Just run this command:
 
-```
+```bash
 brew update && brew upgrade
 ```
 
@@ -346,7 +346,7 @@ or so.
 If you try Wine and you don't like it, uninstalling it is easy.
 Just run this command:
 
-```
+```bash
 brew uninstall wine
 ```
 

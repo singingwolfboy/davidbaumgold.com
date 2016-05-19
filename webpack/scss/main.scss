@@ -3,6 +3,7 @@ $headings-font-family: "Palatino", Georgia, "Times New Roman", Times, serif;
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/scss/font-awesome';
+@import '../css/pygments.css';
 
 .logo {
   margin: 1.5rem auto;
