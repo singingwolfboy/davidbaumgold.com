@@ -3,5 +3,8 @@
 {% block body %}
   <h1>{{ this.title }}</h1>
   {{ this.intro }}
+  {% if this.toc %}
+  {{ render_toc(this.body) }}
+  {% endif %}
   {{ this.body }}
 {% endblock %}

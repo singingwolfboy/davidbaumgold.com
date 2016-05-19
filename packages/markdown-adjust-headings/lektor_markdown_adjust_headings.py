@@ -1,11 +1,22 @@
 from lektor.pluginsystem import Plugin
 from lektor.types.formats import MarkdownType
 
+
 class MarkdownAdjustHeadingsPlugin(Plugin):
     name = 'Adjust Markdown headings'
     description = 'Adjust Markdown headings to different relative levels.'
 
+    def on_setup_env(self, **extra):
+        should_slugify = self.get_config().get('slugify')
+        if should_slugify:
+            from slugify import slugify
+            self.slugify = slugify
+        else:
+            self.slugify = None
+
     def on_markdown_config(self, config, **extra):
+        slugify = self.slugify
+
         class AdjustHeadingsMixin(object):
             def header(self, text, level, raw=None):
                 markdown_fields = [
@@ -31,5 +42,14 @@ class MarkdownAdjustHeadingsPlugin(Plugin):
                     # no adjustment, leave level as it is
                     adjusted_level = level
                 # generate the html
-                return '<h%d>%s</h%d>\n' % (adjusted_level, text, level)
+                if slugify:
+                    attrs = ' id="{slug}"'.format(slug=slugify(text))
+                else:
+                    attrs = ''
+                return '<h{level}{attrs}>{text}</h{level}>\n'.format(
+                    level=adjusted_level,
+                    attrs=attrs,
+                    text=text,
+                )
+
         config.renderer_mixins.append(AdjustHeadingsMixin)
