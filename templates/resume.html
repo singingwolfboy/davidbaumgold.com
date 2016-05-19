@@ -9,7 +9,12 @@
   <ol class="resume-jobs list-unstyled">
   {% for job in jobs %}
     <li id="{{ job._id }}">
-      <div class="title">{{ job.title }} at <a href="{{ job.website }}">{{ job.company }}</a></div>
+      <div class="title">
+        {{ job.title }} at
+        {% if job.website %}<a href="{{ job.website }}">{% endif %}
+        {{ job.company }}
+        {% if job.website %}</a>{% endif %}
+      </div>
       <em>{{ humanize_timespan(job, true) }}</em>
       {{ job.description }}
     </li>

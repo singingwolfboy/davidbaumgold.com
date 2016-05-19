@@ -3,9 +3,9 @@
     {%- if month %}
       {%- if project.start_date.month == project.end_date.month and
             project.start_date.year == project.end_date.year -%}
-        {{ project.start_date.strftime("%b, %Y") }}
+        {{ project.start_date.strftime("%b %Y") }}
       {%- else -%}
-        {{ project.start_date.strftime("%b, %Y") }} to {{ project.end_date.strftime("%b, %Y") }}
+        {{ project.start_date.strftime("%b %Y") }} to {{ project.end_date.strftime("%b %Y") }}
       {%- endif %}
     {%- else %}
       {%- if project.start_date.year == project.end_date.year -%}
@@ -16,13 +16,13 @@
     {%- endif %}
   {%- elif project.start_date %}
     {%- if month -%}
-      since {{ project.start_date.strftime("%b, %Y") }}
+      since {{ project.start_date.strftime("%b %Y") }}
     {%- else -%}
       since {{ project.start_date.year }}
     {%- endif -%}
   {%- elif project.end_date %}
     {%- if month -%}
-      until {{ project.end_date.strftime("%b, %Y") }}
+      until {{ project.end_date.strftime("%b %Y") }}
     {%- else -%}
       until {{ project.end_date.year }}
     {%- endif %}
