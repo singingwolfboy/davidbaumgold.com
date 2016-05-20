@@ -1,6 +1,7 @@
 [project]
 name = davidbaumgold.com
 url = https://www.davidbaumgold.com/
+url_style = absolute
 google-analytics = UA-11574806-1
 google-adsense = ca-pub-6481218722790442
 
