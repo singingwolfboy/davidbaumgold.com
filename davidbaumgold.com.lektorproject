@@ -1,5 +1,6 @@
 [project]
 name = davidbaumgold.com
+google-analytics = UA-11574806-1
 
 [packages]
 lektor-webpack-support = 0.1
