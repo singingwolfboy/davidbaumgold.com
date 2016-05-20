@@ -1,10 +1,32 @@
 {% extends "layout.html" %}
 {% block title %}{{ this.title }} | {{ super() }}{% endblock %}
+{% set google_adsense = config.values.PROJECT.get("google-adsense") %}
 {% block body %}
   <h1>{{ this.title }}</h1>
   {{ this.intro }}
   {% if this.toc %}
-  {{ render_toc(this.body) }}
+    {{ render_toc(this.body) }}
+    {% if this.toc_ad_id and google_adsense %}
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="{{ google_adsense }}"
+        data-ad-slot="{{ this.toc_ad_id }}"
+        data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    {% endif %}
   {% endif %}
   {{ this.body }}
+  {% if this.footer_ad_id and google_adsense %}
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="{{ google_adsense }}"
+      data-ad-slot="{{ this.footer_ad_id }}"
+      data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  {% endif %}
+{% endblock %}
+{% block scripts %}
+  {% if google_adsense %}
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  {% endif %}
 {% endblock %}

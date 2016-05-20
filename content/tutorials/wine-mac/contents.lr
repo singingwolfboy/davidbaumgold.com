@@ -7,9 +7,14 @@ intro:
 This tutorial is for intermediate users who want to install and use
 [Wine](https://www.winehq.org/) on their computer running Mac OS X.
 You should already know the basics of how to use the command line.
+If you don't, [read this tutorial first](/tutorials/command-line/)
 
 ---
 toc: true
+---
+toc_ad_id: 3610826013
+---
+footer_ad_id: 5087559211
 ---
 body:
 
