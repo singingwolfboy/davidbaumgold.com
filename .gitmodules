@@ -1,0 +1,4 @@
+[submodule "lektor-markdown-header-anchors"]
+	path = packages/lektor-markdown-header-anchors
+	url = https://github.com/singingwolfboy/lektor-markdown-header-anchors.git
+	branch = adjust-header-levels
