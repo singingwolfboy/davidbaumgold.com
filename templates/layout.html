@@ -8,6 +8,7 @@
   <!-- Generated CSS, including Bootstrap -->
   <link rel="stylesheet" href="{{ '/static/gen/styles.css'|asseturl }}">
   <!-- Other things -->
+  <link rel="icon" type="image/png" href="{{ '/static/images/favicon.png'|asseturl }}" />
   <title>{% block title %}David Baumgold{% endblock %}</title>
 </head>
 <body>
@@ -33,7 +34,7 @@
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
+            <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
               <i class="fa fa-lg fa-github"></i>
             </a>
           </li>
@@ -70,6 +71,8 @@
         {% block body %}{% endblock %}
       </div>
   </div>
+  {# uncomment to include generated JavaScript, including Bootstrap
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
+  #}
 </body>
 </html>

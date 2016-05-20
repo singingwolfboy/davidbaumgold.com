@@ -12,7 +12,8 @@ var options = {
     path: path.dirname(__dirname) + '/assets/static/gen',
     filename: '[name].js'
   },
-  devtool: '#cheap-module-source-map',
+  // devtool: '#cheap-module-source-map',
+  devtool: '#source-map',
   resolve: {
     modulesDirectories: ['node_modules'],
     extensions: ['', '.js']

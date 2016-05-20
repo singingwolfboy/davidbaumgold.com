@@ -2,8 +2,6 @@ name: Flask-SSE
 ---
 _hidden: yes
 ---
-website: https://flask-sse.readthedocs.io
----
 repository: https://github.com/singingwolfboy/flask-sse
 ---
 documentation: https://flask-sse.readthedocs.io

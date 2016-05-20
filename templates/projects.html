@@ -8,19 +8,30 @@
   <ul class="projects">
   {% for project in projects %}
     <li id="{{ project._id }}">
-      <h2><a href="{{ project.website }}">{{ project.name }}</a></h2>
+      <h2>{{ project.name }}</h2>
       {{ project.description }}
       <ul class="list-inline">
-        <li class="list-inline-item">
-          <a href="{{ project.repository }}" title="Repository">
-            {{ project_repo_icon(project) }}
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a href="{{ project.documentation }}" title="Documentation">
-            <i class="fa fa-lg fa-book"></i>
-          </a>
-        </li>
+        {% if project.website %}
+          <li class="list-inline-item">
+            <a href="{{ project.website }}" title="Website">
+              <i class="fa fa-lg fa-home"></i>
+            </a>
+          </li>
+        {% endif %}
+        {% if project.repository %}
+          <li class="list-inline-item">
+            <a href="{{ project.repository }}" title="Repository">
+              {{ project_repo_icon(project) }}
+            </a>
+          </li>
+        {% endif %}
+        {% if project.documentation %}
+          <li class="list-inline-item">
+            <a href="{{ project.documentation }}" title="Documentation">
+              <i class="fa fa-lg fa-book"></i>
+            </a>
+          </li>
+        {% endif %}
         <li class="list-inline-item font-italic">
           {{ humanize_timespan(project) }}
         </li>
