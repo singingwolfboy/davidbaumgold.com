@@ -5,6 +5,12 @@ url_style = absolute
 google-analytics = UA-11574806-1
 google-adsense = ca-pub-6481218722790442
 
+[servers.s3]
+name = S3
+enabled = yes
+target = s3://www.davidbaumgold.com
+
 [packages]
 lektor-webpack-support = 0.1
 lektor-markdown-highlighter = 0.1
+lektor-s3 = 0.2.3
