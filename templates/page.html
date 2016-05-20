@@ -10,6 +10,12 @@
   {%- endif -%}
 {% endblock %}
 
+{% block head_extra %}
+  {% if this.meta_description %}
+  <meta name="description" content="{{ this.meta_description }}" />
+  {% endif %}
+{% endblock%}
+
 {% block body %}
   <h1>{{ this.title }}</h1>
   {{ this.body }}

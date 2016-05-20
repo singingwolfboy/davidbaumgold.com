@@ -7,6 +7,10 @@ intro:
 This tutorial is for Windows users who want to get their computer set up for developing with Python.
 
 ---
+meta_description:
+
+A simple tutorial demonstrating how to set up a Python development environment on Windows
+---
 toc: true
 ---
 toc_ad_id: 3610826013
