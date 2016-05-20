@@ -1,0 +1,133 @@
+title: How to Set Up a Python Development Environment on Windows
+---
+last_updated: 2016-05-18
+---
+intro:
+
+This tutorial is for Windows users who want to get their computer set up for developing with Python.
+
+---
+toc: true
+---
+toc_ad_id: 3610826013
+---
+footer_ad_id: 5087559211
+---
+body:
+
+# What is Python?
+
+[Python](https://python.org/) is a programming language that is easy to learn, yet powerful and flexible. Many professional software engineers use Python every day to do their job, for both large projects and small ones. Python is free, open source, and it runs on Windows, Mac, and Linux, as well as many other operating systems. It's a great language if you want to start learning how to write computer programs.
+
+# What Do I Need?
+
+To effectively use Python on Windows, you need a few pieces of software:
+
+* [Python](https://python.org/downloads/)
+* [Cygwin](https://cygwin.com/)
+* [Sublime Text](https://www.sublimetext.com/) or another text editor
+
+Let's handle them one at a time.
+
+# Installing Python
+Go to [python.org](https://python.org/downloads/) and download the version of Python that you want. In these examples, I'm downloading Python 3.2.3.
+
+<a href="python-3.2.3-homepage.png" class="lightbox"><img src="python-3.2.3-homepage-sm.png"></a>
+<a href="python-3.2.3-download.png" class="lightbox"><img src="python-3.2.3-download-sm.png"></a>
+
+Run the installer, and let it install to the default location: in this case, `C:\Python32\`.
+
+<a href="python-3.2.3-installer-intro.png" class="lightbox"><img src="python-3.2.3-installer-intro-sm.png"></a>
+<a href="python-3.2.3-installer-location.png" class="lightbox"><img src="python-3.2.3-installer-location-sm.png"></a>
+
+That was easy!
+
+# Installing Cygwin
+
+This is a bit more complicated. First, go to the [Cygwin homepage](https://cygwin.com/), download [setup.exe](https://cygwin.com/setup.exe), and run it.
+
+<a href="cygwin-homepage.png" class="lightbox"><img src="cygwin-homepage-sm.png"></a>
+<a href="cygwin-installer-intro.png" class="lightbox"><img src="cygwin-installer-intro-sm.png"></a>
+
+Cygwin is a program that can download and install other programs from the internet for you. You'll need to give it some information about your internet connection, although most of the time you can just accept the defaults and keep going.
+
+<a href="cygwin-installer-1.png" class="lightbox"><img src="cygwin-installer-1-sm.png"></a>
+<a href="cygwin-installer-2.png" class="lightbox"><img src="cygwin-installer-2-sm.png"></a>
+<a href="cygwin-installer-3.png" class="lightbox"><img src="cygwin-installer-3-sm.png"></a>
+
+Next, Cygwin will show you a long list of download sites. Each one is exactly the same: you can pick one at random. You do not need to pick the same download site shown in the screenshot. After you've picked one and clicked the "next" button, you'll see an upgrade warning, but that only applies to people upgrading from an older version of Cygwin. Since this is a new installation, we can ignore it.
+
+<a href="cygwin-mirrors.png" class="lightbox" title="It doesn't matter which download site you pick; just pick one at random.">
+  <img src="cygwin-mirrors-sm.png">
+</a>
+<a href="cygwin-installer-warning.png" class="lightbox"><img src="cygwin-installer-warning-sm.png"></a>
+
+Now, we get to select what software we want to install from the download site. We want to install three software packages: `openssh`, `git`, and `curl`. For each one, use the search box to find the package, and then click on the word "Skip" so that it changes to a version number. Install the latest available version for each of these packages.
+
+<a href="cygwin-ssh.png" class="lightbox"><img src="cygwin-ssh-sm.png"></a>
+<a href="cygwin-git.png" class="lightbox"><img src="cygwin-git-sm.png"></a>
+<a href="cygwin-curl.png" class="lightbox"><img src="cygwin-curl-sm.png"></a>
+
+Next, Cygwin will tell you that you need to install certain other packages as dependencies. Basically, this means that if you want to use a certain package named `A`, and `A` relies on another package named `B` in order to run correctly, then Cygwin will detect this and ask to install package `B` as well. You can just hit "Next". At that point, Cygwin will start downloading and installing all the packages that you've requested, as well as all their dependencies. Depending on the speed of your internet connection, this may take a little while. When the middle of the three progress bars (the one marked "Total") is full, Cygwin is finished.
+
+<a href="cygwin-dependencies.png" class="lightbox"><img src="cygwin-dependencies-sm.png"></a>
+<a href="cygwin-progress.png" class="lightbox"><img src="cygwin-progress-sm.png"></a>
+<img src="cygwin-icon.png" style="float: right; margin-left: .5em;">
+
+If you ask Cygwin to install an icon on your desktop, it will do so, creating a shortcut named "Cygwin Terminal". You'll use this icon to run your Python code, as well as to access the `openssh`, `git`, and `curl` packages that you installed. Double-click the icon to run Cygwin Terminal, and you'll see a window like this pop up:
+
+![terminal first run](terminal-first-run.png)
+
+The exact text in your terminal window will be a little different, since it depends on the name of your computer, and the name of your user account. Now we can start using the terminal: if you don't know how, I suggest you read
+[this tutorial on how to use the command line](/tutorials/command-line).
+First, let's use the `which` command to find out where those packages are that we installed:
+
+![terminal which](terminal-which.png)
+
+So it looks like the terminal can find `ssh` and `git`, but not `python`. That's understandable, since we didn't use Cygwin to install Python. To tell Cygwin how to find Python, run the following command:
+
+```bash
+echo "PATH=\$PATH:/cygdrive/c/Python32" >> .bash_profile
+```
+
+Note that you're using the same directory that you installed Python into: if you're installing a different version of Python, then replace `Python32` with the version of Python you have installed. You should only need to do this once: after you've run that command, the terminal will always be able to find Python again.
+
+![terminal path](terminal-path.png)
+
+You're finally done installing and setting up Cygwin!
+
+# Installing Sublime Text
+
+Lastly, you'll need a text editor. There are many good options, but I suggest
+[Sublime Text](https://www.sublimetext.com/): it's very powerful and useful, and it has an unlimited free trial. Please note that Microsoft Word is a word processor, not a text editor: you cannot use Microsoft Word for writing computer programs.
+
+Installing Sublime Text is easy: just go to the [Sublime Text](https://www.sublimetext.com/) homepage, download the installer, and install it. Sublime Text is not free software, but you can try it for as long as you like before you buy it. If you end up writing many programs using Sublime Text, I encourage you to buy a license.
+
+<a href="sublime-text-homepage.png" class="lightbox" style="display: block; text-align: center;">
+  <img src="sublime-text-homepage-sm.png">
+</a>
+
+# Verify that it all works
+Now that you're all set up, let's verify that everything is working properly! The first program that any programmer writes is called "Hello, World!", and all it does is write that text out to the terminal. So, let's write "Hello, World!" in Python! If your computer is set up properly, this should work properly:
+
+```bash
+$ python -c 'print("Hello, World!")'
+Hello, World!
+```
+
+If that works, lets move on to writing a program into a file. Open up Sublime Text, and type in the following:
+
+```python
+#!/usr/bin/env python
+print("Hello, World!")
+```
+
+Save the file in your home directory (inside of `C:\cygwin\home`) as `hello.py`. Then open up the Terminal, cd to that directory, and run:
+
+```bash
+$ chmod a+x hello.py
+$ ./hello.py
+Hello, World!
+```
+
+And you should see the same `Hello, World!` output that you saw before. Congratulations, you're ready to start learning Python!
