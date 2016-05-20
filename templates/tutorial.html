@@ -11,23 +11,21 @@
 {% block body %}
   <h1>{{ this.title }}</h1>
   {{ this.intro }}
-  {% if this.toc %}
-    <ul class="toc">
-    {% for item in this.body.toc recursive %}
-      <li>
-        <a href="#{{ item.anchor }}">{{ item.title }}</a>
-        {% if item.children %}<ul>{{ loop(item.children) }}</ul>{% endif %}
-      </li>
-    {% endfor %}
-    </ul>
-    {% if this.toc_ad_id and google_adsense %}
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="{{ google_adsense }}"
-        data-ad-slot="{{ this.toc_ad_id }}"
-        data-ad-format="auto"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    {% endif %}
+  <ul class="toc">
+  {% for item in this.body.toc recursive %}
+    <li>
+      <a href="#{{ item.anchor }}">{{ item.title }}</a>
+      {% if item.children %}<ul>{{ loop(item.children) }}</ul>{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+  {% if this.toc_ad_id and google_adsense %}
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="{{ google_adsense }}"
+      data-ad-slot="{{ this.toc_ad_id }}"
+      data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   {% endif %}
   {{ this.body }}
   {% if this.footer_ad_id and google_adsense %}
