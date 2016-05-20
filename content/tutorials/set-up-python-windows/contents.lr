@@ -32,13 +32,13 @@ Let's handle them one at a time.
 # Installing Python
 Go to [python.org](https://python.org/downloads/) and download the version of Python that you want. In these examples, I'm downloading Python 3.2.3.
 
-<a href="python-3.2.3-homepage.png" class="lightbox"><img src="python-3.2.3-homepage-sm.png"></a>
-<a href="python-3.2.3-download.png" class="lightbox"><img src="python-3.2.3-download-sm.png"></a>
+[![python 3.2.3 homepage](python-3.2.3-homepage-sm.png)](python-3.2.3-homepage.png)
+[![python 3.2.3 download](python-3.2.3-download-sm.png)](python-3.2.3-download.png)
 
 Run the installer, and let it install to the default location: in this case, `C:\Python32\`.
 
-<a href="python-3.2.3-installer-intro.png" class="lightbox"><img src="python-3.2.3-installer-intro-sm.png"></a>
-<a href="python-3.2.3-installer-location.png" class="lightbox"><img src="python-3.2.3-installer-location-sm.png"></a>
+[![python 3.2.3 installer intro](python-3.2.3-installer-intro-sm.png)](python-3.2.3-installer-intro.png)
+[![python 3.2.3 installer location](python-3.2.3-installer-location-sm.png)](python-3.2.3-installer-location.png)
 
 That was easy!
 
@@ -46,32 +46,31 @@ That was easy!
 
 This is a bit more complicated. First, go to the [Cygwin homepage](https://cygwin.com/), download [setup.exe](https://cygwin.com/setup.exe), and run it.
 
-<a href="cygwin-homepage.png" class="lightbox"><img src="cygwin-homepage-sm.png"></a>
-<a href="cygwin-installer-intro.png" class="lightbox"><img src="cygwin-installer-intro-sm.png"></a>
+[![cygwin homepage](cygwin-homepage-sm.png)](cygwin-homepage.png)
+[![cygwin installer intro](cygwin-installer-intro-sm.png)](cygwin-installer-intro.png)
 
 Cygwin is a program that can download and install other programs from the internet for you. You'll need to give it some information about your internet connection, although most of the time you can just accept the defaults and keep going.
 
-<a href="cygwin-installer-1.png" class="lightbox"><img src="cygwin-installer-1-sm.png"></a>
-<a href="cygwin-installer-2.png" class="lightbox"><img src="cygwin-installer-2-sm.png"></a>
-<a href="cygwin-installer-3.png" class="lightbox"><img src="cygwin-installer-3-sm.png"></a>
+[![cygwin installer 1](cygwin-installer-1-sm.png)](cygwin-installer-1.png)
+[![cygwin installer 2](cygwin-installer-2-sm.png)](cygwin-installer-2.png)
+[![cygwin installer 3](cygwin-installer-3-sm.png)](cygwin-installer-3.png)
 
 Next, Cygwin will show you a long list of download sites. Each one is exactly the same: you can pick one at random. You do not need to pick the same download site shown in the screenshot. After you've picked one and clicked the "next" button, you'll see an upgrade warning, but that only applies to people upgrading from an older version of Cygwin. Since this is a new installation, we can ignore it.
 
-<a href="cygwin-mirrors.png" class="lightbox" title="It doesn't matter which download site you pick; just pick one at random.">
-  <img src="cygwin-mirrors-sm.png">
-</a>
-<a href="cygwin-installer-warning.png" class="lightbox"><img src="cygwin-installer-warning-sm.png"></a>
+[![cygwin mirrors](cygwin-mirrors-sm.png "It doesn't matter which download site you pick; just pick one at random.")](cygwin-mirrors.png)
+[![cygwin installer warning](cygwin-installer-warning-sm.png)](cygwin-installer-warning.png)
 
 Now, we get to select what software we want to install from the download site. We want to install three software packages: `openssh`, `git`, and `curl`. For each one, use the search box to find the package, and then click on the word "Skip" so that it changes to a version number. Install the latest available version for each of these packages.
 
-<a href="cygwin-ssh.png" class="lightbox"><img src="cygwin-ssh-sm.png"></a>
-<a href="cygwin-git.png" class="lightbox"><img src="cygwin-git-sm.png"></a>
-<a href="cygwin-curl.png" class="lightbox"><img src="cygwin-curl-sm.png"></a>
+[![cygwin ssh](cygwin-ssh-sm.png)](cygwin-ssh.png)
+[![cygwin git](cygwin-git-sm.png)](cygwin-git.png)
+[![cygwin curl](cygwin-curl-sm.png)](cygwin-curl.png)
 
 Next, Cygwin will tell you that you need to install certain other packages as dependencies. Basically, this means that if you want to use a certain package named `A`, and `A` relies on another package named `B` in order to run correctly, then Cygwin will detect this and ask to install package `B` as well. You can just hit "Next". At that point, Cygwin will start downloading and installing all the packages that you've requested, as well as all their dependencies. Depending on the speed of your internet connection, this may take a little while. When the middle of the three progress bars (the one marked "Total") is full, Cygwin is finished.
 
-<a href="cygwin-dependencies.png" class="lightbox"><img src="cygwin-dependencies-sm.png"></a>
-<a href="cygwin-progress.png" class="lightbox"><img src="cygwin-progress-sm.png"></a>
+[![cygwin dependencies](cygwin-dependencies-sm.png)](cygwin-dependencies.png)
+[![cygwin progress](cygwin-progress-sm.png)](cygwin-progress.png)
+
 <img src="cygwin-icon.png" style="float: right; margin-left: .5em;">
 
 If you ask Cygwin to install an icon on your desktop, it will do so, creating a shortcut named "Cygwin Terminal". You'll use this icon to run your Python code, as well as to access the `openssh`, `git`, and `curl` packages that you installed. Double-click the icon to run Cygwin Terminal, and you'll see a window like this pop up:
@@ -103,9 +102,7 @@ Lastly, you'll need a text editor. There are many good options, but I suggest
 
 Installing Sublime Text is easy: just go to the [Sublime Text](https://www.sublimetext.com/) homepage, download the installer, and install it. Sublime Text is not free software, but you can try it for as long as you like before you buy it. If you end up writing many programs using Sublime Text, I encourage you to buy a license.
 
-<a href="sublime-text-homepage.png" class="lightbox" style="display: block; text-align: center;">
-  <img src="sublime-text-homepage-sm.png">
-</a>
+[![sublime text homepage](sublime-text-homepage-sm.png)](sublime-text-homepage.png)
 
 # Verify that it all works
 Now that you're all set up, let's verify that everything is working properly! The first program that any programmer writes is called "Hello, World!", and all it does is write that text out to the terminal. So, let's write "Hello, World!" in Python! If your computer is set up properly, this should work properly:
