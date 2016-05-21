@@ -6,23 +6,43 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome';
 @import '../css/pygments.css';
 
-.logo-link {
-  color: $gray-dark;
+header {
+  margin-top: 1.5rem;
+  max-width: 22rem;
 
-  &:hover {
+  a {
     color: $gray-dark;
-    text-decoration: none;
+
+    &:hover {
+      color: $gray-dark;
+      text-decoration: none;
+    }
   }
-}
-.contact-icons a {
-  color: $gray-dark;
-  &:hover {
-    color: $gray;
+
+  .contact-icons {
+    margin-bottom: 0;
+
+    a:hover {
+      color: $gray;
+    }
+  }
+
+  .logo-block img {
+    height: 4rem;
   }
 }
 
-.logo {
-  margin: 1.5rem auto;
+@include media-breakpoint-up(md) {
+  header {
+
+    .logo-block {
+      margin-bottom: 1rem;
+
+      img {
+        height: 5rem;
+      }
+    }
+  }
 }
 
 .page {

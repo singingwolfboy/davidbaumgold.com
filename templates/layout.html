@@ -15,31 +15,41 @@
 <body>
   <div class="container">
     <div class="row">
-      <header class="col-sm-3">
-        <a href="{{ '/'|url }}" class="logo-link">
-          <img class="display-1 center-block logo" width="120px" alt="DB"
-               src="{{ '/static/images/db.png'|asseturl }}"
-               srcset="{{ '/static/images/db.svg'|asseturl }}"
-          />
-          <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
-        </a>
-        <ul class="list-inline text-xs-center contact-icons">
-          <li class="list-inline-item">
-            <a href="mailto:david@davidbaumgold.com" title="david@davidbaumgold.com">
-              <i class="fa fa-lg fa-envelope"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
-              <i class="fa fa-lg fa-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
-              <i class="fa fa-lg fa-github"></i>
-            </a>
-          </li>
-        </ul>
+      <div class="sidebar col-md-3">
+        <header class="center-block">
+          <div class="row">
+            <div class="logo-block col-xs-3 col-md-12">
+              <a href="{{ '/'|url }}" class="logo-link">
+                <img class="center-block logo" alt="DB"
+                     src="{{ '/static/images/db.png'|asseturl }}"
+                     srcset="{{ '/static/images/db.svg'|asseturl }}"
+                />
+              </a>
+            </div>
+            <div class="contact-block col-xs-9 col-md-12">
+              <a href="{{ '/'|url }}" class="name-link">
+                <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
+              </a>
+              <ul class="list-inline text-xs-center contact-icons">
+                <li class="list-inline-item">
+                  <a href="mailto:david@davidbaumgold.com" title="david@davidbaumgold.com">
+                    <i class="fa fa-lg fa-envelope"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
+                    <i class="fa fa-lg fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
+                    <i class="fa fa-lg fa-github"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
 
         <hr />
 
@@ -69,8 +79,8 @@
           <li><a href="https://quietstrengthhypnosis.com/">Hypnosis</a></li>
         </ul>
 
-      </header>
-      <div class="col-sm-9 page">
+      </div>
+      <div class="col-md-9 page">
         {% block body %}{% endblock %}
       </div>
     </div>
