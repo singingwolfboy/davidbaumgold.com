@@ -1,0 +1,180 @@
+title: Learning Lektor
+---
+pub_date: 2016-05-20
+---
+summary:
+
+An overview of Lektor, a static content management system written in Python, and my experience using it.
+---
+body:
+
+I've spent the last few days learning how to use [Lektor](https://www.getlektor.com/),
+a static content management system written in Python
+a hybrid between a CMS (like [Wordpress](https://wordpress.org/) or
+[Drupal](https://www.drupal.com/)) and a static website generator
+(like [Jekyll](https://jekyllrb.com/) or [Pelican](https://getpelican.com)).
+I like Lektor a lot -- so much so that I re-wrote this website from scratch
+using Lektor! And the code behind this site is
+[public on GitHub](https://github.com/singingwolfboy/davidbaumgold.com), if
+you're curious. Since I just learned a ton about it in a very short amount of
+time, I think it's fitting that my first blog post should be about it.
+
+# What is Lektor?
+
+Lektor is a "static content management system". What does that mean, exactly?
+It's basically a hybrid between a content management system
+(like [Wordpress](https://wordpress.org/) or [Drupal](https://www.drupal.com/))
+and a static website generator
+(like [Jekyll](https://jekyllrb.com/) or [Pelican](https://getpelican.com)).
+
+Content management systems (CMS) are great because they are easy to modify. An editor
+can visit an admin page, click a few buttons, type into a few text fields,
+and poof: more content has been added to the website. Non-technical users
+don't need to edit computer code, they can use a more friendly and familiar
+interface. The downside is, CMS websites usually require complex infrastructure
+(databases, search indexes, multiple webservers, etc) which is difficult and
+expensive to maintain. In addition, CMS websites often have performance problems
+on production, especially when they become popular. Caching can mitigate these
+performance problems, but caching has its own complexities. Suffice it to say
+that running a popular CMS website on production is very, very difficult.
+
+Static websites are great because they are simple and easy to run
+on production. A static website consists of files that are
+uploaded to a web server and served directly from disk, without going through
+any sort of backend programming language like Python or PHP. These files can
+be HTML, CSS, JavaScript, images, or anything else that a web browser might
+need to display a beautiful, functional website. Because these files are served
+directly from disk, static websites are *dramatically* more performant than
+CMS websites, which in turn makes them dramatically cheaper to run. The
+downside is that editing static websites is difficult, especially for
+non-technical editors. Using a static website *generator* like
+[Jekyll](https://jekyllrb.com/) makes it easier, because you can use a
+templating system to separate content from presentation and write content
+using languages like [Markdown](http://daringfireball.net/projects/markdown/),
+which are much easier to write than HTML. However, many non-technical users
+aren't comfortable editing text files or deploying files to a web server.
+As a result, finding people to write and edit content for a static website
+is very, very difficult.
+
+Lektor is a static website generator with an integrated CMS. Lektor produces
+static websites that can be run on production easily and cheaply. However,
+Lektor also has an integrated admin page where editors can click buttons
+and type in text fields in order to create and edit content. Lektor doesn't
+use a database like a traditional CMS; instead, it stores content in files
+on disk, and when editors create and edit content through the admin page,
+Lektor saves those changes to those content files. It's the best of both
+worlds! You can even maintain your website using a content management system
+like [Git](https://git-scm.com/), since all the information is saved in
+text files.
+
+# Lektor and Python 3
+
+Lektor was created by [Armin Ronacher](http://lucumr.pocoo.org/about/), a very
+prolific developer in the Python community. Armin has [a complex view of
+Python 3](http://lucumr.pocoo.org/2011/12/7/thoughts-on-python3/), but my
+understanding is that he generally views Python 3 as a mistake. Perhaps as a
+result of this, Lektor is not currently compatible with Python 3 -- an issue
+that struck me right away when I tried to install and use it, and got an error.
+
+Fortunately, porting to Python 3 is finicky but not difficult, so [I made a
+pull request to port Lektor to Python 3](https://github.com/lektor/lektor/pull/207).
+That pull request has attracted a fair amount of attention: apparently a lot
+of other people also want to see Lektor run on Python 3! The pull request is
+currently waiting for review, and I'm hoping that it will be reviewed and merged
+soon.
+
+# Using Lektor
+
+The first thing I had to wrap my head around when using Lektor is the "database"
+system that it uses. Rather than using a traditional database like
+[PostgreSQL](http://postgresql.com/) or [MySQL](https://www.mysql.com/),
+Lektor saves data in text files on disk, and can run queries over these files.
+Although it's unfamiliar, it ends up working quite well.
+
+Every page in your Lektor-powered site requires three files: a model file,
+a content file, and a template file. However, many pages will share the same
+model file and template file, and only the content files are unique to each page.
+In a traditional CMS, the model file is like the database table, while the
+content file is like the row or rows in the database that correspond to content
+in the page. Template files are used to render content into HTML, the same
+way they're used in a traditional CMS.
+
+For example, this page you are viewing right now uses the `models/blog-post.ini`
+model file, the `content/blog/learning-lektor/contents.lr` content file, and
+the `templates/blog-post.html` template. Lektor mixes them all together to
+produce the HTML page you see in front of you: the text of the blog post comes
+from the content file, the Markdown formatting happens because the model file
+says that the content file is in Markdown format, and the template displays
+the rendered Markdown along with the title, sidebar, and everything else on
+the page.
+
+Once I understood how these three pieces fit together, I was able to speed
+through very quickly, creating models, content, and templates that worked
+together cleanly. I occasionally checked out the admin page and tweaked
+its layout using the model files, but mostly I worked with Lektor's text
+files directly, since I'm very comfortable with plain text.
+
+# Lektor Plugins
+
+Like [most of Armin Ronacher's work](https://www.palletsprojects.com/),
+Lektor is designed to be extensible -- and in fact, just about any website you
+build with Lektor will need at least one or two plugins to make it do what you
+want. I found the plugin system to be very well designed, with only one or two
+problems so far.
+
+I'm using the official [webpack-support plugin](https://github.com/lektor/lektor-webpack-support)
+to handle asset management for my site. [Webpack](https://webpack.github.io/)
+is written in Node.js, and it does way more things than I'll ever understand.
+Primarily, though, it bundles multiple JavaScript files into one, resolving
+dependencies along the way using [CommonJS](http://www.commonjs.org/) or
+[AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md). It also does the
+same sort of bundling for CSS files, and can compile [Sass](http://sass-lang.com/)
+along the way. It produces [source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/),
+dynamically recompiles files when they change, handles custom font files with
+ease, and for all I know there's probably a way to make it cook you dinner
+and perform backflips as well. Fortunately, the webpack-support plugin for
+Lektor has some good documentation for how to get up and running with a basic
+configuration, which was all I needed.
+
+I also spent a lot of time learning how to write my own plugin, since I wanted
+to display a table of contents for my tutorials, and the Markdown tools that
+Lektor uses can't produce a table of contents on their own. Of course, after
+I produced something that mostly worked, I was searching through Lektor's
+documentation to find the answer to something else, and discovered that Lektor
+also has [an official plugin for created tables of contents](https://github.com/lektor/lektor-markdown-header-anchors), and it was much simpler and better-written
+than my hacked-together solution. Oops.
+
+It wasn't wasted effort, though, since I ended up needing to write my own plugin
+after all -- or more specifically, modify the "table of contents" plugin.
+I want to write Markdown without worrying about what other HTML heading tags may
+already be present on the page, but I also don't want to have the headings
+inside a blog post display the same way that the title of the blog post displays.
+That means I needed a way to adjust the headings in the output, so that when
+a blog post would normally output a `<h1>` tag, it becomes a `<h2>` tag instead.
+
+Lektor's plugin system can hook directly into the Markdown processing system,
+which is super useful for exactly this type of modification. However, each
+part of the Markdown processing system can be modified by only one plugin at a
+time, and the "table of contents" plugin was already modifying how Markdown
+output headings. (In order to have a correctly linked table of contents, the
+header tags need to have an ID attribute, so the links have something to target.)
+When I tried writing my own Lektor plugin to adjust the heading level, it wasn't
+able to run simultaneously with the "table of contents" plugin. Even worse, it
+was a silent failure: Python was simply overwriting one modification with another.
+
+I ended up [forking the table of contents plugin](https://github.com/singingwolfboy/lektor-markdown-header-anchors/tree/adjust-header-levels)
+to add this feature to the plugin directly. It would be nice if one plugin
+could modify the output of another plugin, so that this sort of tight coupling
+between plugins was unnecessary.
+
+# Lektor Is Powerful
+
+Despite the learning curve, I'm glad I chose to use Lektor for this project.
+Even though I probably won't use Lektor's admin interface very much, I'm sure
+I'll build other projects with Lektor that are used by non-technical editors.
+The combination of high-performance static files and easy editing capabilities
+is a powerful one, and one that I expect will make a big difference
+when companies select which technology they want to use for their website.
+
+If you'd like me to teach you about Lektor, or build you a website with it,
+let me know!

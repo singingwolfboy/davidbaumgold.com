@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
 {% from "macros/blog.html" import render_blog_post %}
 {% block title %}{{ this.title }} | {{ super() }}{% endblock %}
+
+{% block head_extra %}
+  {% if this.summary %}
+  <meta name="description" content="{{ this.summary }}" />
+  {% endif %}
+{% endblock%}
+
 {% block body %}
   {{ render_blog_post(this) }}
 {% endblock %}

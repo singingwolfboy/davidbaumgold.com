@@ -6,15 +6,16 @@
     <h2>{{ post.title }}</h2>
   {% endif %}
   <p class="meta">
-    written by
-    {% if post.twitter_handle %}
-      <a href="https://twitter.com/{{ post.twitter_handle
-        }}">{{ post.author or post.twitter_handle }}</a>
-    {% else %}
-      {{ post.author }}
+    {% if post.author %}
+      written by {{ post.author }},
     {% endif %}
-    on {{ post.pub_date }}
+    published on {{ post.pub_date }}
   </p>
-  {{ post.body }}
+  {% if from_index %}
+    {{ post.body|excerpt }}
+    <a href="{{ post|url }}">Read more...</a>
+  {% else %}
+    {{ post.body }}
+  {% endif %}
   </div>
 {% endmacro %}

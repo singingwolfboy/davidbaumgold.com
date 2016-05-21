@@ -14,3 +14,4 @@ target = s3://www.davidbaumgold.com
 lektor-webpack-support = 0.1
 lektor-markdown-highlighter = 0.1
 lektor-s3 = 0.2.3
+lektor-markdown-excerpt = 0.1
