@@ -2,7 +2,14 @@
 {% from "macros/blog.html" import render_blog_post %}
 {% from "macros/pagination.html" import render_pagination %}
 {% block title %}{{ this.title }} | {{ super() }}{% endblock %}
+
+{% block head_extra %}
+  <link rel="alternate" type="application/atom+xml" title="{{ this.title }}" href=" {{ '/blog/feed.xml'|url }}" />
+{% endblock %}
+
 {% block body %}
+  <h1>{{ this.title }}</h1>
+  <p>{{ this.summary }}</p>
   {% for child in this.pagination.items %}
     {{ render_blog_post(child, from_index=true) }}
   {% endfor %}
