@@ -14,7 +14,7 @@ a hybrid between a CMS (like [Wordpress](https://wordpress.org/) or
 [Drupal](https://www.drupal.com/)) and a static website generator
 (like [Jekyll](https://jekyllrb.com/) or [Pelican](https://getpelican.com)).
 I like Lektor a lot -- so much so that I re-wrote this website from scratch
-using Lektor! And the code behind this site is
+using Lektor! The code behind this site is
 [public on GitHub](https://github.com/singingwolfboy/davidbaumgold.com), if
 you're curious. Since I just learned a ton about it in a very short amount of
 time, I think it's fitting that my first blog post should be about it.
