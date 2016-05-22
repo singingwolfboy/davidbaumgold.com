@@ -28,10 +28,11 @@ header {
 .nav-menu-toggle {
   display: block;
   text-align: center;
-  width: 100%;
   background-color: $gray-dark;
   color: $gray-lightest;
   margin-top: 1rem;
+  margin-right: -$grid-gutter-width;
+  margin-left: -$grid-gutter-width;
 
   &:hover, &:focus {
     color: $gray-lightest;
