@@ -51,10 +51,14 @@
           </div>
         </header>
 
-        <hr />
+        <hr class="hidden-sm-down" />
 
-        <nav class="container">
-          <ul class="nav">
+        <a class="nav-menu-toggle" href="#nav-menu" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false" aria-controls="nav-menu">
+          Menu
+        </a>
+
+        <nav id="nav-menu" class="collapse nav-menu">
+          <ul class="nav nav-first">
             {% for href, title in [
               ['/blog', 'Blog'],
               ['/projects', 'Projects'],
@@ -69,15 +73,23 @@
               </li>
             {% endfor %}
           </ul>
+          <ul class="nav">
+            {% for href, title in [
+              ['/consulting', 'Consulting']
+            ] %}
+             <li class="nav-item">
+                <a class="nav-link {% if this.is_child_of(href) %}active{% endif
+                %}"
+                   href="{{ href|url }}">{{ title }}</a>
+              </li>
+            {% endfor %}
+            <li class="nav-item">
+              <a class="nav-link" href="https://quietstrengthhypnosis.com/">Hypnosis</a>
+            </li>
+          </ul>
+
+          <hr class="hidden-md-up" />
         </nav>
-
-        <hr />
-
-        <ul class="list-unstyled container">
-          <li><a href="{{ '/consulting'|url }}">Consulting</a></li>
-          <!-- <li>Training</li> -->
-          <li><a href="https://quietstrengthhypnosis.com/">Hypnosis</a></li>
-        </ul>
 
       </div>
       <div class="col-md-9 page">
@@ -85,9 +97,8 @@
       </div>
     </div>
   </div>
-  {# uncomment to include generated JavaScript, including Bootstrap
   <script type=text/javascript src="{{ '/static/gen/app.js'|asseturl }}" charset="utf-8"></script>
-  #}
+
   {% set google_analytics = config.values.PROJECT.get("google-analytics") %}
   {% if google_analytics %}
   <script>

@@ -1,0 +1,68 @@
+
+header {
+  margin-top: 1.5rem;
+  max-width: 22rem;
+
+  a {
+    color: $gray-dark;
+
+    &:hover {
+      color: $gray-dark;
+      text-decoration: none;
+    }
+  }
+
+  .contact-icons {
+    margin-bottom: 0;
+
+    a:hover {
+      color: $gray;
+    }
+  }
+
+  .logo-block img {
+    height: 4rem;
+  }
+}
+
+.nav-menu-toggle {
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: $gray-dark;
+  color: $gray-lightest;
+  margin-top: 1rem;
+
+  &:hover, &:focus {
+    color: $gray-lightest;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  margin-left: 1rem;
+}
+
+@include media-breakpoint-up(md) {
+  header {
+
+    .logo-block {
+      margin-bottom: 1rem;
+
+      img {
+        height: 5rem;
+      }
+    }
+  }
+  .nav-menu-toggle {
+    display: none;
+  }
+  .nav-menu.collapse {
+    display: block;
+  }
+}
+
+.nav-first {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
