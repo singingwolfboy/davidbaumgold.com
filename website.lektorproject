@@ -8,10 +8,11 @@ google-adsense = ca-pub-6481218722790442
 [servers.s3]
 name = S3
 enabled = yes
+default = yes
 target = s3://www.davidbaumgold.com
+cloudfront = E1RAEPLKMW8O26
 
 [packages]
 lektor-webpack-support = 0.1
 lektor-markdown-highlighter = 0.1
-lektor-s3 = 0.2.3
 lektor-markdown-excerpt = 0.1
