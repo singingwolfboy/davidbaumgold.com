@@ -48,6 +48,7 @@ ol.toc {
 
   img {
     @include center-block();
+    border: 1px solid black;
   }
 }
 
