@@ -3,7 +3,11 @@
 {% block body %}
   <h1>{{ this.title }}</h1>
   {% for image in this.attachments.images %}
-    <div class="image"><img src="{{ image|url }}" /></div>
+    <div class="image">
+      <a href="{{ image|url }}">
+        <img src="{{ image.thumbnail(300)|url }}" />
+      </a>
+    </div>
   {% endfor %}
   {{ this.body }}
 
