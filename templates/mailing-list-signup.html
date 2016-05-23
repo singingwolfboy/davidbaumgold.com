@@ -7,9 +7,9 @@
   {% endfor %}
   {{ this.body }}
 
-  <form action="//davidbaumgold.us13.list-manage.com/subscribe/post?u=9e4cd83444e2bdb2f5f6d87ba&amp;id=24172e9820" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <form action="{{ this.form_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <fieldset>
-      <legend>Head First Git mailing list</legend>
+      <legend>{{ this.form_title }}</legend>
       <div class="form-group">
         <label for="mce-EMAIL">Email Address</label>
         <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="required email">
