@@ -43,4 +43,20 @@ ol.toc {
   margin-bottom: 1rem;
 }
 
+.image {
+  margin-bottom: 1rem;
+
+  img {
+    @include center-block();
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .image {
+    @include pull-right();
+    margin-bottom: .1rem;
+    margin-left: 1rem;
+  }
+}
+
 

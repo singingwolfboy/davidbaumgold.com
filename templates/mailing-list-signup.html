@@ -1,20 +1,9 @@
 {% extends "page.html" %}
 
-{#
-{% block head_extra %}
-<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-{% endblock %}
-#}
-
 {% block body %}
   <h1>{{ this.title }}</h1>
   {% for image in this.attachments.images %}
-    <div class="image"><img class="pull-right" src="{{ image|url }}" /></div>
+    <div class="image"><img src="{{ image|url }}" /></div>
   {% endfor %}
   {{ this.body }}
 
