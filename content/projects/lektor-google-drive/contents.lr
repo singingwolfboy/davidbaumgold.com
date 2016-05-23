@@ -1,0 +1,17 @@
+name: Lektor-Google-Drive
+---
+_hidden: yes
+---
+repository: https://github.com/singingwolfboy/lektor-google-drive
+---
+start_date: 2016-05-23
+---
+description:
+
+I wrote this project at the
+[Write the Docs NA 2016](http://www.writethedocs.org/conf/na/2016/) conference
+in Portland, OR. I had recently discovered [Lektor](https://www.getlektor.com/),
+and I was showing it to other people at the conference, one of whom came up
+with the idea of a <abbr title="Content Management System">CMS</abbr> that was
+backed by [Google Drive](https://www.google.com/drive/), instead of a database.
+I realized that I could do that with Lektor, and decided to make it happen.
