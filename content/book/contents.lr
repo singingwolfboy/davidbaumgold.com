@@ -1,0 +1,25 @@
+_model: mailing-list-signup
+---
+title: Head First Git
+---
+summary:
+
+Sign up to be notified when Head First Git comes out!
+---
+body:
+
+I'm currently writing "Head First Git", a book that teaches you how and why
+to use [Git](https://git-scm.com/). The book will be published by [O'Reilly
+Media](http://www.oreilly.com/) as part of the popular
+[Head First series](http://headfirstlabs.com/).
+
+This book is not just for software engineers! Anyone who spends a lot of time
+writing and editing text can benefit from using Git, including writers, editors,
+and legislators. The book does not require knowledge of how to write computer
+programs, only knowledge of how to use the command line on your computer --
+and there's a handy reference for that, if you're unfamiliar!
+
+If you'd like to get an occasional notification about the progress I'm making
+on Head First Git book, you can sign up here!
+Don't worry, I won't give your email to anyone else or use it for anything else.
+I send out emails quite rarely, and you can always unsubscribe.

@@ -1,0 +1,32 @@
+{% extends "page.html" %}
+
+{#
+{% block head_extra %}
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+{% endblock %}
+#}
+
+{% block body %}
+  <h1>{{ this.title }}</h1>
+  {% for image in this.attachments.images %}
+    <div class="image"><img class="pull-right" src="{{ image|url }}" /></div>
+  {% endfor %}
+  {{ this.body }}
+
+  <form action="//davidbaumgold.us13.list-manage.com/subscribe/post?u=9e4cd83444e2bdb2f5f6d87ba&amp;id=24172e9820" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <fieldset>
+      <legend>Head First Git mailing list</legend>
+      <div class="form-group">
+        <label for="mce-EMAIL">Email Address</label>
+        <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="required email">
+      </div>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_9e4cd83444e2bdb2f5f6d87ba_24172e9820" tabindex="-1" value=""></div>
+      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+    </fieldset>
+  </form>
+{% endblock %}
