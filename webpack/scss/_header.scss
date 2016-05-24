@@ -77,3 +77,10 @@ header {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+// don't print the menu at all
+@media print {
+  .sidebar {
+    display: none;
+  }
+}
