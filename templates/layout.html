@@ -16,82 +16,85 @@
   <div class="container">
     <div class="row">
       <div class="sidebar col-md-3">
-        <header class="center-block">
-          <div class="row">
-            <div class="logo-block col-xs-3 col-md-12">
-              <a href="{{ '/'|url }}" class="logo-link">
-                <img class="center-block logo" alt="DB"
-                     src="{{ '/static/images/db.png'|asseturl }}"
-                     srcset="{{ '/static/images/db.svg'|asseturl }}"
-                />
-              </a>
-            </div>
-            <div class="contact-block col-xs-9 col-md-12">
-              <a href="{{ '/'|url }}" class="name-link">
-                <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
-              </a>
-              <ul class="list-inline text-xs-center contact-icons">
-                <li class="list-inline-item">
-                  <a href="mailto:david@davidbaumgold.com" title="david@davidbaumgold.com">
-                    <i class="fa fa-lg fa-envelope"></i>
+        <div class="fixed-container">
+          <div class="fixed-sidebar">
+            <header class="center-block">
+              <div class="row">
+                <div class="logo-block col-xs-3 col-md-12">
+                  <a href="{{ '/'|url }}" class="logo-link">
+                    <img class="center-block logo" alt="DB"
+                         src="{{ '/static/images/db.png'|asseturl }}"
+                         srcset="{{ '/static/images/db.svg'|asseturl }}"
+                    />
                   </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
-                    <i class="fa fa-lg fa-twitter"></i>
+                </div>
+                <div class="contact-block col-xs-9 col-md-12">
+                  <a href="{{ '/'|url }}" class="name-link">
+                    <div class="h5 text-xs-center font-weight-bold">David Baumgold</div>
                   </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
-                    <i class="fa fa-lg fa-github"></i>
-                  </a>
+                  <ul class="list-inline text-xs-center contact-icons">
+                    <li class="list-inline-item">
+                      <a href="mailto:david@davidbaumgold.com" title="david@davidbaumgold.com">
+                        <i class="fa fa-lg fa-envelope"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
+                        <i class="fa fa-lg fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
+                        <i class="fa fa-lg fa-github"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </header>
+
+            <hr class="hidden-sm-down" />
+
+            <a class="nav-menu-toggle" href="#nav-menu" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false" aria-controls="nav-menu">
+              Menu
+            </a>
+
+            <nav id="nav-menu" class="collapse nav-menu">
+              <ul class="nav nav-first">
+                {% for href, title in [
+                  ['/blog', 'Blog'],
+                  ['/projects', 'Projects'],
+                  ['/tutorials', 'Tutorials'],
+                  ['/book', 'Book'],
+                  ['/resume', 'Resume'],
+                  ['/names', 'Names'],
+                ] %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if this.is_child_of(href) %}active{% endif
+                    %}"
+                       href="{{ href|url }}">{{ title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+              <ul class="nav">
+                {% for href, title in [
+                  ['/consulting', 'Consulting']
+                ] %}
+                 <li class="nav-item">
+                    <a class="nav-link {% if this.is_child_of(href) %}active{% endif
+                    %}"
+                       href="{{ href|url }}">{{ title }}</a>
+                  </li>
+                {% endfor %}
+                <li class="nav-item">
+                  <a class="nav-link" href="https://quietstrengthhypnosis.com/">Hypnosis</a>
                 </li>
               </ul>
-            </div>
+
+              <hr class="hidden-md-up" />
+            </nav>
           </div>
-        </header>
-
-        <hr class="hidden-sm-down" />
-
-        <a class="nav-menu-toggle" href="#nav-menu" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false" aria-controls="nav-menu">
-          Menu
-        </a>
-
-        <nav id="nav-menu" class="collapse nav-menu">
-          <ul class="nav nav-first">
-            {% for href, title in [
-              ['/blog', 'Blog'],
-              ['/projects', 'Projects'],
-              ['/tutorials', 'Tutorials'],
-              ['/book', 'Book'],
-              ['/resume', 'Resume'],
-              ['/names', 'Names'],
-            ] %}
-              <li class="nav-item">
-                <a class="nav-link {% if this.is_child_of(href) %}active{% endif
-                %}"
-                   href="{{ href|url }}">{{ title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-          <ul class="nav">
-            {% for href, title in [
-              ['/consulting', 'Consulting']
-            ] %}
-             <li class="nav-item">
-                <a class="nav-link {% if this.is_child_of(href) %}active{% endif
-                %}"
-                   href="{{ href|url }}">{{ title }}</a>
-              </li>
-            {% endfor %}
-            <li class="nav-item">
-              <a class="nav-link" href="https://quietstrengthhypnosis.com/">Hypnosis</a>
-            </li>
-          </ul>
-
-          <hr class="hidden-md-up" />
-        </nav>
-
+        </div>
       </div>
       <div class="col-md-9 page">
         {% block body %}{% endblock %}

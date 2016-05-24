@@ -1,4 +1,3 @@
-
 header {
   margin-top: 1.5rem;
   max-width: 22rem;
@@ -60,6 +59,17 @@ header {
   }
   .nav-menu.collapse {
     display: block;
+  }
+
+  .fixed-container {
+    position: fixed;
+    width: 100%;
+    @include make-container-max-widths();
+
+    .fixed-sidebar {
+      width: 25%;
+      padding-right: $grid-gutter-width;
+    }
   }
 }
 
