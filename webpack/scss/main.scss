@@ -42,6 +42,12 @@ ol.toc {
 .adsbygoogle {
   margin-bottom: 1rem;
 }
+// don't print ads
+@media print {
+  .adsbygoogle {
+    display: none;
+  }
+}
 
 .image {
   margin-bottom: 1rem;
