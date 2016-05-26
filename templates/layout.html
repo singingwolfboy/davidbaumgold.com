@@ -13,6 +13,9 @@
   {% block head_extra %}{% endblock %}
 </head>
 <body>
+  <a class="sr-only sr-only-focusable" href="#start-of-content">
+    Skip to main content
+  </a>
   <div class="container">
     <div class="row">
       <div class="sidebar col-md-3">
@@ -34,17 +37,17 @@
                   </a>
                   <ul class="list-inline text-xs-center contact-icons">
                     <li class="list-inline-item">
-                      <a href="mailto:david@davidbaumgold.com" title="david@davidbaumgold.com">
+                      <a href="mailto:david@davidbaumgold.com" title="Email: david@davidbaumgold.com">
                         <i class="fa fa-lg fa-envelope"></i>
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy">
+                      <a href="https://twitter.com/singingwolfboy" title="@singingwolfboy on Twitter">
                         <i class="fa fa-lg fa-twitter"></i>
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="https://github.com/singingwolfboy" title="@singingwolfboy">
+                      <a href="https://github.com/singingwolfboy" title="@singingwolfboy on GitHub">
                         <i class="fa fa-lg fa-github"></i>
                       </a>
                     </li>
@@ -96,6 +99,7 @@
           </div>
         </div>
       </div>
+      <div id="start-of-content" class="sr-only"></div>
       <div class="col-md-9 page">
         {% block body %}{% endblock %}
       </div>
