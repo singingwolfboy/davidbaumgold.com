@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% from "macros/project.html" import humanize_timespan %}
-{% block title %}Resume | {{ super() }}{% endblock %}
+{% block title %}Résumé | {{ super() }}{% endblock %}
 {% block body %}
-  <h1>Resume</h1>
+  <h1>{{ this.title }}</h1>
   {{ this.description }}
   {% set jobs = site.query('/resume').include_undiscoverable(True).all() %}
   <h2>Experience</h2>
