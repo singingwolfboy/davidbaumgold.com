@@ -30,9 +30,13 @@ ol.toc {
   }
 }
 
-.blog-post .meta {
-  font-style: italic;
-  color: $gray;
+.blog-post {
+  margin-bottom: 1rem;
+
+  .meta {
+    font-style: italic;
+    color: $gray;
+  }
 }
 
 .resume-jobs .title, .resume-education .title {
