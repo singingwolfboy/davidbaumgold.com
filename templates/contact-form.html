@@ -4,7 +4,7 @@
   <h1>{{ this.title }}</h1>
   {{ this.body }}
 
-  <form action="{{ this.form_url }}" method="post" target="_blank" novalidate>
+  <form action="{{ this.form_url }}" method="post" enctype="multipart/form-data" target="_blank" novalidate>
     <fieldset>
       <legend>{{ this.form_title }}</legend>
       <div class="form-group">
@@ -13,14 +13,15 @@
       </div>
       <div class="form-group">
         <label for="Field2">Your Email Address:</label>
-        <input type="email" class="form-control" value="" name="Field2" id="Field2" required />
+        <input type="email" class="form-control" value="" name="Field2" id="Field2" tabindex="2" required />
       </div>
       <div style="position: absolute; left: -5000px;" aria-hidden="true">
         <label for="comment">Do Not Fill This Out</label>
         <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
         <input type="hidden" id="idstamp" name="idstamp" value="0JQwTQTd11rWI4TYApROh1VbWFj9/5HMUdBFCXLxisM=" />
+        <input type="hidden" name="saveForm" value="Submit" />
       </div>
-      <input type="submit" value="Send Message" name="submit" class="btn btn-primary">
+      <input type="submit" value="Send Message" class="btn btn-primary" tabindex="3">
     </fieldset>
   </form>
 {% endblock %}
