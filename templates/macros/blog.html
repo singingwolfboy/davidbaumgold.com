@@ -1,7 +1,7 @@
 {% macro render_blog_post(post, from_index=false) %}
-  <div class="blog-post">
+  <article class="blog-post h-entry">
   {% if from_index %}
-    <h2><a href="{{ post|url }}">{{ post.title }}</a></h2>
+    <h2 class="p-name"><a href="{{ post|url }}">{{ post.title }}</a></h2>
   {% else %}
     <h1>{{ post.title }}</h1>
   {% endif %}
@@ -9,13 +9,15 @@
     {% if post.author %}
       written by {{ post.author }},
     {% endif %}
-    published on {{ post.pub_date }}
+    published on <time class="dt-published" datetime="{{ post.pub_date }}">{{ post.pub_date.strftime("%b %-d, %Y")}}</time>
   </p>
-  {% if from_index %}
-    {{ post.body|excerpt }}
-    <a href="{{ post|url }}">Read more...</a>
-  {% else %}
-    {{ post.body }}
-  {% endif %}
+  <div class="e-content">
+    {% if from_index %}
+      {{ post.body|excerpt }}
+      <a href="{{ post|url }}" class="u-url">Read more...</a>
+    {% else %}
+      {{ post.body }}
+    {% endif %}
   </div>
+  </article>
 {% endmacro %}
