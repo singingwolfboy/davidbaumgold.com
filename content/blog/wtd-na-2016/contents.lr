@@ -63,9 +63,10 @@ Doc with his team, use Google's collaboration features and commenting system
 to get feedback on proposed edits, and then copy the full text back into the
 CMS. I knew there had to be a better way to do this, and with Lektor on my
 mind, I started brainstorming ways to integrate Google Docs into Lektor.
-Over the course of the afternoon, I managed to write [Lektor-Google-Drive]
-(https://github.com/singingwolfboy/lektor-google-drive), a Lektor plugin
-that allows you to embed the contents of a Google Doc into your static site.
+Over the course of the afternoon, I managed to write
+[Lektor-Google-Drive](https://github.com/singingwolfboy/lektor-google-drive),
+a Lektor plugin that allows you to embed the contents of a Google Doc
+into your static site.
 The OAuth flow was still a litle awkward, but it worked, and now I was more
 excited than ever.
 
