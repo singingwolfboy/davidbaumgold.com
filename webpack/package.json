@@ -9,6 +9,7 @@
     "file-loader": "^0.8.5",
     "font-awesome": "^4.6.1",
     "jquery": "^2.2.3",
+    "jquery-validation": "^1.15.0",
     "node-sass": "^3.7.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

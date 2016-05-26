@@ -1,0 +1,26 @@
+{% extends "page.html" %}
+
+{% block body %}
+  <h1>{{ this.title }}</h1>
+  {{ this.body }}
+
+  <form action="{{ this.form_url }}" method="post" target="_blank" novalidate>
+    <fieldset>
+      <legend>{{ this.form_title }}</legend>
+      <div class="form-group">
+        <label for="Field1">Message:</label>
+        <textarea class="form-control" id="Field1" name="Field1" tabindex="1" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="Field2">Your Email Address:</label>
+        <input type="email" class="form-control" value="" name="Field2" id="Field2" required />
+      </div>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <label for="comment">Do Not Fill This Out</label>
+        <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+        <input type="hidden" id="idstamp" name="idstamp" value="0JQwTQTd11rWI4TYApROh1VbWFj9/5HMUdBFCXLxisM=" />
+      </div>
+      <input type="submit" value="Send Message" name="submit" class="btn btn-primary">
+    </fieldset>
+  </form>
+{% endblock %}

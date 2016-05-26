@@ -11,12 +11,12 @@
   {% endfor %}
   {{ this.body }}
 
-  <form action="{{ this.form_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <form action="{{ this.form_url }}" method="post" target="_blank" novalidate>
     <fieldset>
       <legend>{{ this.form_title }}</legend>
       <div class="form-group">
         <label for="mce-EMAIL">Email Address</label>
-        <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="required email">
+        <input type="email" class="form-control" value="" name="EMAIL" id="mce-EMAIL" required>
       </div>
       <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_9e4cd83444e2bdb2f5f6d87ba_24172e9820" tabindex="-1" value=""></div>
       <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">

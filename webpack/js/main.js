@@ -1,12 +1,27 @@
 //jQuery = require('jquery');
 Tether = require('tether');
 require('bootstrap');
+require('jquery-validation');
 
 $(function() {
-  $("#nav-menu").on("show.bs.collapse", function() {
-      $("#open-nav-menu").collapse('hide');
-  })
-  $("#open-nav-menu").on("show.bs.collapse", function() {
-      $("#open-nav-menu").collapse('hide');
+  $("form").validate({
+    errorClass: "has-warning",
+    validClass: "has-success",
+    highlight: function(element, errorClass, validClass) {
+      var group = $(element).parent(".form-group");
+      if (group.length == 0) {
+        // just use the element itself
+        group = $(element);
+      }
+      group.addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      var group = $(element).parent(".form-group");
+      if (group.length == 0) {
+        // just use the element itself
+        group = $(element);
+      }
+      group.addClass(validClass).removeClass(errorClass);
+    },
   })
 });
