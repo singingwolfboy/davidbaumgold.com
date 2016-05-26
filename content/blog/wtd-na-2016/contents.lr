@@ -1,0 +1,143 @@
+title: Write the Docs 2016
+---
+pub_date: 2016-05-25
+---
+summary:
+
+I attended Write the Docs 2016 in Portland. It was an exciting conference, with many passionate and excited people.
+---
+body:
+
+I attended [Write the Docs](http://www.writethedocs.org/conf/na/2016), a
+conference focused on technical documentation and those who write it.
+Although I'm not a documentarian (one who works in the field of documentation),
+it was an interesting and enlightening experience.
+
+# Portland
+
+The conference was held at the [Crystal Ballroom](http://www.mcmenamins.com/CrystalBallroom)
+in Portland, OR. I arrived a few days early to beat the jetlag, and stayed in
+an [Airbnb](https://www.airbnb.com/c/dbaumgold) nearby. Walking around Portland was
+a lot of fun: the city has a very different feel from Boston. Art and individual
+expression abound, and I think the locals are required by law to have at
+least one tattoo.
+
+I also made sure to check out some of the famous locations in Portland.
+I had heard of [Powell's Books](http://www.powells.com/),
+but nothing could have prepared me for the experience of walking inside.
+Seeing all the books and the patrons enjoying them, feeling the quiet, joyful
+vibe of knowledge and reading -- it was intense in a way that I can't quite
+describe. I saw [Panic](https://panic.com/) across the street,
+and gleefully tried [playing with their sign](http://sign.panic.com/), only
+to discover that [the website was broken](https://twitter.com/singingwolfboy/status/733855640548823040). Hopefully it'll be fixed soon! I got a burger at
+[The Roxy](http://theroxydiner.com/), and enjoyed seeing the other customers
+-- including one who was dressed head-to-toe in a tight latex bodysuit, pencil
+skirt, and platform heels. (This was a perfectly ordinary outfit for the
+Roxy, as I understand.)
+
+# Pre-Conference
+
+Before the conference officially began, there were three pre-conference activities
+for attendees: the [hike to Pittock Mansion](http://www.writethedocs.org/conf/na/2016/hike/),
+and the [Writing Day doc sprints](http://www.writethedocs.org/conf/na/2016/writing-day/).
+I went to both, and they were well worthwhile.
+
+The hike was [gorgeous](https://twitter.com/singingwolfboy/status/734177083627180038),
+but more strenuous than I expected. (I'm probably just more out-of-shape than
+I thought.) Despite being drenched in sweat by the end of it, I had a very
+good time, and had some great conversations with other conference attendees
+on the hike. The topic of these conversations kept on shifting back to
+[Lektor](https://www.getlektor.com/), since [I was all fired up about it](/blog/learning-lektor)
+and the people I talked with seemed genuinely interested. I ended up speaking
+with the head honchos of documentation for [Linode](https://www.linode.com/),
+[Twilio](https://www.twilio.com/), and [Twitter](https://twitter.com/), all of
+whom started asking lots of questions about how it could be used. Hopefully
+some of them checked out [my blog post about it](/blog/learning-lektor)!
+
+During Writing Day, I got into more conversations, and stumbled onto a very
+intriguing idea. One of the other conference attendees mentioned that his team
+maintained a documentation website using a CMS, but he would generally use
+Google Docs for reviewing the content of that website. He would copy the full
+text of a documentation page from the CMS into a Google Doc, share the Google
+Doc with his team, use Google's collaboration features and commenting system
+to get feedback on proposed edits, and then copy the full text back into the
+CMS. I knew there had to be a better way to do this, and with Lektor on my
+mind, I started brainstorming ways to integrate Google Docs into Lektor.
+Over the course of the afternoon, I managed to write [Lektor-Google-Drive]
+(https://github.com/singingwolfboy/lektor-google-drive), a Lektor plugin
+that allows you to embed the contents of a Google Doc into your static site.
+The OAuth flow was still a litle awkward, but it worked, and now I was more
+excited than ever.
+
+At 6 PM, the conference opening reception began, and everyone put away
+their laptops and broke out the snacks and drinks. I had a lot of fun talking
+with even *more* people (I surprised myself with how social I was), and ended
+up meeting [Ducky](https://twitter.com/singingwolfboy/status/734579695136714752),
+who is a delightful person and who introduced me to more delightful people
+very quickly. Ducky was very good at catching people before they left the
+reception and making instant friends, and with her help, I found two friendly
+dinner companions who work in the field of video games, and they turned out to be
+the best sort of nerds. (We chatted for a long time about tabletop roleplaying
+games.)
+
+# Conference
+
+The next two days were full of conference talks, swag, unconference activities,
+and ever-more people to meet. Write the Docs is a small conference of only about
+400 attendees, but seeing everyone all together, it felt far bigger than I
+expected. I was struck by the energetic atmosphere and the sense of generousity
+and caring: not only did everyone genuinely want to attend this conference,
+it seemed like everyone did so out of a sense of deep concern for the people
+that they write documentation for. Documentarians just want to make the world
+a clearer, friendlier, more understandable place, and they were happy to share
+knowledge and make friends in the pursuit of that laudable goal.
+
+I found that most of the talks weren't very interesting to me, since they were
+aimed at documentarians rather than developers. However, there were two talks
+that I found deeply relevant and very enjoyable.
+[Neal Kaplan's](https://twitter.com/NealKaplan)
+talk about uniting documentation and support provided a universal message of
+breaking down barriers and working together in pursuit of common goals, and
+many people brought up his points again and again throughout the conference.
+[Ruthie BenDor's](https://twitter.com/unruthless) [talk](https://speakerdeck.com/unruthless/move-fast-and-document-things)
+about internal technical documentation was engaging in a very specific
+way, since she is a developer and her talk was aimed at other developers like
+myself. She provided an excellent overview of why companies do, or don't, care
+about internal documentation, and how to get companies to care more about it.
+I look forward to using some of these insights in the future!
+
+I ended up talking with more people about Lektor and the Google Drive plugin
+I wrote, and decided to do a lightning talk at the conference about it. After
+the lightning talk (with a live demo that worked pretty well), *more* people
+contacted me wanting to learn more about Lektor, so
+I ran an [unconference session](http://www.writethedocs.org/conf/na/2016/unconference/)
+about it. A few people came and had lots of good questions, and I kept fielding
+more and more questions about Lektor over the course of the conference. I enjoyed
+showing off [the code behind this website](https://github.com/singingwolfboy/davidbaumgold.com),
+and I'm hoping that one or two of these interactions might lead to a
+[consulting gig](/consulting) to help a client get up and running with Lektor.
+
+Monday evening was another party at the Jack Knife bar. I was tired from doing
+so much socializing, so I stayed on a couch for most of the evening. However,
+by that point people had started recognizing me as "the Lektor guy", and a few
+people sought me out to ask me more questions. There were more wide-ranging
+conversations, including a surprisingly in-depth one about
+[Hearthstone](http://us.battle.net/hearthstone), and I stayed at the party
+longer than I thought I would.
+
+Tuesday evening was the conference wrap-up, and [Ducky](https://twitter.com/Ducky_Tape)
+grabbed me for post-conference drinks and dinner with her friends
+[VM](https://twitter.com/vmbrasseur), [Paris](https://twitter.com/parisba),
+[Tim](https://twitter.com/the_mcjones), and
+[Jon](https://twitter.com/desplesda). [Zach](https://twitter.com/zachorsarah)
+joined us at the last minute, and the seven of us had a truly zany dinner,
+with conversation topics too varied and incriminating to mention.
+
+# Post-Conference
+
+I am now over-socialized, over-stimulated, and over-excited about documentation.
+The people in the documentation community are knowledgeable and care deeply
+about making technology understandable and accessible, and I'm glad that I got
+to meet so many of them in the past few days. I now have a few days to rest,
+recover, and prepare: [PyCon](https://us.pycon.org/2016/) is right around the
+corner, and that promises to be even bigger and more exciting than Write the Docs!
