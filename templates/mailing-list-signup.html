@@ -5,7 +5,7 @@
   {% for image in this.attachments.images %}
     <div class="image">
       <a href="{{ image|url }}">
-        <img src="{{ image.thumbnail(300)|url }}" />
+        <img src="{{ image.thumbnail(300)|url }}" alt="{{ image.description }}" />
       </a>
     </div>
   {% endfor %}
