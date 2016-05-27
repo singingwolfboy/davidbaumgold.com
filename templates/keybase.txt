@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/singingwolfboy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.davidbaumgold.com
+  * I am singingwolfboy (https://keybase.io/singingwolfboy) on keybase.
+  * I have a public key with fingerprint 3AD5 352D 1EFD 798C 33E2  A456 37FF A9AA 5BDD A872
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "012079eb71f3ae984285727aa75c8041bec6439d5d986fb08ec3008e2ab281d4e30e0a",
+            "fingerprint": "3ad5352d1efd798c33e2a45637ffa9aa5bdda872",
+            "host": "keybase.io",
+            "key_id": "37ffa9aa5bdda872",
+            "kid": "010159e8ab8bb8ee4f368a0bc55b5bf855c50dd2344dcd0ff7455c52d836674a446b0a",
+            "uid": "d68e61136c0b05b75421191015597400",
+            "username": "singingwolfboy"
+        },
+        "service": {
+            "hostname": "www.davidbaumgold.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1464363224,
+    "expire_in": 157680000,
+    "prev": "93a20bccfd585aadcdca1f2783bdd2a3814012f640693344fd97d140347ce304",
+    "seqno": 11,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMN4AnicbVJ9TFVlHL7IR0iz7liUFKt16poNvJzvj2uFc4R01/zoDgGDXd9z3vdc
+Lh/3XO4XIAMtiRCxXGo1Fi5MFogKzBkZhoABES4EBrMsAgWJqM0aJoKM3sP0v87O
+ztn5ned5fs/veX/frQk2RAQJyw2n3v613hPU3/ml35CanHWtmJA1WERYiokctPJC
+uRB5ffYcJyQsBEnRpCAhWaBUBiBJZGmRE2gBAIFTRJKlZKTwLCNBDkoir8qkiBSG
+xE8ayLRIQRYxJCIBEUeoTpcDedwep8uHZRkAOYajIYVUKEiiwjCYwXI8I6gqkADg
+ZAiBKNCYmKV5dQY2JwMvMjs1XMMf9hV7/4N/6JukOAmJQBZlWUSIVRleBKSscJzM
+yarIcQpHQkgzLAsVSKqqwOolGooMzwssYFleXvHtX5GDvIh4imJ4hZRJThY4lqYo
+Se/BSQJLkjrQizwukIcw2otnxXeBlqvKWhFREkfgfwGngvR49Xke4AoKCswQBJxQ
+Bv48h5YLzYqWh6XcHs2nKVouhmT5fG6vRZfwFblXOEi2P1Czy04XxH0wI4A8Xqfm
+IiwURio+py5PsfhkeIam2TgCFbqdHmR36ghO4EUSX3ofFMCSEgNonIyiQk7kAMB5
+KIBSaUFkcKo0YESKxWug8izJSwwOTIWSAHGNYQUFny9L6PPluzSsTWGfwLESgcMF
+fH4PIkq6OjNCDEERhrDQVfq+GSJWGx9u4R8mo6GsOS6NdtbvIp7LmWozZjtMy+9N
+kjUL2wOjg0vzl6Os98pj1o+P10a2BKpukPtrEzYPC8ZNtg9O1k/vaO2LTQzJtqU+
+WThe2d637mhUQi/xxpHZ3tik5qzUsFXRa98pejpYOTcZXxd18ufg7gZfW0vTP5dr
+mVdugVLHbDLXWvJmTfgTH3Xu/Fi5eKx/y1MbqhvzGWv4qYPnDpn3Ly7UrJrKFM2m
+gYZd3N6/016sqDN6vz0ccjVn+rfgE9WGxzdekb9vr81IUU29G+67rEPExteL79w6
++0nYX5fKP7s7sGPLyKXCkcgz1yaTZw41lEU0r0mNTX43dGTfblh7ILBVuDCRHBi9
+PvzYBSXpc2Xx1btVP2Z3dxwPjizpqqo7nw4GhxrVyuJeej4xqvXm4rBvRrl95yfb
+nviQD62Ggp7jY41dSX76tPVI/OIPnda3jDFDx8JPfPrsa7WPVOaDjoV/u1KMv3z9
+e3f1tuf3xrjLD4+PefuEiZ6k+1+9EDu9TuyIb1vOzDHt3rSdvipF/dmUCbaOWvZF
+DwzdLC1v6f9izmHcM1jxfjmy2rrnKkLZ0zeO3otx54+n2YYFbWfTgdsvNSQv2maS
+5hmPuXS5ZK5s/dnVnqLrEzkTJa1GW/vmpaXMhG1XHk1MST8/xYO1Z2bLKnqGWcvc
+M6bo/KmDbv83S2ml9tyLS5aMl8fS/wMRr8zu
+=pXFu
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/singingwolfboy
+
+==================================================================
