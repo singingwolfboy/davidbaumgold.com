@@ -17,3 +17,4 @@ lektor-webpack-support = 0.1
 lektor-markdown-highlighter = 0.1
 lektor-markdown-excerpt = 0.1
 lektor-atom = 0.2
+lektor-s3 = 0.3
