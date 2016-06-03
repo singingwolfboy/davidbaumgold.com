@@ -2,10 +2,6 @@
 	path = packages/lektor-markdown-header-anchors
 	url = https://github.com/singingwolfboy/lektor-markdown-header-anchors.git
 	branch = adjust-header-levels
-[submodule "lektor-atom"]
-	path = packages/lektor-atom
-	url = https://github.com/singingwolfboy/lektor-atom.git
-	branch = py3
 [submodule "lektor-s3"]
 	path = packages/lektor-s3
 	url = https://github.com/singingwolfboy/lektor-s3.git
