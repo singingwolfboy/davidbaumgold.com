@@ -1,0 +1,63 @@
+title: PyCon US 2016
+---
+pub_date: 2016-06-03
+---
+_hidden: yes
+---
+summary:
+
+I attended PyCon 2016 in Portland. PyCon is my favorite conference: I always have a great time, and this year was no exception. I spent almost the entire time talking to people instead of attending talks, and I'm glad I did.
+---
+body:
+
+PyCon! My favorite conference of the year, full of friends, projects, wacky
+ideas, and unexpected connections. I'm glad I had a few days between
+[Write the Docs](/blog/2016/05/wtd-na-2016/) and PyCon to recover and prepare,
+because this year's PyCon was exhausting, inspiring, and wonderful.
+
+# About PyCon
+
+For those of you who don't know, [PyCon](http://us.pycon.org/) is a conference
+for programmers who use the [Python programming language](http://python.org/).
+There are [many different regional PyCons held around the world](http://www.pycon.org/),
+but when people say "PyCon" they're usually referring to PyCon US, which is the
+largest one by far. PyCon has about 3000 attendees, so it's a medium-size
+conference: large enough to be impressive and to attract sponsorships,
+but small enough that you keep on running into your friends over and over again
+throughout the convention. The convention sells out every year, and they run
+out of tickets faster and faster each time -- the conference organizers could
+easily make PyCon much larger, but doing so would increase ticket prices,
+limit the options for where the conference could be held, and disrupt the feel
+of the conference.
+
+And PyCon does have a distinctive _feel_. The Python community is remarkably
+friendly, and cares deeply about diversity and outreach. Most programming
+languages have communities that consist almost entirely of white cis-gendered
+men, most of whom are straight; women and minorities are nowhere to be found.
+By contrast, the Python community is full of women, racially diverse, and has
+many prominent LGBT individuals. This year, [40% of the speakers at PyCon
+were women](https://twitter.com/jessicamckellar/status/737299461563502595),
+which is absolutely unheard of for a tech conference. (Most tech conferences
+have a single female speaker, or none at all.) And the community won't be
+satisfied until we have gender parity, as well as better representation for
+racial diversity and LGBT representation. (During this year's PyCon,
+[Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum),
+the creator of Python and its "benevolent dictator for life",
+publicly re-committed to the idea of bringing on at least two female developers
+to the currently all-male core development team.) All this diversity makes
+for an incredibly welcoming and friendly environment: no matter who you are
+or where you come from, you can find friends at PyCon. Differing opinions
+and cultures are welcome, and the conference explicitly provides space for
+people to organize their own events, known as "open spaces", as I'll describe
+later.
+
+PyCon is divided into three parts: two days of tutorials, three days
+of talks, and four days of sprints. The talks are the main body
+of the conference, and many people only attend PyCon for that part of the
+conference. There are five tracks of half-hour talks happening simultaneously,
+and this year there were 95 talks in all: it's impossible to see everything!
+Before the talks comes the tutorials; each tutorials is three hours long and
+capped at around twenty students or so, so that attendees can get a deep dive
+into their subject matter of choice. After the talks is the coding sprints.
+
+
