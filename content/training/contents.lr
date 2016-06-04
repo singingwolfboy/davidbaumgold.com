@@ -1,0 +1,56 @@
+_model: contact-form
+---
+title: Technical Training
+---
+summary:
+
+Available for corporate training in Git, Python, and web development.
+---
+body:
+
+I teach technical training courses in Git, Python, JavaScript,
+and web development. I have been programming for over 10 years,
+and I have the knowledge and skills to take your
+team to the next level. My courses are clear, effective, and packed full of
+useful information and best practices. I am based in the Boston area, but I'm
+happy to travel to you in order to provide in-person instruction.
+
+To learn more about the technical training courses I offer, contact me
+at [training@davidbaumgold.com](mailto:training@davidbaumgold.com), or you
+can use the form at the bottom of this page.
+
+# Available Courses
+
+I have already prepared content for the courses listed below. I can also
+prepare content for other technical courses as necessary.
+
+## Introduction to Git
+
+Length: 3 hours
+
+* Creating repositories and commits
+* Viewing and revisiting history
+* Using GitHub.com effectively
+* Branching and merging
+* Forks and pull requests
+* Conventions and best practices for a maintainable project history
+
+## Advanced Git
+
+Length: 3 hours
+
+* Time-saving Git workflows
+* How and why to modify history
+* Git Rebase
+* Recovering from tangled situations
+* Integrating Git with other tools
+* Using the GitHub API
+
+## Custom
+
+Want me to design a course specifically for your team's needs? Let's talk.
+---
+form_url: https://singingwolfboy.wufoo.com/forms/m1yl80py103bd7k/
+---
+form_title: Contact Me
+---
