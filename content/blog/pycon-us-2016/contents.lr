@@ -2,8 +2,6 @@ title: PyCon US 2016
 ---
 pub_date: 2016-06-03
 ---
-_hidden: yes
----
 summary:
 
 I attended PyCon 2016 in Portland. PyCon is my favorite conference: I always have a great time, and this year was no exception. I spent almost the entire time talking to people instead of attending talks, and I'm glad I did.
@@ -52,12 +50,141 @@ people to organize their own events, known as "open spaces", as I'll describe
 later.
 
 PyCon is divided into three parts: two days of tutorials, three days
-of talks, and four days of sprints. The talks are the main body
+of talks, and four days of coding sprints. The talks are the main body
 of the conference, and many people only attend PyCon for that part of the
 conference. There are five tracks of half-hour talks happening simultaneously,
 and this year there were 95 talks in all: it's impossible to see everything!
 Before the talks comes the tutorials; each tutorials is three hours long and
 capped at around twenty students or so, so that attendees can get a deep dive
-into their subject matter of choice. After the talks is the coding sprints.
+into their subject matter of choice. After the talks is the coding sprints,
+where people collaborate on open source projects and make tremendous progress
+on improving the software that the whole world runs on. The three parts form
+a nice arc of intensity: ramping up during the tutorials, full excitement
+during the talks, and gradually trailing off during the sprints.
 
+# Tutorials
 
+This year, I was an instructor for one of the PyCon tutorials: [Get Started
+With Git](https://us.pycon.org/2016/schedule/presentation/1620/). Although I
+was a bit nervous going into it, I was well-prepared, and the tutorial went
+quite smoothly. I owe a tremendous debt of gratitude towards
+[Gil Forsyth](https://twitter.com/gilforsyth), who was a brilliant
+teaching assistant and allowed me to get through my entire
+[deck of 90 slides](https://speakerdeck.com/singingwolfboy/get-started-with-git)
+without being derailed by technical issues. The entire tutorial was recorded
+and posted on YouTube as well!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Qthor07loHM" frameborder="0" allowfullscreen> </iframe>
+
+If you want me to train your team to use Git better,
+[contact me](/training)!
+
+After my tutorial was done, I spent most of the rest of the tutorial days
+talking to other PyCon attendees. There were some people there that I already
+knew, and many that I didn't, and I found that I really enjoyed chatting with
+both groups. I spent a significant amount of time chatting with
+[Trey Hunner](https://treyhunner.com) about [consulting](/consulting) and
+[training](/training), and he gave me a lot of insight and information that
+I hope to apply in my growing freelance endeavors. I also chatted for awhile
+with [Al Sweigart](https://twitter.com/AlSweigart), a very accomplished
+author of technical books, and we talked about writing for awhile.
+
+Over the course of these two days, I realized that I was getting a *lot* out
+of these conversations -- not just enjoyment, but also useful information and
+professional contacts. In the past, I've always spent a lot of time attending
+talks at PyCon, but this year, I decided to try something very different: I
+would focus on the "hallway track" and have conversations with everyone I could
+_instead_ of attending talks.
+
+# Talks and Open Spaces
+
+I had a whole list of talks I wanted to see at PyCon, but following the decision
+I made during the tutorials, that list went out the window. Instead, I filled
+my time with hallway conversations, the expo hall, and some pretty awesome
+open spaces.
+
+[Open spaces](https://us.pycon.org/2016/events/open-spaces/) are ad-hoc groups
+that come together to discuss any topic of common interest, Python-related or
+not. There are several rooms in the conference center dedicated to open spaces,
+and the conference organizers provide a large "open space board"
+near the registration desk that has a large, empty grid on it. This grid lists
+room numbers along one axis and times along the other. Anyone can declare
+an open space by writing a topic on an index card and
+pinning it to the open space board, which claims a time and location. Attendees
+were constantly clustered around this board, so it became a social hub as
+well as an information hub, and it was a great place to meet other people.
+
+I declared two open spaces,
+[one on Lektor](https://twitter.com/singingwolfboy/status/737037818862698497) and
+[one on Docker](https://twitter.com/singingwolfboy/status/737654139782451201).
+Both were very popular, and drew perhaps 15 or 20 other attendees, which is a
+success as far as I'm concerned. I also attended many, many other open spaces
+during the conference, on topics ranging from Flask and GIS to an LGBT
+meet-and-greet and acroyoga. I really enjoyed the open space dedicated
+to people who wanted to get their first software development job; I talked about
+my experiences in the software industry, answered a lot of questions, and
+was able to provide some good advice regarding projects and visibility.
+I also really liked the "random storytelling" open space, even though I arrived
+late; it was simply an open forum for people to tell each-other stories from
+their own life experiences. Some people shared some deeply personal and
+meaningful stories, talking about moments of great excitement and joy,
+sadness and fear, curiousity and discovery. It really brought home the idea
+that PyCon is about _people_ more than it is about _programming_.
+
+I also talked with a lot of interesting people in the hallway and in the
+expo hall. I talked with
+[Rami](https://twitter.com/necaris), [Yarko](https://twitter.com/yarkot),
+[Mike](http://www.python-academy.com/), and [Andy](https://twitter.com/Andriod)
+about opportunities for consulting, training, and collaboration.
+I met [Frank](https://www.linkedin.com/in/fvalcarcel) and
+[Emily](https://www.linkedin.com/in/emily-morehouse-10567459) from
+[Cuttlesoft](https://www.cuttlesoft.com/), who started their own Python
+consulting company (which I think is *very* cool).
+I learned more about Git internals from
+[Glen](https://twitter.com/glenjarvis) and [Fred](https://twitter.com/doctaphred).
+I met some of the core developers and maintainers of [Flask](http://flask.pocoo.org/),
+including [David](https://twitter.com/davidism) -- not only do we share a name,
+but we also share an interest in a beautiful microframework. I helped
+[Eric](https://twitter.com/ericmjl) and [Riley](https://twitter.com/RileyRustad)
+with deploying websites. And that's just a slice of the dozens of people
+that I got to talk with, however briefly. It was exhausting, but _so_ worth it.
+
+In the end, the only conference talk I attended was my own. In addition to
+teaching a tutorial, I also presented a talk about
+[prototyping APIs in Flask](https://us.pycon.org/2016/schedule/presentation/1694/),
+which also went well.
+I was approached by several people afterwards who told me that they
+[really](https://twitter.com/seanmylaw/status/737726142279360512)
+[enjoyed](https://twitter.com/natea/status/737728674976256000)
+[my](https://twitter.com/CreedJarrett/status/737728169457881088)
+[talk](https://twitter.com/dfflanders/status/737728593606807552),
+and couldn't wait to start building their own APIs
+-- and as far as I'm concerned, that's the highest possible praise. Like my
+tutorial, the talk was also recorded and uploaded to YouTube for your
+viewing pleasure!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6RdZNiyISVU" frameborder="0" allowfullscreen> </iframe>
+
+Want to learn more about Flask and APIs? [Contact me](/training) to talk about
+technial training.
+
+# Sprints
+
+I'm currently finishing up the coding sprints, and even though the main part
+of the conference is over, the suprises keep coming. I chatted for awhile
+with the amazing [Josh Simmons](https://twitter.com/joshsimmons), who gave me
+some great advice about training and networking. On top of that, I helped
+a fellow attendee
+[land his first open source contribution](https://twitter.com/joelgarzatx/status/738487532548030464) and
+[became a maintainer for Lektor](https://twitter.com/singingwolfboy/status/738491884373483520),
+and frankly it's hard to say which one makes me more proud. I wrote subtitles
+for my Flask talk, and found another attendee who was such a fan of my talk
+that he agreed to translate those subtitles into Spanish, so that more people
+could learn. Amazing!
+
+I haven't actually made much progress on improving open source projects, which
+is the supposed goal of the coding sprints. However, if there's one thing I've
+learned from this year's conference, it's that there's more than one way
+to do a conference well. I've had a fantastic PyCon,
+and I look forward to next year's conference, as well as all the Python people
+and Python events I run into before then!

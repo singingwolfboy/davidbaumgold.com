@@ -10,7 +10,6 @@ about it!)
 If you want to suggest things for me to write about, send a pull request to
 add your idea to this list!
 
-* PyCon 2016 writeup
 * Deploying Lektor on S3 and CloudFront
 * Getting started with Open Source
 * Why I love Python
