@@ -27,11 +27,15 @@ header {
 .nav-menu-toggle {
   display: block;
   text-align: center;
-  background-color: $gray-dark;
+  background-image: linear-gradient(to right,
+    rgba(0, 0, 0, 0),
+    $gray-dark,
+    $gray-dark,
+    rgba(0, 0, 0, 0)
+  );
   color: $gray-lightest;
   margin-top: 1rem;
-  margin-right: -$grid-gutter-width;
-  margin-left: -$grid-gutter-width;
+  width: 100%;
 
   &:hover, &:focus {
     color: $gray-lightest;
