@@ -74,7 +74,9 @@ teaching assistant and allowed me to get through my entire
 without being derailed by technical issues. The entire tutorial was recorded
 and posted on YouTube as well!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qthor07loHM" frameborder="0" allowfullscreen> </iframe>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/Qthor07loHM" frameborder="0" allowfullscreen> </iframe>
+</div>
 
 If you want me to train your team to use Git better,
 [contact me](/training)!
@@ -163,7 +165,9 @@ and couldn't wait to start building their own APIs
 tutorial, the talk was also recorded and uploaded to YouTube for your
 viewing pleasure!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6RdZNiyISVU" frameborder="0" allowfullscreen> </iframe>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/6RdZNiyISVU" frameborder="0" allowfullscreen> </iframe>
+</div>
 
 Want to learn more about Flask and APIs? [Contact me](/training) to talk about
 technical training.
