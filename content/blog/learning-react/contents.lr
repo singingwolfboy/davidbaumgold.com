@@ -184,11 +184,11 @@ this code is compiled back into ECMAScript 5
 before it's sent to the browser.
 
 How does that compilation happen? In a word, [Babel](https://babeljs.io/).
-Babel is a pluggable JavaScript compiler that has two very popular plugins:
+Babel is a pluggable JavaScript compiler that has two very popular preset
+plugin bundles:
 [es2015](https://babeljs.io/docs/plugins/preset-es2015/), for compiling
 ES6 into ES5, and [react](https://babeljs.io/docs/plugins/preset-react/),
-for compiling JSX. (In practice, I'm not aware that any other Babel plugins
-even *exist* -- but they could!) So, feed your beautiful, future-oriented
+for compiling JSX. So, feed your beautiful, future-oriented
 ES6 JSX files into Babel, and it will spit out the ugly-but-practical ES5
 JavaScript files that today's browsers can use.
 
