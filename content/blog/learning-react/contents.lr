@@ -42,7 +42,7 @@ function makeInput(contents) {
 
 Incidentally, a lot of people don't know that [you can use jQuery to create
 structed HTML elements](https://api.jquery.com/jQuery/#jQuery2). It's quite a
-nice API. However, it's not nearly as nice as what JSX allows you to do:
+nice API. However, it's not as nice as what JSX allows you to do:
 
 ```jsx
 function makeInput(contents) {
@@ -111,4 +111,229 @@ To be honest, I don't understand why JSX can't use "class" as syntactic sugar
 for "className", so that the developer doesn't have to think about it.
 On the scale of things, it's a very minor quibble.
 
+Components
+==========
 
+Once you have a basic understanding of JSX, you can start using React. React
+makes you think about your user interface as a group of "components": logical
+pieces of your UI that fit together into larger pieces. There is an [excellent
+blog post about how to do this](https://facebook.github.io/react/docs/thinking-in-react.html), but I'll reproduce the relevant parts here. Let's
+say you're creating an online store, and you need to build a filterable
+table of products, which will look something like this:
+
+!["A table of items and prices. There is a search bar at the top, to filter the contents of the table."](react-filterable-table.png)
+
+This is a component of a user interface: a logical unit that you could place
+on a page. However, this component is itself made up of other components, as
+you can see here:
+
+!["The same image as before, with a box around the search bar, a box around the table, and a box around each row in the table."](react-filterable-table-components.png)
+
+By dividing up each component into simpler and simpler pieces, it becomes easier
+to reason about it. Now, instead of implementing the whole filterable table
+component at once, we can represent it like this:
+
+* `FilterableProductTable` (orange)
+  * `SearchBar` (blue)
+  * `ProductTable` (green)
+    * `ProductCategoryRow` (turquoise)
+    * `ProductRow` (red)
+
+Each of these components is smaller, and therefore easier to implement.
+We can also make them work together, by passing data between parent components
+and children components. For example, when a user types into the `SearchBar`
+component, it tells the parent `FilterableProductTable` component what the user
+typed. Then, the `FilterableProductTable` component tells the `ProductTable`
+component what data to display, and it only passes data that matches what the
+user has typed. The `ProductTable` component doesn't have to know or care
+about how the filtering works -- it just renders whatever data it receives!
+
+ES6 and Babel
+=============
+
+Onto the code! Here's an example of a basic "Hello, World!" component in React:
+
+```jsx
+import React from 'react';
+
+class HelloWorld extends React.Component {
+  render() {
+    return <p>Hello, World!</p>
+  }
+}
+```
+
+Wait a minute, this doesn't even look like JavaScript! Imports? Classes?
+What's going on here?!
+
+The answer is, this *is* JavaScript, but it's not the JavaScript you're used to.
+JavaScript is an implementation of a standard called
+[ECMAScript](https://en.wikipedia.org/wiki/ECMAScript), and the ECMAScript
+standard continues to evolve. The JavaScript that we know today is based on
+ECMAScript version 5, and unfortunately, it is an ugly language, full of gotchas
+and syntax warts. (I love JavaScript, but it has a lot of problems.)
+
+However, the Ecma standards body has dramatically changed the language with version
+6, and it's actually quite nice. As a result,
+many people writing React are writing it using ECMAScript version 6, also
+known as ES6 or [ES2015](https://babeljs.io/docs/learn-es2015/)
+(because that version was formalized in the year 2015).
+Since [web browsers don't fully support ES6 yet](https://kangax.github.io/compat-table/es6/),
+this code is compiled back into ECMAScript 5
+(the JavaScript that we all know and ~~love~~ deal with)
+before it's sent to the browser.
+
+How does that compilation happen? In a word, [Babel](https://babeljs.io/).
+Babel is a pluggable JavaScript compiler that has two very popular plugins:
+[es2015](https://babeljs.io/docs/plugins/preset-es2015/), for compiling
+ES6 into ES5, and [react](https://babeljs.io/docs/plugins/preset-react/),
+for compiling JSX. (In practice, I'm not aware that any other Babel plugins
+even *exist* -- but they could!) So, feed your beautiful, future-oriented
+ES6 JSX files into Babel, and it will spit out the ugly-but-practical ES5
+JavaScript files that today's browsers can use.
+
+As I said, the tooling is a challenge for React -- but the end result is that
+developers get to write clearer, better code, which I'm all in favor of.
+Personally, I think the trade-off is worth it. That being said, you can write
+React without using ES6 *or* JSX, if you really don't want to set up Babel.
+But once you've got your tooling set up correctly, writing ES6 JSX is a joy,
+and it's surprisingly intuitive.
+
+React
+=====
+
+Finally, we can start talking about React itself! React isn't an
+<abbr title="Model-View-Controller">MVC</abbr>
+framework per se, it's more of a structure for composable elements that
+communicate. There are no templates, unless you count JSX as a template
+(which it sort of is). You write your components, wire them together,
+and let React handle state changes easily and automatically.
+
+What does that actually *mean*, though? Well, here's an example:
+
+```jsx
+class GreetingBox extends React.Component {
+  constructor() {
+    super();
+    // Set up the state of this component. By default, "name" is empty.
+    this.state = {name: ""};
+    // Bind the setName() function to this class instance.
+    this.setName = this.setName.bind(this);
+  }
+  setName(value) {
+    // Call the setState() function, which is built-in to React.
+    this.setState({name: value});
+  }
+  render() {
+    // Return our two sub-components, wrapped in a <div>.
+    // This component is the only component that manages state, so we have to
+    // inform the children components of the current state of the GreetingBox
+    // -- and the NameInput component needs a way to update the GreetingBox's
+    // state.
+    return <div>
+      <NameInput name={this.state.name} setName={this.setName} />
+      <Greeting name={this.state.name} />
+    </div>
+  }
+}
+
+class NameInput extends React.Component {
+  constructor() {
+    super();
+    // Bind the setName() function to this class instance.
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    // Call the setName method that GreetingBox passed to this component,
+    // with the value from the <input> HTML element.
+    this.props.setName(event.target.value);
+  }
+  render() {
+    // Setting the onChange attribute allows React to bind the handleChange
+    // function on this class instance whenever it needs to.
+    return <label>
+      What's your name?
+      <input type="text" value={this.props.name} onChange={this.handleChange} />
+    </label>
+  }
+}
+
+class Greeting extends React.Component {
+  render() {
+    let name = this.props.name;
+    if (name.length == 0) {
+      return <p>I don't know who you are.</p>
+    } else {
+      return <p>Hello, {name}!</p>
+    }
+  }
+}
+```
+
+When we first run this code, we'll end up with the following HTML:
+
+```html
+<div>
+  <label>
+    What's your name?
+    <input type="text" value="">
+  </label>
+  <p>I don't know who you are.</p>
+</div>
+```
+
+When you type in the name field, the greeting will automatically update
+to reflect whatever you've written. For example:
+
+```html
+<div>
+  <label>
+    What's your name?
+    <input type="text" value="David">
+  </label>
+  <p>Hello, David!</p>
+</div>
+```
+
+You can even try to type in HTML tags to break it, and React will
+automatically escape them for you. It's pretty nifty!
+
+There are a few important things to note about the way that React works, which
+I think are pretty cool.
+
+HTML is Lowercase, Components are Capitalized
+---------------------------------------------
+
+React components have names that begin with a capital letter, which
+distinguishes them from HTML tags that are lowercase. This allows you to mix
+HTML and components while still easily keeping track of which is which.
+
+One-Directional State
+---------------------
+
+State always flows downward. This helps you to untangle messy, state-driven
+UIs: state must always be kept in the highest-level component that encompasses
+all other components that *use* that state. That's why the state in this
+example is kept in the GreetingBox component: both sub-elements need to access
+that state information. Parents can extend tools to their children that allow
+the child to update the parent's state, such as the `setName` method in the
+example, but the child doesn't actually need to maintain any state itself.
+
+Automatic Re-Rendering
+----------------------
+
+Any time the state in a component is modified, that component is re-rendered
+automatically, and all of its children are re-rendered as well if necessary.
+This is what makes the UI feel snappy and alive: it always displays the latest
+information about the state of the world.
+
+What Next?
+==========
+
+The next thing I need to look into is [Redux](http://redux.js.org/), which is
+a state container for JavaScript applications. It is often paired with React
+applications, although it may be overkill for my use-case.
+
+And just what *is* that use-case, you ask? What am I building? That's a bit
+of a secret right now, but hopefully I'll be able to reveal it soon. I'll
+give you a hint, though -- it's related to Lektor!
