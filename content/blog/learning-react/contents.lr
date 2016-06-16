@@ -1,0 +1,114 @@
+title: Learning React
+---
+pub_date: 2016-06-16
+---
+summary:
+
+My experience learning React, the hottest front-end Javascript framework of the moment.
+---
+body:
+
+I've been working on a new project lately, and I figured it was time to bite the
+bullet and finally look into [React](https://facebook.github.io/react/), the
+hot new front-end Javascript framework that everyone in the web developer
+community is talking about. If you're not familiar with the web developer
+community, it truly is *very* fad driven. I heard about React months ago, but
+didn't bother learning it because I figured that in a month or two, everyone
+would have moved on to some other popular JS framework. However, React seems to
+have some staying power, and since [Lektor's](https://www.getlektor.com/)
+admin pages are built with it, I decided to finally learn it.
+
+The upshot is, React is very nice! It introduces a few innovative ideas for
+Javascript development, but mostly builds on a solid framework of functional
+programming and familiar ideas. I was able to get up and running pretty quickly,
+and while the tooling was a challenge to set up, the end result works quite
+well. The code is clear and understandable, and I can see how everything fits
+together. I think I'll be using React a lot more in my future projects.
+
+JSX
+===
+
+The first hurdle to learning React is understanding
+[JSX](https://facebook.github.io/react/docs/jsx-in-depth.html).
+JSX is a dialect of Javascript that allows you to write HTML directly
+into your code. Without JSX, if you wanted to create and return a complex
+HTML element, you might do so using [jQuery](https://jquery.com/), like this:
+
+```js
+function makeInput(contents) {
+  return $("<input>", {type: "text", value: contents, "class": "form-control"})
+}
+```
+
+Incidentally, a lot of people don't know that [you can use jQuery to create
+structed HTML elements](https://api.jquery.com/jQuery/#jQuery2). It's quite a
+nice API. However, it's not nearly as nice as what JSX allows you to do:
+
+```jsx
+function makeInput(contents) {
+  return <input type="text" value={contents} className="form-control" />
+}
+```
+
+You might look at that snippet and instantly think, "Wait a minute, that's
+not valid JavaScript! That won't work at all!" Well, you're right, it's not
+valid JavaScript. However, it *is* valid JSX, and it gets compiled into
+valid JavaScript that does the same sort of thing that the first snippet does.
+The general term for this idea is [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)
+-- it makes a certain idea clearer or easier to express in a programming language,
+without fundamentally changing how the language works.
+
+So why is JSX important for React? Because React makes you define your own
+web components in a language that is similiar to HTML, and allows you to
+mix and match your custom components with HTML. A classic example is embedding
+an interactive map into your website. Before React, you had to do something
+like this, as shown in [the offical Google Maps documentation](https://developers.google.com/maps/documentation/javascript/tutorial):
+
+```html
+<div class="map-wrapper">
+  <p>Here's a map!</p>
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+  </script>
+</div>
+```
+
+That's not bad, but what if we could just do this, instead?
+
+```jsx
+<div className="map-wrapper">
+  <p>Here's a map!</p>
+  <GoogleMap
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultZoom={8}
+  />
+</div>
+```
+
+`<GoogleMap>` is a custom React component that will handle all the details of
+inserting an interactive Google Map element into your page and setting it up
+properly. JSX allows you to ignore the implementation and just *use* it,
+putting the [principle of encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming))
+to work. And this isn't a contrived example:
+[react-google-maps](https://github.com/tomchentw/react-google-maps)
+is a popular project on GitHub, with a
+[live demo](http://react-google-maps.tomchentw.com/)
+if you're curious.
+
+The only annoyance I've found with JSX so far is that you can't use the
+`class` parameter, because "class" is a
+[reserved keyword in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Reserved_keywords_as_of_ECMAScript_6), and JSX is
+built on JavaScript. Instead, you use `className`, which is
+[part of JavaScript's Element API](https://developer.mozilla.org/en-US/docs/Web/API/Element/className).
+To be honest, I don't understand why JSX can't use "class" as syntactic sugar
+for "className", so that the developer doesn't have to think about it.
+On the scale of things, it's a very minor quibble.
+
+
