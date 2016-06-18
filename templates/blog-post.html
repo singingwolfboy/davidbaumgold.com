@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros/blog.html" import render_blog_post %}
+{% from "macros/blog.html" import render_blog_post, disqus_comments %}
 {% block title %}{{ this.title }} | {{ super() }}{% endblock %}
 
 {% block head_extra %}
@@ -11,4 +11,5 @@
 
 {% block body %}
   {{ render_blog_post(this) }}
+  {{ disqus_comments(this) }}
 {% endblock %}
