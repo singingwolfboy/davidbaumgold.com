@@ -82,6 +82,13 @@ header {
   margin-bottom: 1rem;
 }
 
+.nav .blog-item .blog-feed {
+  visibility: hidden;
+}
+.nav .blog-item:hover .blog-feed {
+  visibility: visible;
+}
+
 // don't print the menu at all
 @media print {
   .sidebar {

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ '/static/gen/styles.css'|asseturl }}">
   <!-- Other things -->
   <link rel="icon" type="image/png" href="{{ '/static/images/favicon.png'|asseturl }}" />
+  <link rel="alternate" type="application/atom+xml" title="Atom feed for the Interesting Things blog" href="{{ '/blog/feed.xml'|url }}" />
   <title>{% block title %}David Baumgold{% endblock %}</title>
   {% block head_extra %}{% endblock %}
 </head>
@@ -64,8 +65,19 @@
 
             <nav id="nav-menu" class="collapse nav-menu">
               <ul class="nav nav-first">
+                {# blog item is special, because of Atom icon #}
+                <li class="nav-item blog-item">
+                  <a class="nav-link {% if this.is_child_of('/blog') %}active{% endif
+                  %}"
+                     href="{{ '/blog'|url }}">
+                    Blog
+                  </a>
+                  <a href="{{ '/blog/feed.xml'|url }}" class="blog-feed">
+                    <i class="fa fa-rss" title="Atom Feed"></i>
+                    <span class="sr-only">Atom Feed</span>
+                  </a>
+                </li>
                 {% for href, title in [
-                  ['/blog', 'Blog'],
                   ['/projects', 'Projects'],
                   ['/tutorials', 'Tutorials'],
                   ['/book', 'Book'],
