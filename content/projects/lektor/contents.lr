@@ -1,0 +1,18 @@
+name: Lektor
+---
+_hidden: yes
+---
+website: https://www.getlektor.com/
+---
+repository: https://github.com/lektor/lektor
+---
+documentation: https://www.getlektor.com/docs/
+---
+start_date: 2016-06-02
+---
+description:
+
+I am a core committer for Lektor, the static CMS framework that this website
+is built on. I contributed
+[Python 3 support](https://github.com/lektor/lektor/pull/207)
+to the project.
