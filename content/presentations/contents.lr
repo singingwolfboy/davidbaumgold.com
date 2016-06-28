@@ -1,0 +1,79 @@
+title: Presentations
+---
+body:
+
+I enjoy public speaking, and I've done several presentations at meetups and
+technical conferences. Here are a few examples:
+
+# PyGotham 2016
+
+30 min: [Advanced Git](https://2016.pygotham.org/talks/328/advanced-git/) (upcoming)
+
+# PyCon Portland 2016
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/Qthor07loHM" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      3 hours:
+      <a href="https://us.pycon.org/2016/schedule/presentation/1620/">Get Started With Git</a>
+      (<a href="https://speakerdeck.com/singingwolfboy/get-started-with-git">slides</a>)
+    </p>
+  </div>
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/6RdZNiyISVU" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="https://us.pycon.org/2016/schedule/presentation/1694/">Prototyping APIs in Flask</a>
+      (<a href="https://speakerdeck.com/singingwolfboy/prototyping-apis-with-flask">slides</a>)
+    </p>
+  </div>
+</div>
+
+# PyCon Montreal 2015
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/4EOZvow1mk4" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="https://us.pycon.org/2015/schedule/presentation/343/">Advanced Git</a>
+      (<a href="https://speakerdeck.com/singingwolfboy/advanced-git">slides</a>)
+    </p>
+  </div>
+</div>
+
+# OSCON Amsterdam 2015
+
+30 min: [Advanced Git](http://conferences.oreilly.com/oscon/open-source-eu-2015/public/schedule/detail/44268) (no video available)
+
+# Boston Python
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/o1deBaGr1Xw" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="http://www.meetup.com/bostonpython/events/69073762/">Flask vs Django</a>
+      (<a href="https://speakerdeck.com/singingwolfboy/flask-vs-django">slides</a>)
+    </p>
+  </div>
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/csp4ZJBh8Mw" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="http://www.meetup.com/bostonpython/events/51176162/">Python Classes</a>
+      (<a href="http://www.slideshare.net/jazztpt/oo-python">slides</a>)
+    </p>
+  </div>
+</div>
