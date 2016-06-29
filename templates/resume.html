@@ -2,8 +2,107 @@
 {% from "macros/project.html" import humanize_timespan %}
 {% block title %}Résumé | {{ super() }}{% endblock %}
 {% block body %}
-  <h1>{{ this.title }}</h1>
-  {{ this.description }}
+  <div class="hidden-print">
+    <h1>{{ this.title }}</h1>
+    {{ this.description }}
+  </div>
+  <div class="visible-print-block">
+    <h1>David Baumgold</h1>
+    <p>Full-stack web developer, open source contributor, technical trainer, public speaker. Located in the Boston area.</p>
+
+    <table class="table table-sm-print">
+      <tbody>
+        <tr>
+          <th scope="row">Web</th>
+          <td>
+            <a href="https://www.davidbaumgold.com/">www.davidbaumgold.com</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <td>
+            <a href="mailto:david@davidbaumgold.com">david@davidbaumgold.com</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">GitHub</th>
+          <td>
+            <a href="https://github.com/singingwolfboy">github.com/singingwolfboy</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Twitter</th>
+          <td>
+            <a href="https://twitter.com/singingwolfboy">twitter.com/singingwolfboy</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Skills</h2>
+  <table class="table table-sm-print">
+    <tbody>
+      <tr>
+        <th scope="row">Languages</th>
+        <td>
+          <a href="https://www.python.org/">Python</a>,
+          JavaScript (<a href="https://nodejs.org">Node.js</a>),
+          SQL (<a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.mysql.com/">MySQL</a>),
+          <a href="http://www.regular-expressions.info/" title="Regular Expressions">RegEx</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Frameworks</th>
+        <td>
+          <a href="https://www.djangoproject.com/">Django</a>,
+          <a href="http://flask.pocoo.org/">Flask</a>,
+          <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>,
+          <a href="https://jquery.com/">jQuery</a>,
+          <a href="https://facebook.github.io/react/">React</a>,
+          <a href="http://backbonejs.org/">Backbone.js</a>,
+          <a href="https://getbootstrap.com/">Bootstrap</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Tools</th>
+        <td>
+          <a href="https://git-scm.com/">Git</a>,
+          <a href="http://www.sphinx-doc.org/">Sphinx</a>,
+          <a href="https://babeljs.io/">Babel</a>,
+          <a href="https://webpack.github.io/">Webpack</a>,
+          HTTP APIs
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">DevOps</th>
+        <td>
+          <a href="https://aws.amazon.com/" title="Amazon Web Services">AWS</a>,
+          <a href="https://www.docker.com/">Docker</a>,
+          <a href="http://brew.sh/">Homebrew</a>,
+          <a href="http://www.openssh.com/">SSH</a>,
+          <a href="https://www.nginx.com/">Nginx</a>,
+          Linux Server Administration
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Testing</th>
+        <td>
+          <a href="https://en.wikipedia.org/wiki/Test-driven_development" title="Test-Driven Development">TDD</a>,
+          <a href="https://nose.readthedocs.io">Nose</a>,
+          <a href="http://pytest.org/">Pytest</a>,
+          <a href="http://www.voidspace.org.uk/python/mock/">Mock</a>,
+          <a href="https://jasmine.github.io/">Jasmine</a>,
+          <a href="https://travis-ci.org/">Travis CI</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Open Source</th>
+        <td>Communication, Community-Building, Outreach, Advocacy</td>
+      </tr>
+    </tbody>
+  </table>
+
   {% set jobs = site.query('/resume').include_undiscoverable(True).all() %}
   <h2>Experience</h2>
   <ol class="resume-jobs list-unstyled">
@@ -20,6 +119,7 @@
     </li>
   {% endfor %}
   </ol>
+
   <h2>Education</h2>
   <ol class="resume-education list-unstyled">
     <li>

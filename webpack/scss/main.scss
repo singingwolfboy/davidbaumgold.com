@@ -88,3 +88,12 @@ form legend {
     height: 100%;
   }
 }
+
+.table-sm-print {
+  @media print {
+    th,
+    td {
+      padding: $table-sm-cell-padding;
+    }
+  }
+}
