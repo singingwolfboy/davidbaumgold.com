@@ -82,10 +82,10 @@ header {
   margin-bottom: 1rem;
 }
 
-.nav .blog-item .blog-feed {
+.nav .nav-item .hover-icon {
   visibility: hidden;
 }
-.nav .blog-item:hover .blog-feed {
+.nav .nav-item:hover .hover-icon {
   visibility: visible;
 }
 

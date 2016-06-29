@@ -65,30 +65,25 @@
 
             <nav id="nav-menu" class="collapse nav-menu">
               <ul class="nav nav-first">
-                {# blog item is special, because of Atom icon #}
-                <li class="nav-item blog-item">
-                  <a class="nav-link {% if this.is_child_of('/blog') %}active{% endif
-                  %}"
-                     href="{{ '/blog'|url }}">
-                    Blog
-                  </a>
-                  <a href="{{ '/blog/feed.xml'|url }}" class="blog-feed">
-                    <i class="fa fa-rss" title="Atom Feed"></i>
-                    <span class="sr-only">Atom Feed</span>
-                  </a>
-                </li>
-                {% for href, title in [
-                  ['/projects', 'Projects'],
-                  ['/tutorials', 'Tutorials'],
-                  ['/presentations', 'Presentations'],
-                  ['/book', 'Book'],
-                  ['/resume', 'Résumé'],
-                  ['/names', 'Names'],
+                {% for href, title, icon_class, icon_title, icon_href in [
+                  ['/blog', 'Blog', 'rss', 'Atom Feed', '/blog/feed.xml'],
+                  ['/projects', 'Projects', None, None, None],
+                  ['/tutorials', 'Tutorials', None, None, None],
+                  ['/presentations', 'Presentations', None, None, None],
+                  ['/book', 'Book', None, None, None],
+                  ['/resume', 'Résumé', 'file-pdf-o', 'PDF Resume', '/resume/davidbaumgold.pdf'],
+                  ['/names', 'Names', None, None, None],
                 ] %}
                   <li class="nav-item">
                     <a class="nav-link {% if this.is_child_of(href) %}active{% endif
                     %}"
                        href="{{ href|url }}">{{ title }}</a>
+                    {% if icon_class %}
+                      <a href="{{ icon_href|url }}" class="hover-icon">
+                        <i class="fa fa-{{ icon_class }}" title="{{ icon_title }}"></i>
+                        <span class="sr-only">{{ icon_title }}</span>
+                      </a>
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>
