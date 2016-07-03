@@ -188,7 +188,7 @@ or something like it. Your browser will only accept your certificate as valid
 if the URL matches the "common name" you created for your certificate. If
 you're running your website locally for testing purposes, and you need
 `batman.com` to point to your local computer, you can use the
-[hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) to make that domain
+[hosts file](<https://en.wikipedia.org/wiki/Hosts_(file)>) to make that domain
 point to your computer. If you're running on Mac, or Linux, you can run this
 command:
 
