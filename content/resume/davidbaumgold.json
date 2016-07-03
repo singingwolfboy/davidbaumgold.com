@@ -1,0 +1,184 @@
+{
+  "basics": {
+    "name": "David Baumgold",
+    "label": "Full-Stack Web Developer",
+    "picture": "https://www.davidbaumgold.com/static/images/headshot.jpg",
+    "email": "david@davidbaumgold.com",
+    "website": "https://www.davidbaumgold.com",
+    "summary": "I'm a full-stack web developer with a passion for clean, readable code. Python and JavaScript are my tools of choice.\n\nI'm an open sourcerer. I believe that sharing knowledge benefits everyone, and that community is more important than code.\n\nI'm a technical trainer and public speaker. I have a knack for explaining complicated topics in an approachable manner, and I'm not afraid to do so in front of an audience.",
+    "location": {
+      "city": "Boston",
+      "region": "Massachusetts",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "singingwolfboy",
+        "url": "https://twitter.com/singingwolfboy"
+      },
+      {
+        "network": "GitHub",
+        "username": "singingwolfboy",
+        "url": "https://github.com/singingwolfboy"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Serendipity Consulting",
+      "position": "Consultant",
+      "website": "https://www.davidbaumgold.com/consulting/",
+      "startDate": "2016-01-01",
+      "summary": "Currently working as a freelance consultant, helping companies develop robust and maintainable websites using Python and JavaScript."
+    },
+    {
+      "company": "edX",
+      "position": "Developer Advocate",
+      "website": "https://www.edx.org",
+      "startDate": "2014-05-01",
+      "endDate": "2016-01-01",
+      "summary": "Organized and assisted the open source community in their efforts to use the software; organized major software releases, advocated for documentation and features specific to the community’s use. Spoke about Open edX at conferences, and helped organize the Open edX Conference.",
+      "highlights": [
+        "Developed a bot for automating parts of the pull request review process, saving thousands of hours of developer productivity",
+        "Managed the release process for the Open edX software"
+      ]
+    },
+    {
+      "company": "edX",
+      "position": "Software Engineer",
+      "website": "https://www.edx.org",
+      "startDate": "2013-05-01",
+      "endDate": "2014-05-01",
+      "summary": "Open source Python/Django web application with Backbone.js frontend. Lead development of major components of the application, as well as spearheading major code-cleanup and refactoring efforts in an agile, Scrum-based workflow.",
+      "highlights": [
+        "Turned a messy JavaScript codebase into a modular one using require.js"
+      ]
+    },
+    {
+      "company": "CloudLock",
+      "position": "Software Engineer",
+      "website": "https://www.cloudlock.com/",
+      "startDate": "2011-09-01",
+      "endDate": "2013-04-01",
+      "summary": "Python web application running on Google App Engine. Assisted with a major architectural restructuring to work with App Engine’s eventually-consistent datastore. Increased developer productivity through communication, education, tooling, and automated testing."
+    },
+    {
+      "company": "TripAdvisor",
+      "position": "Software Engineer",
+      "website": "https://www.tripadvisor.com/",
+      "startDate": "2010-08-01",
+      "endDate": "2011-08-01",
+      "summary": "PHP web application with a dynamic Javascript front-end, integrated into a Java codebase. Worked as a full-stack developer in a small, agile team, fixing bugs and adding features in many different levels of the codebase."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Brandeis University",
+      "area": "Computer Science",
+      "studyType": "Masters",
+      "startDate": "2010-01-01",
+      "endDate": "2014-09-01",
+      "gpa": "3.76"
+    },
+    {
+      "institution": "Brandeis University",
+      "area": "Computer Science",
+      "studyType": "Bachelors",
+      "startDate": "2006-09-01",
+      "endDate": "2009-12-01",
+      "gpa": "3.82"
+    },
+    {
+      "institution": "Brandeis University",
+      "area": "Psychology",
+      "studyType": "Bachelors",
+      "startDate": "2006-09-01",
+      "endDate": "2009-12-01",
+      "gpa": "3.42"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Web Development",
+      "level": "Master",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "jQuery",
+        "React",
+        "Backbone.js",
+        "Bootstrap"
+      ]
+    },
+    {
+      "name": "Python Web Development",
+      "level": "Master",
+      "keywords": [
+        "Flask",
+        "Django",
+        "SQLAlchemy",
+        "Pytest"
+      ]
+    },
+    {
+      "name": "Node.js Web Development",
+      "level": "Intermediate",
+      "keywords": [
+        "Babel",
+        "Webpack",
+        "Jasmine"
+      ]
+    },
+    {
+      "name": "Development Tooling",
+      "level": "Master",
+      "keywords": [
+        "Git",
+        "Sphinx",
+        "SSH",
+        "Homebrew"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "level": "Intermediate",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "Nginx",
+        "Linux Administration"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "Master",
+      "keywords": [
+        "PostgreSQL",
+        "MySQL"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Hypnosis"
+    },
+    {
+      "name": "Tabletop Roleplaying",
+      "keywords": [
+        "Dungeons & Dragons",
+        "GURPS"
+      ]
+    }
+  ],
+  "meta": {
+    "url": "https://www.davidbaumgold.com/resume/davidbaumgold.json"
+  }
+}
