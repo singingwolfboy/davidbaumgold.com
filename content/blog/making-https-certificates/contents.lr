@@ -291,10 +291,10 @@ deeper!
 
 # Subject Alternate Names
 
-We already have a veritable alphabet soup of crypographic names and acronyms,
+We already have a veritable alphabet soup of cryptographic names and acronyms,
 but for this, we need to add two more: "X.509 Extensions" and
 "Subject Alternate Names". [X.509](https://en.wikipedia.org/wiki/X.509) is
-a crypographic standard that we already used earlier: the ridiculously long
+a cryptographic standard that we already used earlier: the ridiculously long
 `openssl` command had a `-x509` flag in there. This standard uses a few optional
 extensions to add new features, and one of those is called ["Subject Alternate
 Names"](https://en.wikipedia.org/wiki/Subject_Alternative_Name), or SAN.
