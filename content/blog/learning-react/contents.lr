@@ -95,7 +95,7 @@ That's not bad, but what if we could just do this, instead?
 `<GoogleMap>` is a custom React component that will handle all the details of
 inserting an interactive Google Map element into your page and setting it up
 properly. JSX allows you to ignore the implementation and just *use* it,
-putting the [principle of encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming))
+putting the [principle of encapsulation](<https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>)
 to work. And this isn't a contrived example:
 [react-google-maps](https://github.com/tomchentw/react-google-maps)
 is a popular project on GitHub, with a

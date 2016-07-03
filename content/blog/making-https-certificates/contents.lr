@@ -1,0 +1,385 @@
+title: Making HTTPS Certificates
+---
+pub_date: 2016-07-02
+---
+summary:
+
+How to use OpenSSL to set up HTTPS certificates.
+---
+body:
+
+The latest website I'm working on needs to run over
+[HTTPS](https://en.wikipedia.org/wiki/HTTPS), the secure version of
+[HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).
+Turns out that getting HTTPS set up properly is really difficult!
+Even worse, I need to set up HTTPS on not just one domain, but an _infinite_
+number: I need to support
+[wildcard subdomains](https://en.wikipedia.org/wiki/Wildcard_DNS_record)!
+Getting this to work right involved a _lot_ of searching the web, a _lot_
+of wasted time, and a _lot_ of frustration. I'm writing it down to make life
+easier for you, me, and everyone else that might run into this problem.
+
+# Encryption
+
+Let's start at the beginning. HTTPS is about security, and when you're talking
+about computers, security generally means
+[encryption](https://en.wikipedia.org/wiki/Encryption).
+HTTP is an unencrypted protocol, so anyone who is connected to your network
+can see everything you're doing -- including all your passwords and
+secret information! HTTPS encrypts all of that data before it leaves your
+computer, so that even if someone snoops on your connection, they can't
+understand what's going on.
+
+Encryption generally means using [OpenSSL](https://openssl.org), a widely-used
+open source toolkit for anything and everything involving encryption.
+For many years, the gold standard of encryption protocols was "secure sockets
+layer", known as SSL, which is how OpenSSL got its name. However, computers
+keep getting faster and faster, and security researchers keep finding new ways
+to circumvent and break encryption.[^security-research]
+As a result, SSL is no longer considered secure, and the new gold standard
+is called "transport layer security", or TLS. However, it's too late to change
+OpenSSL's name, so we still use it for TLS encryption.
+
+[^security-research]:
+    Some people think that anyone trying to break encryption is a criminal.
+    After all, if someone is trying to get access to your private data,
+    they're probably out to get you, right? However, security researchers
+    are actually *good* people, who try to prove that the encryption techniques
+    used to keep your information safe are actually secure and effective.
+    If a criminal discovers that a particular encryption technique
+    is not effective, that criminal would try to exploit that knowledge to
+    steal information and cause harm. By contrast, if a security researcher
+    discovers that a particular encryption technique is not effective, that
+    researcher will disclose that information to the right people, help them
+    replace their faulty encryption with better and more secure encryption,
+    and then let the world know that the encryption technique can no longer
+    be considered secure.
+
+    Criminals will try to steal information and cause harm, regardless of if
+    researchers try to figure out how they're doing it. Researchers are the
+    ones who can discover and prevent criminals from stealing information
+    and causing harm, and they do so by helping people replace bad encryption
+    with good encryption.
+
+In order to set up HTTPS, we need to use OpenSSL to create a TLS certificate.
+This certificate is a special file that is used to encrypt and decrypt
+information between the web server and the person viewing the website.
+
+# A Basic Certificate
+
+OpenSSL has been around for a long time, and its command line interface was
+designed before common design patterns around command line interfaces had
+been created. As a result, OpenSSL doesn't respect some basic conventions of
+the command line, like double dashes in front of long flags and single
+dashes in front of single-character flags. This contributes to OpenSSL's
+reputation for being hard to use.
+
+Here's a command that will create a basic TLS certificate for your website,
+suitable to be used for HTTPS:
+
+```bash
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -sha256 \
+  -keyout batman.key -out batman.crt -subj \
+  '/C=US/ST=New York/L=Gotham/O=Wayne Enterprises/OU=Batman/CN=batman.com/emailAddress=bruce@batman.com'
+```
+
+Whoa, that command is *massive*! It should all be run on one line: the line
+breaks that you see above are just for clarity. (If you take them out, though,
+take out the slashes at the end of each line, as well!)
+Let's break down how this command works.
+
+* `openssl`: the first word in the command tells the computer that we want
+  to run the `openssl` executable, and pass the rest of the command to it.
+* `req`: this tells OpenSSL that we want to it operate in
+  certificate request mode. Normally, TLS certificates operate with two people
+  involved: one person to request the certificate, and one person to sign
+  the request and grant the certificate. However...
+* `-x509`: this flag tells OpenSSL that actually, one person is going to play
+  both roles. You are going to request the certificate from yourself, and
+  then you are going to sign that request and grant yourself a certificate.
+  I know, it's weird and confusing. We'll come back to this later.
+* `-nodes`: this isn't the word "nodes", like a node in a graph. This flag
+  actually means "no DES".
+  [DES](https://en.wikipedia.org/wiki/Data_Encryption_Standard) is another
+  layer of encryption that OpenSSL generally applies to TLS certificates,
+  which sets a password on the certificate itself. When the DES layer is
+  applied, you have to type in that password before the web server can use
+  this certificate for HTTPS, which is not what we want.
+* `-days 365`: a certificate has a lifetime that is generally measured in days.
+  After this lifetime is up, the certificate is no longer considered
+  trustworthy: the longer a certificate is in use, the more likely it is that
+  someone has found a way to hack it. (The people who make OpenSSL are paranoid.
+  They're also right.) This flag sets the certificate lifetime to one year.
+* `-newkey rsa:2048`: because we're playing both roles (requester and signer),
+  we need to also make an
+  [RSA encryption key](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>)
+  to sign the request with. This is not wasted work -- when we use this
+  certificate for HTTPS, the webserver will need this RSA key as well.
+  The `2048` refers to the number of "bits" that are used in creating this key.
+  More bits are more secure, and 2048 is plenty.
+* `-sha256`: this tells OpenSSL to use the
+  [SHA-256](https://en.wikipedia.org/wiki/SHA-2) hashing function when
+  constructing the certificate, instead of the default (weaker)
+  [SHA-1](https://en.wikipedia.org/wiki/SHA-1) hashing function.
+* `-keyout batman.key`: this tells OpenSSL to save the RSA key that it generates
+  in a file named `batman.key`. You can put in a different file name, if
+  you want.
+* `-out batman.crt`: this tells OpenSSL to save the TLS certificate that it
+  generates in a file named `batman.crt`. You can put in a different file name,
+  if you want.
+
+The last part of the command is the `-subj` flag, which takes a string as an
+argument. This string is called a "distinguished name" (don't ask me why),
+and it must follow a specific format, that has exactly seven parts separated
+by slashes:
+
+* `C`: short for "country". This is the two-letter country code of the country
+  you live in.
+* `ST`: short for "state". This is the name of the state that you live in.
+* `L`: short for "locality". This is the name of the city, town, or general
+  area that you live in.
+* `O`: short for "organization". This is the name of the company you represent,
+  or if you don't represent a company, then it could be your own name.
+* `OU`: short for "organizational unit". This is generally your department
+  within the company you represent. (OpenSSL can get a little too specific.)
+* `CN`: short for "common name". **This is important!** You _must_ put in the
+  [fully-qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)
+  of the website you are making this certificate for.
+* `emailAddress`: an email address. In case someone needs to contact you,
+  I guess?
+
+When you run this command, OpenSSL will create two files for you: `batman.crt`
+and `batman.key`. To verify that it worked properly, you can ask OpenSSL to
+read these files and pull out the information you put in, like this:
+
+```bash
+$ openssl x509 -text -in batman.crt
+```
+
+You'll get some output that looks like this:
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            8c:ef:c4:e3:3d:3c:31:8c
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=US, ST=New York, L=Gotham, O=Wayne Enterprises, OU=Batman, CN=batman.com/emailAddress=bruce@batman.com
+```
+Your serial number will be different, and this initial data is followed by lots
+more data that we don't actually care about.
+
+# Putting the Certificate In Place
+
+Now that you have a certificate, the next step is to give it to your web server,
+so that it can use it to encrypt and decrypt HTTPS requests. I generally use
+[nginx](https://www.nginx.com/) as a
+[reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy): an HTTPS request
+hits nginx, nginx decrypts the HTTPS into unencrypted HTTP, and forwards
+that HTTP request along to another webserver running my application.
+(This is a pretty common use-case for Nginx, and it's designed to handle it.)
+Fortunately, [Nginx has some great documentation on setting up HTTPS](http://nginx.org/en/docs/http/configuring_https_servers.html),
+using the certificate file and the key file that you just generated.
+
+# DNS
+
+The next step is setting up your domain with [DNS](https://en.wikipedia.org/wiki/Domain_Name_System)
+or something like it. Your browser will only accept your certificate as valid
+if the URL matches the "common name" you created for your certificate. If
+you're running your website locally for testing purposes, and you need
+`batman.com` to point to your local computer, you can use the
+[hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) to make that domain
+point to your computer. If you're running on Mac, or Linux, you can run this
+command:
+
+```bash
+$ echo "127.0.0.1 batman.com" | sudo tee -a /etc/hosts
+```
+
+That will add a line to the `/etc/hosts` file on your computer. That line
+indicates that `batman.com` should point to `127.0.0.1`, the IP address for
+your local computer.
+
+# Trust
+
+Great, now we can visit `https://batman.com` in the browser, and it should
+work, right? Nope! Your computer doesn't trust the certificate you've created,
+and it will show you a [big scary warning](https://superuser.com/questions/632059/how-to-add-a-self-signed-certificate-as-an-exception-in-chrome)
+if you try to visit the website. Why does it do that?
+
+Let's get a bit paranoid. (Security people do that a lot.)
+What if an attacker found a way to trick your computer into connecting
+to the wrong website? What if you were trying to connect to your bank's website,
+and some attacker tricked your computer into connecting to a different website
+that looks exactly the same, but that the attacker controls? If you put your
+bank password into that site, the attacker now knows your password, can log
+into your bank account, and steal all your money. The good news is, HTTPS and
+TLS are designed to prevent this sort of thing from happening. The bad news is,
+if *you* can make a TLS certificate and set up an HTTPS website, what prevents
+an attacker from doing it? After all, all you need in order to get a TLS
+certificate is to run a command on your computer. Any attacker with some
+technical ability could do the same thing.
+
+There is a solution to this problem, and it's called a
+[certificate authority](https://en.wikipedia.org/wiki/Certificate_authority),
+or CA. A certificate authority is a company or organization that holds the digital
+keys to the internet, and makes it their job to ensure that those keys are
+secure. The three biggest CAs are Comodo, Symantec (who owns VeriSign),
+and GoDaddy, but there are many others. Web browsers are
+set up to trust these CAs by default[^ca-trust],
+but *not* trust just any old certificate.
+
+[^ca-trust]:
+    But what happens if a trusted certificate authority shows themselves to
+    be untrustworthy? Then the other CAs come together and collectively
+    revoke trust in the untrustworthy CA, and that information flows quickly
+    from the CAs to every browser in the world. It's actually a pretty nifty
+    system.
+
+So what do you do if you're *not* lucky enough to be a trusted CA, and you
+want to get a trusted certificate? Well, do you remember the
+certificate request-and-signing thing that I talked about earlier in this
+blog post? That's what it's for. Instead of using OpenSSL to generate a
+certificate directly, you can ask it to generate something called a
+"certificate signing request", or CSR. You send that CSR to a trusted CA,
+the CA approves it, and sends you a TLS certificate that is signed by the CA.
+Then, web browsers can see that the certificate was issued by a trusted CA,
+so therefore the certificate is trustworthy as well.
+
+# I Trust Myself
+
+Well, that's all well and good for other certificates out there on the web,
+but I know for a fact that this certificate is trustworthy. I know because I
+generated it myself! So how do I tell my web browser to trust the certificate
+anyway?
+
+The answer to that question is going to depend on your operating system. I use
+a Mac, and for that you can use the "Keychain Access" application, or the
+`security` command line interface to that application. Here's how you indicate
+that the certificate should be trusted:
+
+```bash
+$ security add-trusted-cert batman.crt
+```
+
+You know, after all the time and effort figuring out how to generate
+the certificate using OpenSSL, I'm shocked at how easy it is to trust it.
+Thank goodness!
+
+# Success
+
+Now, you can visit `https://batman.com` in your browser, and assuming you've
+set up your web server correctly, it should work! You'll get a little padlock
+in the URL bar and everything. Congrats!
+
+# Extra Credit: Wildcard Subdomains
+
+For you, this might be enough, but my specific task is more difficult. I need
+to set up HTTPS not just for one domain, but for an infinite number of them!
+I need it to work not just with `batman.com`, but also with `a.batman.com`,
+`b.batman.com`, `c.batman.com`, and so on -- and I don't know the full list
+in advance! This is called a
+[wildcard subdomain](https://en.wikipedia.org/wiki/Wildcard_DNS_record), and
+I need to do something a bit different to get this to work.
+
+For starters, I'll need to generate a new certificate, and this will be tricker.
+If I just needed to support the wildcard subdomain, then I could just re-run
+the command above and replace `CN=batman.com` with `CN=*.batman.com`, but if
+I do that, the certificate will only be valid for the subdomains, and it
+will *not* be valid for `batman.com` without any subdomains. We need to go
+deeper!
+
+# Subject Alternate Names
+
+We already have a veritable alphabet soup of crypographic names and acronyms,
+but for this, we need to add two more: "X.509 Extensions" and
+"Subject Alternate Names". [X.509](https://en.wikipedia.org/wiki/X.509) is
+a crypographic standard that we already used earlier: the ridiculously long
+`openssl` command had a `-x509` flag in there. This standard uses a few optional
+extensions to add new features, and one of those is called ["Subject Alternate
+Names"](https://en.wikipedia.org/wiki/Subject_Alternative_Name), or SAN.
+
+SANs are used to indicate that there are multiple different ways to refer to
+the same thing. In my case, `batman.com`, `a.batman.com`, `b.batman.com`, and
+so on all refer to my website, so they can be seen as alternate names for
+the same thing. In order to create a new TLS certificate with OpenSSL that
+uses SANs, we need to set up a config file for OpenSSL. Create a file
+named "batman.cfg" with the following content:
+
+```ini
+[req]
+x509_extensions = v3_req
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = batman.com
+DNS.2 = *.batman.com
+```
+
+As you can see, this file is divided into three sections: `req`, `v3_req`,
+and `alt_names`. `req` references the fact that we are running OpenSSL in
+certificate request mode -- it's the second part of the long `openssl` command
+we ran earlier. Within that section, we indicate that information about
+X.509 extensions is available in the `v3_req` section.
+
+The `v3_req` section is mostly copied from the default configuration. I'll be
+honest, I have no idea what `basicConstraints` and `keyUsage` are for, I just
+left them at their default values from the
+`/System/Library/OpenSSL/openssl.cnf` file on my computer. However, the last
+line of that section is `subjectAltName`, which is exactly what we want to
+configure. You could pass a comma-separated list of values, but it's clearer
+to reference another section, as I've done here with the name `@alt_names`.
+
+Finally, the `alt_names` section has all the alternate names that this TLS
+certificate should support. They need to be ordered, which is why one of them
+is `DNS.1` and the other is `DNS.2`. You can also use IP addresses, if you
+prefer.
+
+# Making the Certificate
+
+Now that we've made the config file, we need to tell the `openssl` command
+to read it. Fortunately, that's not hard -- we just need to add a
+`-config` flag to the command, along with the path to that file we just created.
+So, if you're running this command in the same directory as the file you've
+created, then it's going to be:
+
+```bash
+$ openssl req -config batman.cnf -x509 -nodes -days 365 -newkey rsa:2048 -sha256 \
+  -keyout batman-san.key -out batman-san.crt -subj \
+  '/C=US/ST=New York/L=Gotham/O=Wayne Enterprises/OU=Batman/CN=batman.com/emailAddress=bruce@batman.com'
+```
+
+This time, we'll get `batman-san.key` and `batman-san.crt`. Let's verify that
+it worked properly!
+
+```bash
+$ openssl x509 -text -in batman-san.crt
+```
+
+This time, if you scroll down through the output of that command, you'll see
+the following section:
+
+```
+X509v3 extensions:
+    X509v3 Basic Constraints:
+        CA:FALSE
+    X509v3 Key Usage:
+        Digital Signature, Non Repudiation, Key Encipherment
+    X509v3 Subject Alternative Name:
+        DNS:batman.com, DNS:*.batman.com
+```
+
+Perfect! Put the new certificate in nginx, mark it as trusted in your operating
+system, and view your website. Now you've got HTTPS with wildcard subdomains!
+
+# Wrap Up
+
+Security is hard to understand, and the tools don't make it any easier. Tell me
+what is still confusing about this process, and maybe I can make it clearer!
+Do *you* need to set up HTTPS on your site? Have you run into trouble?
+Leave a comment on this post! Write your own blog post! Talk about it with
+others! The more we communicate and collaborate, the more we all learn.
