@@ -304,7 +304,7 @@ the same thing. In my case, `batman.com`, `a.batman.com`, `b.batman.com`, and
 so on all refer to my website, so they can be seen as alternate names for
 the same thing. In order to create a new TLS certificate with OpenSSL that
 uses SANs, we need to set up a config file for OpenSSL. Create a file
-named "batman.cfg" with the following content:
+named "batman.cnf" with the following content:
 
 ```ini
 [req]
