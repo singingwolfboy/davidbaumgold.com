@@ -1,0 +1,218 @@
+title: PyGotham 2016
+---
+pub_date: 2016-07-19
+---
+summary:
+
+I attended PyGotham 2016 in New York City. Except for a few logistical issues, the conference was fantastic: interesting talks, fun hallway conversations, and plenty of inspiration.
+---
+body:
+
+I attended [PyGotham](https://2016.pygotham.org/), a regional
+[Python conference](http://www.pycon.org/) in New York City.
+This year, it was held in the
+[United Nations conference building](http://visit.un.org/content/location),
+which was *really cool*! This was my first regional Python conference, and
+I'm really glad I went: it had the same
+[spirit of PyCon](/blog/2016/06/pycon-us-2016/),
+but at a much smaller scale (around 500 people or so).
+
+# New York City
+
+New York City is always fun to visit -- it wasn't my first time, and it won't
+be my last. Since PyGotham is a weekend conference (Saturday and Sunday), I
+headed down to NYC the day before the conference started, and decided to stay
+a few extra days to visit friends in the city.
+I had spent the prior week in Provincetown, MA for
+[Bear Week](http://ptownbears.org/) (which was also tons of fun in a
+_completely_ different way), so I spent most of Friday taking the
+[ferry](http://baystatecruisecompany.com/) from Provincetown to Boston and the
+[train](https://amtrak.com/) from Boston to NYC. I found a simple and
+affordable Airbnb that was a 20 minute walk from the conference location,
+so I stayed there for the weekend, and my friend Ken agreed to host me for
+my remaining time in the city.
+
+I didn't get a whole lot of time to walk around the city on this trip, because
+it was so full of things to do and people to meet with. However, I spent some
+time exploring Queens and Brooklyn, and rediscovered just how diverse NYC really
+is. People walk down the street chatting in every language under the sun, and
+some of them rush from place to place while others stroll much more leisurely.
+I like New York, though I'm not sure I'd want to live there. But who knows?
+I've been in Boston for a long time now, and maybe it's time for a change...
+
+# Arrival
+
+But on to the conference! I arrived at the United Nations building early on
+Saturday morning, ready to get some breakfast and meet other Pythonistas.
+However, there had been a miscommunication with the security guards, and
+they weren't letting anyone in until 9 AM, which was when the opening keynote
+was scheduled to begin! There were hundreds of people lined up outside the
+building, wondering what was going on and hoping that the rigorous security
+wouldn't cause them to miss their ~~flight~~ talk.
+
+But by some luck, I happened to run into
+[Russell Keith-Magee](https://twitter.com/freakboy3742) and
+[Katie Cunningham](https://twitter.com/kcunning), and we chatted while
+waiting in line. I am continually amazed by how the technical community of
+Australia manages send attendees to tech conferences in the United States:
+Russell is from Perth, and not only did he attend PyGotham, he's also heading
+to [DjangoCon](https://2016.djangocon.us/) in Philadelphia and
+[PyOhio](http://www.pyohio.org/) in Ohio! (I also ran into him at PyCon in
+Portland, although we didn't really chat.) Russell had [promised me a
+Challenge Coin](https://twitter.com/PyBeeWare/status/750489112499539968) for
+[resolving a Lektor issue](https://github.com/lektor/lektor/pull/240), and
+happily, [he delivered](https://twitter.com/singingwolfboy/status/754306894488039424)!
+Meanwhile, it turned out that Katie was part of
+[KatieConf](https://katieconf.xyz/), a tech conference where all
+the speakers are named Katharine (or similar). Unsurprisingly, she is also a
+friendly and knowledgable person, and was knitting almost constantly as we
+talked.
+
+Shortly before 9, the security guards finally started letting people in --
+and we found that we had to go through a metal detector and get our bags
+scanned. (It wasn't as bad as the TSA airport security rigamarole, but it
+was close.) Finally, we made it inside, and everyone swarmed the registation
+booth to get their badges and a bite to eat. Fortunately, the conference
+organizers deftly shifted the schedule to account for the disruption, changing
+the start time of the opening remarks from 9 AM to 9:45 AM. It helped that
+there were no printed schedules, which meant that everyone was relying on
+checking the conference website on their phone. When the organizers updated
+the website, all of a sudden everyone knew about the updated schedule!
+
+# Day One
+
+I ended up attending very few talks at PyGotham: it wasn't quite as extreme
+as [my PyCon experience](/blog/2016/06/pycon-us-2016/), but it was close.
+Instead, I immediately declared a Birds of a Feather session on the topic
+of Docker, and scoped out the BoF room in advance. In the process, I met
+[Laura](https://twitter.com/incunabulista), who was new to programming but
+eager to learn. We chatted for awhile, I told her about BoFs and why they're fun,
+and I encouraged her to run one. (I found out the next day that she took my
+advice!) I learned a bit about
+[GraphQL](https://2016.pygotham.org/talks/321/why-and-how-to-graphql/), and then
+walked back to the BoF room, hoping for a good turnout. Two other people
+showed up. 😞 The three of us chatted for a bit, and then headed our separate
+ways.
+
+I then dropped in on a talk about
+[making games in Python](https://2016.pygotham.org/talks/255/making-games/),
+and managed to catch most of it. It's a nifty topic, and although the idea
+of making games has never gotten me fired up the way that making websites does,
+it's something I wanted to learn more about. I learned about the
+[PursuedPyBear](https://github.com/pathunstrom/pursuedpybear) game engine, which
+is *way* up there on the list of "most adorable names," and maybe I'll try it
+out some day.
+
+After that was lunch, which was another organizational nightmare. PyGotham
+wasn't the only conference happening at the UN that day:
+[WordCamp NYC](https://2016.nyc.wordcamp.org/) was going on at the same time,
+which was pretty interesting. PyGotham and WordCamp were supposed to
+have staggered lunch schedules, so that there wouldn't be a thousand people
+all descending on the food at once. Unfortunately, something got screwed up
+once again and both cons got lunch at the same time, which meant tremendously
+long lines. Even worse, lunch was outside, and the searing summer sun combined
+with the lack of shady spots meant that none of the computer nerds were
+particularly happy -- and both conferences were filled with computer nerds.
+
+After lunch, I went to Russell's BoF about mental health, and learned about
+the [mental health first aid certification](http://www.mentalhealthfirstaid.org/),
+which I really need to investigate further. Mental health is a real issue that
+most people don't want to address, and it can lead to some truly scary outcomes
+like suicide. I'm really glad that organizations like [OSMI](https://osmihelp.org/)
+are starting to appear, giving people resources to talk about mental health
+issues and remove stigma.
+
+After the BoF, I saw a really interesting talk on
+[summarizing documents](https://2016.pygotham.org/talks/226/summarizing-documents/),
+most of which went over my head, but I was able to pick up a few really interesting
+points. (The core problem with document summarization is picking out the most
+interesting and important sentences in a long document, so this seems apt.)
+I also caught Russell's talk on [writing native apps on iOS and Android
+using Python](https://2016.pygotham.org/talks/240/a-tale-of-two-cellphones/),
+and it made my head explode several times. I'm really keen on checking out
+[Toga](http://pybee.org/project/projects/libraries/toga/),
+[Rubicon](http://pybee.org/project/projects/bridges/rubicon/), and
+[VOC](http://pybee.org/project/projects/bridges/voc/): maybe I'll build an
+app or two! 😃
+
+After his talk, I chatted with Russell a bit more, and we talked about funding
+open source projects, something that [Nadia Eghbal](https://medium.com/@nayafia)
+recently wrote an [extensive report](http://www.fordfoundation.org/library/reports-and-studies/roads-and-bridges-the-unseen-labor-behind-our-digital-infrastructure/)
+about. I still need to read the actual report, but I've read some
+[excellent analyses of it](https://storify.com/Lukasaoz/open-source-infrastructure-white-paper), and as a contributing member
+of the open source community, I'm familiar with some of the problems. Of course,
+Russell knows more about this than I do, but I think I was able to give him
+some interesting ideas from my experience with edX.
+
+The talks closed with [Ewa Jodlowska's keynote](https://2016.pygotham.org/talks/231/care-and-feeding-of-pytho/),
+which had been originally planned as an opening keynote,
+but had been hastily rescheduled due to the morning's timing issues.
+The keynote had a lot of interesting data about how the Python Software Foundation
+was funding Python development around the world, and it's great to see how
+truly global the Python community is.
+
+There was also an after-party, and I chatted with
+[Joe](https://github.com/llllllllll) and
+[Scott](https://github.com/ssanderson) for awhile. They're two other Boston-area
+Python developers who I admire, and I don't get to hang out with them enough.
+They do some crazy, frightening things with the deep guts of Python, and their
+[bytecode talk](http://pytube.org/pycon-us-2016/scott-sanderson-joe-jevnik-playing-with-python-bytecode-pycon-2016.html)
+is *really* well done. They informed me that
+[Quantopian](https://www.quantopian.com/), the company they both work for,
+hosts a board game night every week, and now I think I *need* to show up for
+one of those events.
+
+# Day Two
+
+Walking into the UN on Sunday morning was a breeze compared with Saturday.
+No more ridiculous lines! I saw a talk about neural networks, and then went
+on to the real fun part of the morning: the beginner BoF and the lightning talks!
+
+As I mentioned earlier, Laura took me up on my suggestion to run a BoF, and she
+decided to focus on changing careers into the software world. I was happy that
+I could join and provide some perspective as someone who had been living in the
+software world for several years: I wish that I had someone to answer my
+questions when I was just getting started, so I try to provide that for others
+when I can. There were about eight or nine attendees, which I count as a great
+success for a BoF!
+
+After the BoFs were the lightning talks, which are always great fun. I went
+first and gave a quick presentation about [Lektor](https://www.getlektor.com/),
+which a lot of people seemed interested in. There were several other interesting
+talks, but my favorite was one about the
+[JetBrains Python developer survey](https://www.jetbrains.com/pycharm/python-developers-survey-2016/), which revealed some really interesting (and
+sometimes surprising) insights about how people are using Python today.
+Apparently 50% of Python developers use [Django](http://djangoproject.com/)
+in some capacity or other, and 40% use [Flask](http://flask.pocoo.org/)!
+That's an *incredible* amount of developer mindshare for such a
+small and young project!
+
+After the lightning talks came lunch, which was (thankfully) smoother than
+the prior day's lunch. There were a few more talks and conversations after
+that, but nothing particularly noteworthy until my presentation.
+
+I presented my [Advanced Git](https://2016.pygotham.org/talks/328/advanced-git/)
+talk, and like every other conference I've presented it at, the room was packed
+full. Seems like a lot of people want to know about Git! The talk went fairly
+smoothly, although I did end up running out of time. (Fortunately, there was
+a break immediately after my talk, so I had some flexibilty to go overtime.)
+I got a lot of positive feedback afterwards, including one or two people who
+said they were interested in hiring me for [contract work](/consulting/)!
+Hopefully one or both of them actually follows through. :)
+
+Lastly, I had some time to go see [Ted](https://github.com/morinted)'s talk about
+[stenography](https://2016.pygotham.org/talks/271/hacking-typing-writing-at/)
+and see him type at over 200 words per minute. I knew nothing about steno
+before I saw the talk, but now I'm curious to give it a try -- it seems to be
+chord-based typing based on the phoenetic pronunciation of words, usually on
+specialized keyboards. Tim also described a fascinating evolution of open source
+tearing down an existing set of expensive, proprietary systems and replacing
+them with better, open systems like [Plover](http://plover.stenoknight.com/).
+Anyone know where I can get my hands on a
+[stenotype machine](https://github.com/openstenoproject/plover/wiki/Supported-Hardware)?
+
+# Wrap-Up
+
+It's now 1 AM and I'm tired, so I'll make this short. PyGotham was a wonderful
+conference, and I'm really glad I decided to make the trip. I plan to come
+back next year, and see what else the NYC community has in store!
