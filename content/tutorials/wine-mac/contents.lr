@@ -223,9 +223,10 @@ See Part 0 of this tutorial.
 
 To install a Windows program, first download the installer file:
 it should end with .exe. Remember the location you put it, and open up
-the Terminal again. cd to the location, and use ls to make sure you can
-see the installer file. (Note: if you do not know what cd and ls are,
-you should learn how to use the command line before using Wine.)
+the Terminal again. `cd` to the location, and use `ls` to make sure you can
+see the installer file. (Note: if you do not know what `cd` and `ls` are,
+you should [learn how to use the command line](/tutorials/command-line/)
+before using Wine.)
 
 Once you are in the correct directory, run the installer through Wine
 by running the following command in the Terminal:
