@@ -10,6 +10,10 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 .page {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 ul.projects {
