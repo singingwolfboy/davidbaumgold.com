@@ -1,4 +1,4 @@
-title: Deploying Lektor on AWS, with S3 and Cloudfront
+title: Deploying Lektor on AWS, with S3 and CloudFront
 ---
 last_updated: 2016-08-05
 ---
@@ -15,7 +15,7 @@ less than $10 per _year_.
 ---
 summary:
 
-A simple tutorial demonstrating how to deploy a Lektor site to AWS using S3, Cloudfront, Route 53, and Certificate Manager.
+A simple tutorial demonstrating how to deploy a Lektor site to AWS using S3, CloudFront, Route 53, and Certificate Manager.
 ---
 toc_ad_id: 3610826013
 ---
@@ -64,8 +64,8 @@ picture is the old version.
 
 Yes, there's a _lot_ of links there -- and AWS keeps releasing new services,
 which makes the page even more overwhelming.
-Fortunately, we're only going to use four services in this tutorial:
-S3, Cloudfront, Route 53, and Certificate Manager.
+Fortunately, you're only going to use four services in this tutorial:
+S3, CloudFront, Route 53, and Certificate Manager.
 
 # Register a Domain
 
@@ -145,7 +145,7 @@ information, check the "Terms and Conditions" check box, and click
 
 You've taken the first step, but there's still a lot to do. The domain is
 basically a pointer that tells computers how to get to your website, but
-we don't have a place to point those computers to yet. That's where
+you don't have a place to point those computers to yet. That's where
 [S3](https://aws.amazon.com/s3/) comes in. S3 stands for
 "Simple Storage Service", and it's going to hold the HTML files that Lektor
 produces. S3 will hold your website, and your domain will point to S3,
@@ -179,8 +179,8 @@ under the "Storage & Content Delivery" section. Then click on the
 S3 will ask you to pick a name for your bucket. **This is important:**
 you _must_ name your bucket with the _exact_ domain name that you want
 your site to be available at.
-For example, if I want my website to be available at `www.my-website.com`,
-and I own the `my-website.com` domain, then the bucket must be named
+For example, if you want my website to be available at `www.my-website.com`,
+and you own the `my-website.com` domain, then the bucket must be named
 `www.my-website.com` precisely.
 
 Note that it is not strictly required to include the "www" at the front of your
@@ -194,7 +194,7 @@ You will also need to select a region for your bucket. This doesn't really
 matter, but I recommend that you select "US Standard" (also known as "US East")
 because it's the cheapest and most popular option.
 
-Click the "Create" button, and S3 will create your bucket! Next, we'll need to
+Click the "Create" button, and S3 will create your bucket! Next, you'll need to
 modify some properties on the bucket to make it hold your website correctly.
 Click on the bucket you just created, and make sure that the "Properties"
 button is selected in the toolbar at the top of the page. It should look like
@@ -202,7 +202,7 @@ this:
 
 [![S3 bucket properties screen](s3-bucket-properties-1@825.png)](s3-bucket-properties-1.png)
 
-In that properties sidebar, we need to modify two sections: "Permissions" and
+In that properties sidebar, you need to modify two sections: "Permissions" and
 "Static Website Hosting". Let's do permissions, since it's right at the top.
 Click on it, and you'll see that the bucket is currently set up so that
 _you_ can do whatever you want with the bucket, but no one else can do
@@ -246,5 +246,129 @@ includes a URL, which is one way that people will be able to access your site!
 However, there are two problems. One, this URL is very long and ugly:
 in my case, it's `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
 And two, your bucket still doesn't have any HTML files in it! Fortunately,
-we can fix both problems.
+both problems can be fixed.
+
+# Upload to S3
+
+The next step is to configure Lektor to upload your HTML files to S3.
+Fortunately, the [lektor-s3](https://github.com/spenczar/lektor-s3) plugin
+makes this a lot easier, but you still have to set it up properly, so that
+it works with the bucket you just created.
+
+First, open up your `.lektorproject` file and add the plugin as a dependency
+by listing it in the "packages" section, like this:
+
+```ini
+[packages]
+lektor-s3 = 0.3
+```
+
+Next, add a new section in that same file to hold information about the S3
+bucket you created. It should look like this:
+
+```ini
+[servers.s3]
+name = S3
+enabled = yes
+default = yes
+target = s3://www.my-website.com
+```
+
+You'll need to change the `target` to refer to _your_ bucket name, rather than
+leaving it as `www.my-website.com`.
+
+Next, you need to find your AWS credentials. "Credentials" just means "proof
+that you are who you say you are", and for many websites, you can use your
+username and password as credentials. However, AWS does things differently,
+and requires that you use an "Access Key ID" and a "Secret Access Key", instead.
+You can generate multiple sets of credentials, and each set can have different
+permission levels, which can make your AWS account more secure.
+However, for the sake of simplicity, this tutorial won't go into generating new
+sets of credentials, and instead will stick with your default,
+full-permissions credentials.
+
+<div class="col-md-3">
+  <a href="aws-account-dropdown.png">
+    <img src="aws-account-dropdown@825.png" alt="AWS Account dropdown menu" />
+  </a>
+</div>
+<div class="col-md-9">
+  <p>
+  At the top right corner of every page of the
+  <a href="https://console.aws.amazon.com">AWS Console</a>,
+  your name will appear with a little arrow next to it.
+  Clicking on your name will reveal a dropdown menu with only a few items.
+  One of those items is "security credentials",
+  which is what you want to click on.
+  </p>
+</div>
+
+You'll end up on a page that lists several options for security credentials,
+and a warning will immediately pop up, informing you that you should create
+users with limited permissions. That is beyond the scope of this tutorial,
+so dismiss the warning by clicking on "Continue to Security Credentials".
+
+<div class="col-md-6">
+  <a href="aws-credentials-warning.png">
+    <img src="aws-credentials-warning@825.png" alt="AWS credentials warning" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="aws-credentials-list.png">
+    <img src="aws-credentials-list@825.png" alt="AWS credentials list" />
+  </a>
+</div>
+
+Click on the "Access Keys" item in the list, and you'll see a list of your
+existing access keys. If you've never used AWS access keys before, this list
+will be empty. Click on the "Create New Access Key" button, then click on
+"Show Access Key" once the access key has been created. The "Access Key ID" will
+be a long jumble of letters and numbers, and the "Secret Access Key" will be
+an _even longer_ jumble of letters and numbers.
+
+<div class="col-md-6">
+  <a href="aws-credentials-create-access-key.png">
+    <img src="aws-credentials-create-access-key@825.png" alt="AWS credentials: create an access key" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="aws-credentials-show-access-key.png">
+    <img src="aws-credentials-show-access-key@825.png" alt="AWS credentials: show access key" />
+  </a>
+</div>
+
+**This is important:** once you leave this page, you will _never_ be able to
+download or view the secret access key again! Make sure that you save it to
+your computer! If you don't, and you need it later on,
+you'll have to delete it and create a new one instead.
+
+Now you need to save this information to a place on your computer that
+[lektor-s3](https://github.com/spenczar/lektor-s3) can use it. In your home
+directory, create a directory called `.aws`. Inside of that `~/.aws` directory,
+create a file named `credentials`, with the following contents:
+
+```ini
+[default]
+aws_access_key_id=MYACCESSKEYID
+aws_secret_access_key=MySecretAccessKey12345
+```
+
+You'll need to change these values to refer to _your_ Access Key ID
+and Secret Access Key, instead of use the example values here.
+
+Once you've created the `~/.aws/credentials` file with the correct contents,
+Lektor should be able to deploy your website's HTML files to the S3 bucket
+you created. Give it a try, by `cd`-ing into your Lektor project, and
+runnning:
+
+```bash
+$ lektor build && lektor deploy
+```
+
+Once it's finished, go back to the
+[AWS Console](https://console.aws.amazon.com), click on "S3", and click on
+your bucket. You should see several files and folders in there! If you
+click on the "Properties" button in the toolbar at the top, click on the
+"Static Website Hosting" section, and click on the "Endpoint" URL, you'll
+see your website! Huzzah!
 
