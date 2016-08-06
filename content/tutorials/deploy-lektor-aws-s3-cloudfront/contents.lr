@@ -10,7 +10,7 @@ the HTML files, how do you get them on the internet? This tutorial will
 show you how to use [Amazon Web Services](https://aws.amazon.com/) to deploy
 your static website. Using these technologies, you can run a bulletproof
 static website that is immune to traffic spikes, at a cost of
-less than $10 per _year_.
+about $20 per _year_.
 
 ---
 summary:
@@ -103,8 +103,8 @@ select the TLD that you want to use, and click "Check". The pages should look
 like this:
 
 <div class="col-md-6">
-  <a href="route-53-register-domain.png">
-    <img src="route-53-register-domain@825.png" alt="Route 53 domain registration page" />
+  <a href="route53-register-domain.png">
+    <img src="route53-register-domain@825.png" alt="Route 53 domain registration page" />
   </a>
 </div>
 <div class="col-md-6">
@@ -255,16 +255,16 @@ Fortunately, the [lektor-s3](https://github.com/spenczar/lektor-s3) plugin
 makes this a lot easier, but you still have to set it up properly, so that
 it works with the bucket you just created.
 
-First, open up your `.lektorproject` file and add the plugin as a dependency
-by listing it in the "packages" section, like this:
+First, add the plugin to your project by running this command while sitting
+inside your project directory:
 
-```ini
-[packages]
-lektor-s3 = 0.3
+```bash
+$ lektor plugins add lektor-s3
 ```
 
-Next, add a new section in that same file to hold information about the S3
-bucket you created. It should look like this:
+Next, open up your `.lektorproject` file in a text editor and
+add a new section to hold information about the S3 bucket you created.
+It should look like this:
 
 ```ini
 [servers.s3]
@@ -451,3 +451,62 @@ AWS will start creating your CloudFront distribution, which takes a few minutes
 to complete. You can see that this screenshot shows that it's still in progress.
 
 [![CloudFront distribution being created](cloudfront-in-progress@825.png)](cloudfront-in-progress.png)
+
+You also want to tell [lektor-s3](https://github.com/spenczar/lektor-s3)
+about your CloudFront distribution. Every distribution is assigned an ID that
+is a mix of capital letters and numbers -- there's a column for it in the
+distribution table on the CloudFront website. (It's mostly hidden in the
+screenshot above, but you can see the first few characters peeking out.)
+Copy the ID for your distribution, and add it to the `[servers.s3]` section
+of your `.lektorproject` file. For example, if your CloudFront distribution
+ID was `E19DK4O4YV8F1Y`, your `.lektorproject` file would look like this:
+
+```ini
+[servers.s3]
+name = S3
+enabled = yes
+default = yes
+target = s3://www.my-website.com
+cloudfront = E19DK4O4YV8F1Y
+```
+
+# Point Domain to CloudFront
+
+Now that you have your website up and running on both S3 and CloudFront,
+the next step is configuring that domain you bought to point at it!
+To do this, we have to go back into Route 53, so go back to the
+[AWS Console](https://console.aws.amazon.com) and click on Route 53.
+Then click on your domain, and click "Manage DNS".
+
+<div class="col-md-6">
+  <a href="route53-manage-domain.png">
+    <img src="route53-manage-domain@825.png" alt="AWS Route 53: manage a domain" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="route53-manage-dns.png">
+    <img src="route53-manage-dns@825.png" alt="AWS Route 53: manage DNS for a domain" />
+  </a>
+</div>
+
+On that screen, you need to add a new record set to point your domain to the
+CloudFront distribution. Click "Create Record Set", then type "www" into the
+"Name" field and select "A" for the "Type" field. Just beneath that,
+there's an "Alias" field with two options: select "Yes", which will cause
+the "Alias Target" field to appear.
+
+<div class="col-md-6">
+  <a href="route53-make-cname.png">
+    <img src="route53-make-cname@825.png" alt="AWS Route 53: create a CNAME record" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="route53-alias-dropdown.png">
+    <img src="route53-alias-dropdown@825.png" alt="AWS Route 53: select the alias target" />
+  </a>
+</div>
+
+When you click on the "Alias Target" field, Amazon will show another helpful
+dropdown menu, with entries for both S3 and CloudFront. Select the CloudFront
+distribution you just created, _not_ the S3 bucket. Then click the "Create"
+button.
