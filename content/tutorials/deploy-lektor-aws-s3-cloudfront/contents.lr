@@ -1,0 +1,250 @@
+title: Deploying Lektor on AWS, with S3 and Cloudfront
+---
+last_updated: 2016-08-05
+---
+intro:
+
+[Lektor](https://www.getlektor.com/) is a static content management system
+that makes creating a static website a breeze. However, once you've generated
+the HTML files, how do you get them on the internet? This tutorial will
+show you how to use [Amazon Web Services](https://aws.amazon.com/) to deploy
+your static website. Using these technologies, you can run a bulletproof
+static website that is immune to traffic spikes, at a cost of
+less than $10 per _year_.
+
+---
+summary:
+
+A simple tutorial demonstrating how to deploy a Lektor site to AWS using S3, Cloudfront, Route 53, and Certificate Manager.
+---
+toc_ad_id: 3610826013
+---
+footer_ad_id: 5087559211
+---
+body:
+
+# Sign Up with AWS
+
+[Amazon Web Services](https://aws.amazon.com/), or AWS, is the most popular
+cloud computing environment today. It has _many_ different services that
+can be used together or separately, and because you only pay for what you use,
+it's very inexpensive to get started.
+
+The first step is to sign up for an AWS account, by going to
+[aws.amazon.com](https://aws.amazon.com/) and clicking on the button that says
+"Create a Free Account". If you already have an account with
+[Amazon.com](https://www.amazon.com/) (the shopping website),
+you can put in the username and password that you use
+for Amazon.com, since Amazon.com and AWS are run by the same company.
+
+Note that you'll need to verify your AWS account with a phone number as part of
+this process. You'll be asked to put in your phone number, AWS will call your
+phone, and you'll need to enter a
+<abbr title="Personal Identification Number">PIN</abbr> to verify that
+you own that phone number. You'll also need to set up a payment method,
+so that AWS can bill you for the services you use. (Don't worry, it only costs
+a few dollars.)
+
+Once you've signed up with AWS, you can access the AWS Console at
+[console.aws.amazon.com](https://console.aws.amazon.com).
+I've included a screenshot so you can see how it looks, but it's in the process
+of being redesigned. The first picture is the new version, the second
+picture is the old version.
+
+<div class="col-md-6">
+  <a href="aws-console-new.png">
+    <img src="aws-console-new@825.png" alt="AWS Console, new design" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="aws-console-old-1.png">
+    <img src="aws-console-old-1@825.png" alt="AWS Console, old design" />
+  </a>
+</div>
+
+Yes, there's a _lot_ of links there -- and AWS keeps releasing new services,
+which makes the page even more overwhelming.
+Fortunately, we're only going to use four services in this tutorial:
+S3, Cloudfront, Route 53, and Certificate Manager.
+
+# Register a Domain
+
+To deploy your static site on AWS, the first thing you need to do is register
+a domain for it. A [domain](https://en.wikipedia.org/wiki/Domain_name) is the
+first part of the URL that you type in to access your site, often ending in
+".com". (That ".com" part is called a
+[top-level domain](https://en.wikipedia.org/wiki/Top-level_domain), or TLD.
+There are many different TLDs, but ".com" is the most well-known.)
+
+"Registering" a domain basically claiming ownership of it for a specified
+period of time, usually one to five years.
+There's a big, global network called the
+[Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System), or DNS,
+which determines who owns which domains. You cannot claim ownership of a
+domain _forever_, but you can claim ownership for several years at a time,
+and keep extending that claim over and over again as many times as you want.
+That's how big companies keep their websites running for years at a time --
+but if someone forgets to renew the domain before the ownership expires,
+it gets released and anyone else can register it.
+(Yes, this has happened to some companies!)
+
+In order to register a domain in the DNS, you have to go through a "registrar"
+(which is a company that helps run the global DNS network), and you have to
+pay a fee to to that registrar. Usually, this fee is around $10 per year
+that you are claiming ownership of the domain, but different registrars charge
+different amounts. As you might expect, AWS is a domain registrar, and in
+order to register a domain with AWS, you need to use the service called
+"Route 53".
+
+Go to the [AWS Console](https://console.aws.amazon.com) and click on "Route 53",
+under the "Networking" section. Then go to the Domain Registration section,
+click on the "Register Domain" button, type in the domain you want to register,
+select the TLD that you want to use, and click "Check". The pages should look
+like this:
+
+<div class="col-md-6">
+  <a href="route-53-register-domain.png">
+    <img src="route-53-register-domain@825.png" alt="Route 53 domain registration page" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="choose-domain-name.png">
+    <img src="choose-domain-name@825.png" alt="Route 53, choose a domain name" />
+  </a>
+</div>
+
+When you click on the "Check" button, Route 53 will check DNS to see if someone
+else has already claimed that domain. If so, you'll have to try a different
+name. There's a handy website called [Domainr](http://domainr.com/) that can
+help you find variations on the name you were hoping for. Unfortunately,
+most short, simple domain names are already taken,
+so you'll probably need to get a bit creative.
+
+Once you've found an available domain that you like, add it to your Route 53
+shopping cart and click "Continue". On the next page, you can select how many
+years you want to register the domain for: the longer you claim it, the more
+it will cost. You are also required to put in contact information for
+whoever owns and controls this domain.
+If you are buying this domain to host a personal website, you should put
+in your own contact details. If you are buying this domain on behalf of a
+company, you should put in the contact information for the company itself.
+
+[![DNS contact details](dns-contact-details@825.png)](dns-contact-details.png)
+
+Note that **any contact information you put into this form will be publicly
+visible** unless you enable Privacy Protection for your domain, at the bottom
+of the contact form. If you are putting in your own contact information,
+be _sure_ to enable Privacy Protection if you don't want everyone in the world
+knowing your home address.
+
+When you've put in the contact information, click Continue. Review your
+information, check the "Terms and Conditions" check box, and click
+"Complete Purchase". Well done, you now own your first domain!
+
+# Make an S3 Bucket
+
+You've taken the first step, but there's still a lot to do. The domain is
+basically a pointer that tells computers how to get to your website, but
+we don't have a place to point those computers to yet. That's where
+[S3](https://aws.amazon.com/s3/) comes in. S3 stands for
+"Simple Storage Service", and it's going to hold the HTML files that Lektor
+produces. S3 will hold your website, and your domain will point to S3,
+which will give you a basic static website!
+
+In order to use S3, you have to create something called a "bucket". Like
+a literal bucket, it exists to hold things. S3 uses these buckets to
+organize different kinds of data and keep them separate from each other.
+Just like you wouldn't store your baby photos and your tax returns in the
+same place, you would use different S3 buckets to hold different kinds of data.
+You can have lots and lots of buckets if you want, and the buckets themselves
+are totally free. (Storing data inside of these buckets costs a _tiny_ bit
+of money, but it's _almost_ free: we're talking about fractions of a penny.
+Also, the only way to have S3 hold your website is to put it inside of a bucket.)
+
+Go to the [AWS Console](https://console.aws.amazon.com) and click on "S3",
+under the "Storage & Content Delivery" section. Then click on the
+"Create Bucket" button. It should look like this:
+
+<div class="col-md-6">
+  <a href="s3-welcome.png">
+    <img src="s3-welcome@825.png" alt="S3 welcome screen" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="s3-bucket-name.png">
+    <img src="s3-bucket-name@825.png" alt="S3 select bucket name" />
+  </a>
+</div>
+
+S3 will ask you to pick a name for your bucket. **This is important:**
+you _must_ name your bucket with the _exact_ domain name that you want
+your site to be available at.
+For example, if I want my website to be available at `www.my-website.com`,
+and I own the `my-website.com` domain, then the bucket must be named
+`www.my-website.com` precisely.
+
+Note that it is not strictly required to include the "www" at the front of your
+URL, but it's a good idea if you think there's *any* chance that your website will
+grow to a massive size in the future. There are arguments
+[for the www](http://www.yes-www.org/why-use-www/) and
+[against the www](http://no-www.org/), but this tutorial will assume that you
+are using the "www".
+
+You will also need to select a region for your bucket. This doesn't really
+matter, but I recommend that you select "US Standard" (also known as "US East")
+because it's the cheapest and most popular option.
+
+Click the "Create" button, and S3 will create your bucket! Next, we'll need to
+modify some properties on the bucket to make it hold your website correctly.
+Click on the bucket you just created, and make sure that the "Properties"
+button is selected in the toolbar at the top of the page. It should look like
+this:
+
+[![S3 bucket properties screen](s3-bucket-properties-1@825.png)](s3-bucket-properties-1.png)
+
+In that properties sidebar, we need to modify two sections: "Permissions" and
+"Static Website Hosting". Let's do permissions, since it's right at the top.
+Click on it, and you'll see that the bucket is currently set up so that
+_you_ can do whatever you want with the bucket, but no one else can do
+_anything_ with it.
+
+Change the permissions so that everyone can view the contents of the bucket.
+To do that, first click the "Add more permissions" button, then select
+"Everyone" from the dropdown, and then click the checkbox marked
+"View permissions". Click the "Save" button to save your changes.
+
+<div class="col-md-6">
+  <a href="s3-bucket-permissions-1.png">
+    <img src="s3-bucket-permissions-1@825.png" alt="S3 bucket permissions" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="s3-bucket-permissions-2.png">
+    <img src="s3-bucket-permissions-2@825.png" alt="S3 bucket permissions" />
+  </a>
+</div>
+
+Next, click on "Static Website Hosting" to open that section, and click on
+"Enable website hosting". Some more options will appear. Set the
+"Index Document" to "index.html" and the "Error Document" to "404.html".
+Click the "Save" button to save your changes.
+
+<div class="col-md-6">
+  <a href="s3-bucket-site-hosting-1.png">
+    <img src="s3-bucket-site-hosting-1@825.png" alt="S3 static site hosting permissions" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="s3-bucket-site-hosting-2.png">
+    <img src="s3-bucket-site-hosting-2@825.png" alt="S3 static site hosting permissions" />
+  </a>
+</div>
+
+Great, your S3 bucket is all set to host a website! In fact, you may have
+noticed that the description of the "Static Website Hosting" section
+includes a URL, which is one way that people will be able to access your site!
+However, there are two problems. One, this URL is very long and ugly:
+in my case, it's `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
+And two, your bucket still doesn't have any HTML files in it! Fortunately,
+we can fix both problems.
+
