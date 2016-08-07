@@ -510,3 +510,64 @@ When you click on the "Alias Target" field, Amazon will show another helpful
 dropdown menu, with entries for both S3 and CloudFront. Select the CloudFront
 distribution you just created, _not_ the S3 bucket. Then click the "Create"
 button.
+
+Whenever you make changes to DNS, those changes don't apply immediately.
+DNS uses a technique called
+[caching](<https://en.wikipedia.org/wiki/Cache_(computing)>) to avoid
+overloading the system, and one of the downsides of caching is that it can
+take a little while for the system to notice changes. When you make a DNS
+change, it can take anywhere from 5 minutes to 1 hour for it to apply.
+
+Type your domain into your web browser, with the "www" in front, and see if
+your website shows up. If not, wait a little while and try again -- it
+shouldn't take longer than an hour. Once it works, celebrate! You have a
+website!
+
+# Redirect Bare Domain to WWW
+
+Your website works, but _only_ if you include the "www" in front -- if you
+try to visit your domain _without_ the "www", it will fail, which is very
+confusing for people trying to visit your site. A domain without a "www" is
+called a "bare domain", and the correct way to fix this is with something
+called a "bare domain redirect". With a bare domain redirect in place,
+if someone tries to visit your site without the "www",
+they will be automatically rerouted to the "www" domain, so that the website
+works without the user having to do anything.
+Setting this up is pretty straightforward,
+and it uses the same three services you've already used: S3, CloudFront, and
+Route 53.
+
+Go back to the [AWS Console](https://console.aws.amazon.com) and click on S3.
+Make a new S3 bucket named after your domain _without_ the `www`. If your
+domain is `my-website.com`, then the bucket should be named `my-website.com`.
+(Once again, region doesn't matter, but "US Standard" or "US East" is probably
+a good choice.) Click on this newly-created bucket, make sure
+"Properties" is selected in the toolbar, and then click on the
+"Static Website Hosting" section in the bucket properties.
+
+[![AWS S3: set up website redirect](s3-redirect@825.png)](s3-redirect.png)
+
+In that section, click on "Redirect all requests to another host name".
+In the "Redirect all requests to" field, put in the name of your other
+S3 bucket that _does_ have the "www" in there. Then click the Save button
+to save your changes.
+
+Next, we need to make a CloudFront distribution for this redirect bucket.
+Go back to the [AWS Console](https://console.aws.amazon.com) and click on
+CloudFront. Create a new CloudFront distribution just like before, but this
+time select your bare domain S3 bucket for the "Origin Domain Name", and
+put in the bare domain in the "Alternate Domain Names (CNAMEs)" section.
+Everything else is the same: still a web distribution rather than RTMP,
+and you can still leave most of the fields at their default values.
+
+Finally, we need to set up this CloudFront distribution in DNS.
+Go back to the [AWS Console](https://console.aws.amazon.com) and click on
+Route 53. Add a new record set for your domain, but this time, _leave the name
+blank_. This is how Route 53 knows the record should apply to the bare domain,
+instead of the "www". Just as before, the record should be of type "A",
+with "Alias" set to "Yes". Select the CloudFront distribution
+that you just made for the bare domain, and the click "Create".
+
+Once again, this change will take anywhere from 5 minutes to 1 hour to take
+effect. Once it does, visiting the bare domain in your web browser will
+automatically redirect you to the "www" subdomain!
