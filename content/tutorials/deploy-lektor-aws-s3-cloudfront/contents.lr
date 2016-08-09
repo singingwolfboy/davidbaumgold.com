@@ -10,7 +10,8 @@ the HTML files, how do you get them on the internet? This tutorial will
 show you how to use [Amazon Web Services](https://aws.amazon.com/) to deploy
 your static website. Using these technologies, you can run a bulletproof
 static website that is immune to traffic spikes, at a cost of
-about $20 per _year_.
+about $20 per _year_. You'll also learn how to get HTTPS support for your
+website, and email addresses at your website, for no additional cost!
 
 ---
 summary:
@@ -42,8 +43,7 @@ this process. You'll be asked to put in your phone number, AWS will call your
 phone, and you'll need to enter a
 <abbr title="Personal Identification Number">PIN</abbr> to verify that
 you own that phone number. You'll also need to set up a payment method,
-so that AWS can bill you for the services you use. (Don't worry, it only costs
-a few dollars.)
+so that AWS can bill you for the services you use.
 
 Once you've signed up with AWS, you can access the AWS Console at
 [console.aws.amazon.com](https://console.aws.amazon.com).
@@ -394,13 +394,13 @@ Click on the "Create Distribution" button to get started, and select that
 you want a Web distribution, instead of RTMP.
 
 <div class="col-md-6">
-  <a href="aws-cloudfront-start.png">
-    <img src="aws-cloudfront-start@825.png" alt="AWS CloudFront: Getting Started" />
+  <a href="cloudfront-start.png">
+    <img src="cloudfront-start@825.png" alt="AWS CloudFront: Getting Started" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="aws-cloudfront-method.png">
-    <img src="aws-cloudfront-method@825.png" alt="AWS CloudFront: select web delivery method" />
+  <a href="cloudfront-method.png">
+    <img src="cloudfront-method@825.png" alt="AWS CloudFront: select web delivery method" />
   </a>
 </div>
 
@@ -429,16 +429,18 @@ bucket.
 </div>
 <div class="clearfix"></div>
 
-Next, scroll down to the "Distribution Settings" section, find the field called
-"Alternate Domain Names (CNAMEs)" and put in the domain of your website:
+Next, scroll down to the "Distribution Settings" section. Just above it,
+there's a field called "Compress Objects Automatically": set that to "Yes".
+Slightly below that, there's a field called "Alternate Domain Names (CNAMEs)".
+Put the domain of your website into the CNAMEs field:
 for example, "www.my-website.com". This should match the name of the S3 bucket
 you're using. Finally, scroll down to the bottom of the form, find the
 "Default Root Object" field, and type in "index.html". Then click
 "Create Distribution".
 
 <div class="col-md-6">
-  <a href="cloudfront-create-cname.png">
-    <img src="cloudfront-create-cname@825.png" alt="AWS CloudFront: creating a distribution" />
+  <a href="cloudfront-distribution-settings.png">
+    <img src="cloudfront-distribution-settings@825.png" alt="AWS CloudFront: creating a distribution" />
   </a>
 </div>
 <div class="col-md-6">
@@ -571,3 +573,273 @@ that you just made for the bare domain, and the click "Create".
 Once again, this change will take anywhere from 5 minutes to 1 hour to take
 effect. Once it does, visiting the bare domain in your web browser will
 automatically redirect you to the "www" subdomain!
+
+# Setup Email at Your Domain
+
+When you own a domain, you can make email addresses on that domain, as well!
+Not only is this _really cool_, it's also a way of verifying that you own
+the domain. We'll need this in order to set up HTTPS on your website.
+
+In order to setup email on your domain, you'll need a "hosted email service",
+which is a service that handles sending and receiving email for you.
+AWS offers a hosted email service called
+[WorkMail](https://aws.amazon.com/workmail),
+but it costs $4 per user per month, which is expensive!
+There are many hosted email services out there, and they all have
+different price ranges and feature sets. However, I recommend
+[Zoho Mail](https://www.zoho.com/mail/) because they have a free plan.
+
+[Sign up for Zoho's free plan](https://payments.zoho.com/ResellerCustomerSignUp.do?id=26ea8ad5f635094a3d40394e07c4a9899bb09994842e9bc813a9a5b210e28055)[^zoho-referral]
+-- the phone number is optional. Once you have a Zoho account, you'll be able
+to set up hosted email service for your domain. Click on the "Add Domain"
+link, then type in the domain you bought from Route 53 and click the "OK"
+button. Next, you'll need to prove to Zoho that you own that domain.
+
+[^zoho-referral]:
+    This is a [referral link](https://en.wikipedia.org/wiki/Referral_marketing)
+    for Zoho. If you sign up for a Zoho account using this link, and then later
+    decide that you like Zoho so much that you want to upgrade to a paid
+    account, then Zoho will send me a bit of money for referring you to them.
+    It doesn't cost you anything extra at all, and it's a great way to say
+    "thank you" if you found this tutorial useful! So if you decide to sign
+    up for Zoho, [please use my referral link!](https://payments.zoho.com/ResellerCustomerSignUp.do?id=26ea8ad5f635094a3d40394e07c4a9899bb09994842e9bc813a9a5b210e28055)
+
+<div class="col-md-6">
+  <a href="zoho-signup.png">
+    <img src="zoho-signup@825.png" alt="Zoho: sign up for a new account" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="zoho-list-domains.png">
+    <img src="zoho-list-domains@825.png" alt="Zoho: listing your domains" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="zoho-add-domain.png">
+    <img src="zoho-add-domain@825.png" alt="Zoho: add a new domain to your account" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="zoho-domain-added.png">
+    <img src="zoho-domain-added@825.png" alt="Zoho: domain has been added to your account" />
+  </a>
+</div>
+
+[![Zoho: verify ownership of your domain](zoho-verify@825.png)](zoho-verify.png)
+
+Zoho can provide instructions for how to verify your domain for a few
+different domain registrars, but Route 53 isn't on that list, so select
+"Others...". Zoho will give you three different options for how to verify
+your domain: CNAME, TXT, or HTML. You can use whichever method you like, but
+this tutorial will use the CNAME method.
+
+<div class="col-lg-4">
+  <a href="route53-zoho-cname.png">
+    <img src="route53-zoho-cname@825.png" alt="Route 53: set up a CNAME for Zoho verification" />
+  </a>
+</div>
+<div class="col-lg-8">
+  <p>The CNAME method requires that you set a specific value in your domain's
+  DNS, which means you're going back to AWS Route 53! Take note of the "zb" code
+  that Zoho gives you: in the screenshot above, the zb code is "zb14705986", but
+  yours will be different. Then go back to the
+  <a href="https://console.aws.amazon.com">AWS Console</a>
+  click on Route 53, and add another record set for your domain.
+  Put your zb code into the "Name" field, set the "Type" field to "CNAME",
+  set "Alias" to No, and put "zmverify.zoho.com" in the "Value" field.
+  Then click the "Create" button.</p>
+</div>
+<div class="clearfix"></div>
+
+Once you've added the record in Route 53, you'll need to wait a few minutes
+for the DNS change to apply. When you think it has, go back to the Zoho
+website and click on the big green "Verify by CNAME" button at the bottom
+of the page. If you get a "Verification Failed" message, wait a little longer
+and try again -- it shouldn't take more than an hour for the DNS change
+to apply.
+
+Once Zoho has successfully verified your domain, you'll be asked to pick a
+username for your new email address at your domain. Put in "admin": this name
+will be important later on, when you set up HTTPS for your website. You can
+make multiple different email addresses at your domain, but make sure that
+at least one of them has the username "admin".
+
+<div class="col-md-6">
+  <a href="zoho-create-email.png">
+    <img src="zoho-create-email@825.png" alt="Zoho: create email address" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="zoho-mx-records.png">
+    <img src="zoho-mx-records@825.png" alt="Zoho: set MX records" />
+  </a>
+</div>
+
+The next step is to set MX records in DNS.
+These records are used by email systems all around the world,
+to make sure that email gets sent to the right place. In this
+case, you want your email to be delivered to Zoho so they can handle it for you.
+
+<div class="col-lg-4">
+  <a href="route53-zoho-mx.png">
+    <img src="route53-zoho-mx@825.png" alt="Route 53: set up MX for Zoho email" />
+  </a>
+</div>
+<div class="col-lg-8">
+  <p>Once again, we're modifying DNS, which means going back to Route 53.
+  (This step and the CNAME domain verification step can be done simultaneously,
+  if you want.) This time, when you add a DNS record to your domain, leave
+  the "Name" field blank and set the "Type" field to "MX". Set "Alias" to No,
+  and put the following text into the "Value" field:</p>
+
+  <pre>10 mx.zoho.com.
+20 mx2.zoho.com.</pre>
+
+  <p>Note the trailing period in the <code>zoho.com</code> URLs:
+  it's important!</p>
+</div>
+<div class="clearfix"></div>
+
+Once that DNS change takes effect, emails to `admin@my-website.com` will be
+delivered to your Zoho inbox. Try sending some email to that email address!
+You can also set up other email addresses at your domain, if you want.
+[Consult Zoho's documentation to learn more.](https://www.zoho.com/mail/help/adminconsole/adding-users.html)
+
+# Setup HTTPS
+
+Now that you have a working website over insecure HTTP, and you can receive
+email at your domain, you are finally able to set up secure HTTPS for
+your website!
+
+To do this, we're going to use a new AWS service, called
+[Certificate Manager](https://aws.amazon.com/certificate-manager/), or ACM.
+HTTPS relies on something called a "certificate", which used to be very
+difficult and expensive to get before ACM came along. Now, all you need
+to do to get a HTTPS certificate is indicate which domain (or domains)
+you want HTTPS on, and click a link in an email to verify that you own those
+domains. Once you have your certificate, you can give it to CloudFront,
+and then CloudFront can handle HTTPS!
+
+Go back to the [AWS Console](https://console.aws.amazon.com) and click on
+"Certificate Manager", under the "Security & Identity" section. Then click
+on the "Request a certificate" or "Get started" button, and you'll be
+asked to put in the domain names that you want the certificate to apply to.
+Put in your domain name twice: once with the "www", and once without it.
+You'll need to click the "Add another name to this certificate" button to get
+a second line to show up.
+
+<div class="col-md-6">
+  <a href="acm-domain-names.png">
+    <img src="acm-domain-names@825.png" alt="AWS Certificate Manager: create a new certificate" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="acm-in-progress.png">
+    <img src="acm-in-progress@825.png" alt="AWS Certificate Manager: validation in progress" />
+  </a>
+</div>
+
+Review your domains on the next screen, and click the "Confirm and request"
+button. When you do that, Certificate Manager will send an email to a few
+special email addresses on your domain, including the "admin" email address
+you set up. Go to Zoho and check the inbox for your "admin" email address.
+When you receive the email from Amazon Certificates, click on the approval
+link, and you'll have your certificate!
+
+Once you've got your certificate, you need to give it to CloudFront so it can
+use it. Go back to the [AWS Console](https://console.aws.amazon.com) and
+click on CloudFront. You have two distributions, one for the bare domain
+and one for "www": you'll need to make the same change for both.
+
+Pick one of your distributions and click on the distribution ID
+to get a detail view of the information for that distribution.
+Then click the "Edit" button at the top of the page to modify those details.
+You should see a field called "SSL Certificate", which is set to
+"Default Cloudfront Certificate" by default. Switch that to
+"Custom SSL Certificate" instead, and select the certificate you just created
+from the dropdown menu. Then scroll down to the bottom of the page and click
+"Yes, Edit" to save your changes.
+
+<div class="col-md-6">
+  <a href="cloudfront-edit-general.png">
+    <img src="cloudfront-edit-general@825.png" alt="CloudFront: edit a distribution's general settings" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="cloudfront-certificate.png">
+    <img src="cloudfront-certificate@825.png" alt="CloudFront: select SSL certificate" />
+  </a>
+</div>
+
+Next, click on the "Behaviors" tab, select the only item in the list of
+behaviors by checking the checkbox at the far left, and then click the "Edit"
+button. Find the "Viewer Protocol Policy" field, and change it from
+"HTTP and HTTPS" to "Redirect HTTP to HTTPS". Then scroll down to the bottom
+of the page and click "Yes, Edit" to save your changes.
+
+<div class="col-md-6">
+  <a href="cloudfront-edit-behaviors.png">
+    <img src="cloudfront-edit-behaviors@825.png" alt="CloudFront: edit a distribution's behaviors" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="cloudfront-redirect-to-https.png">
+    <img src="cloudfront-redirect-to-https@825.png" alt="CloudFront: redirect HTTP to HTTPS" />
+  </a>
+</div>
+
+Don't forget to make these edits to *both* CloudFront distributions!
+
+# Finished!
+
+You're all done! You should now have a working static website, hosted on AWS,
+which uses HTTPS for all connections. You even have hosted email at your domain,
+as a bonus!
+
+Updating your website is easy, as well, but there is one minor downside: it
+will take a few minutes for updates to appear, because of the way that
+CloudFront works. New pages should show up instantly, though. Either way,
+updating is easy: just edit your website locally using Lektor and press the
+"Deploy" button. Lektor-S3 will handle uploading the files to S3, CloudFront
+will pick them up automatically (after a small delay), and your domain and
+HTTPS certificate should continue to work seamlessly.
+
+As for costs, we can break down the annual price like this:
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Annual Cost</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Registering a domain</td>
+      <td>$12.00</td>
+      <td>For a <code>.com</code> domain. Other TLDs may cost different prices.</td>
+    </tr>
+    <tr>
+      <td>Route 53 Hosted Zone</td>
+      <td>$6.00</td>
+      <td>Charged at $0.50 per month. This is for hosting DNS for your domain.</td>
+    </tr>
+    <tr>
+      <td>Content &amp; Bandwidth</td>
+      <td><i>negligible</i></td>
+      <td>Typically a few cents per month, even for medium-size sites.</td>
+    </tr>
+  </tbody>
+</table>
+
+That's right: weird as it sounds, the _vast_ majority of your costs come from
+having your own domain! The actual content of your website, as well as the
+bandwidth used to send your content to your viewers, are almost free.
+This means that even if your website gets ridiculously popular, you probably
+won't pay more than $20 per year to have your website hosted on S3 and
+CloudFront.
+
+Questions? Suggestions? Is something in this tutorial not working properly?
+Add a comment below, or contact me and let me know!
+(My contact information is at the top left corner of every page of my website.)

@@ -16,6 +16,16 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
   }
 }
 
+div.highlight {
+  background-color: $gray-lighter;
+  padding: 1em;
+  margin-bottom: 1rem;
+
+  pre {
+    margin: 0;
+  }
+}
+
 ul.projects {
   @include list-unstyled;
   margin-top: 1rem;
