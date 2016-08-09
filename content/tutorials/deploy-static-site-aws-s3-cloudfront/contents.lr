@@ -118,8 +118,8 @@ like this:
   </a>
 </div>
 <div class="col-md-6">
-  <a href="choose-domain-name.png">
-    <img src="choose-domain-name@825.png" alt="Route 53, choose a domain name" />
+  <a href="route53-choose-domain-name.png">
+    <img src="route53-choose-domain-name@825.png" alt="Route 53, choose a domain name" />
   </a>
 </div>
 
@@ -139,7 +139,7 @@ If you are buying this domain to host a personal website, you should put
 in your own contact details. If you are buying this domain on behalf of a
 company, you should put in the contact information for the company itself.
 
-[![DNS contact details](dns-contact-details@825.png)](dns-contact-details.png)
+[![DNS contact details](route53-contact-details@825.png)](route53-contact-details.png)
 
 Note that **any contact information you put into this form will be publicly
 visible** unless you enable Privacy Protection for your domain, at the bottom
@@ -214,7 +214,7 @@ Click on the bucket you just created, and make sure that the "Properties"
 button is selected in the toolbar at the top of the page. It should look like
 this:
 
-[![S3 bucket properties screen](s3-bucket-properties-1@825.png)](s3-bucket-properties-1.png)
+[![S3 bucket properties screen](s3-bucket-properties@825.png)](s3-bucket-properties.png)
 
 In that properties sidebar, you need to modify two sections: "Permissions" and
 "Static Website Hosting". Let's do permissions, since it's right at the top.
