@@ -1,22 +1,32 @@
-title: Deploying Lektor on AWS, with S3 and CloudFront
+title: Deploying a Static Site on AWS, with S3 and CloudFront
 ---
-last_updated: 2016-08-05
+last_updated: 2016-08-08
 ---
 intro:
 
-[Lektor](https://www.getlektor.com/) is a static content management system
-that makes creating a static website a breeze. However, once you've generated
-the HTML files, how do you get them on the internet? This tutorial will
+Static website are great: they're easy to create, and easy to test on your
+local computer. However, once you've created your static website,
+how do you get it on the internet? This tutorial will
 show you how to use [Amazon Web Services](https://aws.amazon.com/) to deploy
-your static website. Using these technologies, you can run a bulletproof
+a static website. Using these technologies, you can run a bulletproof
 static website that is immune to traffic spikes, at a cost of
-about $20 per _year_. You'll also learn how to get HTTPS support for your
-website, and email addresses at your website, for no additional cost!
+about $20 per _year_. You'll also learn how to get
+[HTTPS](https://https.cio.gov/faq/) support for your website
+([which every website should have](https://https.cio.gov/everything/)),
+and email addresses at your website, for no additional cost!
+
+There are many different ways to create a static website, but I recommend
+[Lektor](https://www.getlektor.com/). It's a static content management system
+that makes creating a static website a breeze. Once it's set up, it's easy
+to create, edit, and delete content from your website, even for non-technical
+users! This tutorial will assume that you're using Lektor to create your
+site, but most of this tutorial can be applied to _any_ static website
+or static site generator.
 
 ---
 summary:
 
-A simple tutorial demonstrating how to deploy a Lektor site to AWS using S3, CloudFront, Route 53, and Certificate Manager.
+A simple tutorial demonstrating how to deploy a static website to AWS using S3, CloudFront, Route 53, and Certificate Manager.
 ---
 toc_ad_id: 3610826013
 ---
@@ -147,9 +157,13 @@ You've taken the first step, but there's still a lot to do. The domain is
 basically a pointer that tells computers how to get to your website, but
 you don't have a place to point those computers to yet. That's where
 [S3](https://aws.amazon.com/s3/) comes in. S3 stands for
-"Simple Storage Service", and it's going to hold the HTML files that Lektor
-produces. S3 will hold your website, and your domain will point to S3,
-which will give you a basic static website!
+"Simple Storage Service", and it's going to hold the HTML files that make
+up your static website. Conceptually, we're going to deploy your website in
+three parts. S3 will hold the files that make up your website,
+CloudFront (which we'll get to later) will serve those files out to the
+internet, and your domain will point to CloudFront so that people can
+find your website on the internet. Let's take it one step at a time, and
+start with S3.
 
 In order to use S3, you have to create something called a "bucket". Like
 a literal bucket, it exists to hold things. S3 uses these buckets to
@@ -250,13 +264,19 @@ both problems can be fixed.
 
 # Upload to S3
 
-The next step is to configure Lektor to upload your HTML files to S3.
+The next step is to upload your HTML files to S3. In this tutorial, we'll
+assume you're using [Lektor](https://www.getlektor.com/) to generate your
+HTML files, but you can use whatever system you want (or even write your
+HTML files by hand).
+
+If you're using Lektor, you need to configure Lektor to upload your HTML
+files to S3 every time you re-deploy your website.
 Fortunately, the [lektor-s3](https://github.com/spenczar/lektor-s3) plugin
 makes this a lot easier, but you still have to set it up properly, so that
 it works with the bucket you just created.
 
 First, add the plugin to your project by running this command while sitting
-inside your project directory:
+inside your Lektor project directory:
 
 ```bash
 $ lektor plugins add lektor-s3
@@ -379,7 +399,8 @@ You've made great progress, but you're not done yet. The next step is to
 use [CloudFront](https://aws.amazon.com/cloudfront/), Amazon's
 [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network)
 service. This will do two things: make your website load _fast_ anywhere
-in the world, and allow you to use HTTPS, the secure version of HTTP.
+in the world, and allow you to use [HTTPS](https://https.cio.gov/faq/),
+the secure version of HTTP.
 
 Just like S3 is organized into "buckets", CloudFront is organized into
 "distributions". You need to create a distribution for your website and point
@@ -454,7 +475,8 @@ to complete. You can see that this screenshot shows that it's still in progress.
 
 [![CloudFront distribution being created](cloudfront-in-progress@825.png)](cloudfront-in-progress.png)
 
-You also want to tell [lektor-s3](https://github.com/spenczar/lektor-s3)
+If you're using [Lektor](https://www.getlektor.com/), you should also tell
+[lektor-s3](https://github.com/spenczar/lektor-s3)
 about your CloudFront distribution. Every distribution is assigned an ID that
 is a mix of capital letters and numbers -- there's a column for it in the
 distribution table on the CloudFront website. (It's mostly hidden in the
@@ -710,6 +732,7 @@ You can also set up other email addresses at your domain, if you want.
 Now that you have a working website over insecure HTTP, and you can receive
 email at your domain, you are finally able to set up secure HTTPS for
 your website!
+[Every website should use HTTPS for security.](https://https.cio.gov/everything/)
 
 To do this, we're going to use a new AWS service, called
 [Certificate Manager](https://aws.amazon.com/certificate-manager/), or ACM.
@@ -799,10 +822,14 @@ as a bonus!
 Updating your website is easy, as well, but there is one minor downside: it
 will take a few minutes for updates to appear, because of the way that
 CloudFront works. New pages should show up instantly, though. Either way,
-updating is easy: just edit your website locally using Lektor and press the
-"Deploy" button. Lektor-S3 will handle uploading the files to S3, CloudFront
-will pick them up automatically (after a small delay), and your domain and
-HTTPS certificate should continue to work seamlessly.
+updating is simple: just update the files in your S3 bucket.
+If you're using [Lektor](https://www.getlektor.com/), updating your website
+is as easy as clicking the "Deploy" button --
+[lektor-s3](https://github.com/spenczar/lektor-s3) will upload your files
+to the correct place automatically.
+Once the files are updated in S3,
+CloudFront will pick them up automatically (after a small delay),
+and your domain and HTTPS certificate will continue to work seamlessly.
 
 As for costs, we can break down the annual price like this:
 

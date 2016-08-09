@@ -1,0 +1,44 @@
+title: Tutorial: Deploying Static Sites on AWS
+---
+pub_date: 2016-08-08
+---
+summary:
+
+Announcing a new tutorial for how to deploy a static site on AWS, using Lektor, S3, and Cloudfront.
+---
+body:
+
+I've [blogged](/blog/2016/05/learning-lektor/) about how
+[the contents of my website](https://github.com/singingwolfboy/davidbaumgold.com)
+are maintained with [Lektor](https://www.getlektor.com/), a static content
+management system. However, websites are about more than just content.
+[Deployment](https://en.wikipedia.org/wiki/Software_deployment) is a deceptively
+difficult problem, and a lot of software developers struggle with learning
+how to deploy their software effectively. It's a large enough problem that
+there's an entire field dedicated to it:
+[operations](https://en.wikipedia.org/wiki/Information_technology_operations),
+or [DevOps](https://en.wikipedia.org/wiki/DevOps).
+I deploy my website using [Amazon Web Services](https://aws.amazon.com/) (AWS),
+and I've gotten some requests to write a [tutorial](/tutorials) for how
+to do that.
+
+Well, your wish is my command. [There's a shiny new tutorial for how to deploy
+a static website on AWS](/tutorials/deploy-static-site-aws-s3-cloudfront/),
+and although it's focused on Lektor-based websites, the tutorial can be
+easily adapted to work with any static website or static site generator.
+This tutorial will take you from AWS newbie to running a bulletproof static
+website that no amount of traffic can overwhelm. Your site will run on
+[HTTPS](https://https.cio.gov/faq/) for added security and no additional cost,
+which is good because
+[every website should use HTTPS](https://https.cio.gov/everything/).
+You'll also learn how to set up an email address at your domain, like I have
+with mine: [`david@davidbaumgold.com`](<mailto:david@davidbaumgold.com>).
+(So fancy!) And the best part is,
+running a static website on AWS can be shockingly cheap! The whole thing
+only costs about $20 per _year_.
+
+What are you waiting for?
+[Read the tutorial](/tutorials/deploy-static-site-aws-s3-cloudfront/),
+and don't forget to give me some feedback! I love comments, emails, and tweets,
+but will accept smoke signals and messenger pidgeons as well.
+The only way to improve is by getting feedback!
