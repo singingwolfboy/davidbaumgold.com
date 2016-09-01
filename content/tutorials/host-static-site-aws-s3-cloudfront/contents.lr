@@ -429,26 +429,42 @@ The next page will be a _long_ form where you can specify many different options
 for your distribution. Don't worry, you can leave most of these options at
 their defaults, but there's a few we need to change. The first one is the
 "Origin Domain Name" -- it's the very first field in the form. Click on it,
-and Amazon will helpfully show a dropdown menu with your S3 buckets listed!
-Click on the bucket you created, and Amazon will fill in the field with that
-bucket.
+and Amazon will show a dropdown menu with your S3 buckets listed! Unfortunately,
+this dropdown menu is misleading: the URL in the dropdown menu is _not_ the URL
+that you want to use.[^website-endpoint] Instead, go back to your S3 bucket,
+find the website endpoint URL in the "Static Website Hosting" section of the
+properties, and paste that into the "Origin Default Name" field. It should
+look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
+
+[^website-endpoint]:
+    Amazon shows the REST API endpoint in this dropdown menu, rather than the
+    website endpoint. These two URLs work similarly, but there are a few
+    important differences. For example, if you try to access a page on your
+    website that doesn't exist, the website endpoint will return a 404 Not
+    Found page, while the REST API endpoint will return an ugly XML error.
+    [Check Amazon's documentation to learn all the differences between these
+    two URLs.](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html)
 
 <div class="col-md-6">
   <a href="cloudfront-create-empty.png">
-    <img src="cloudfront-create-empty@825.png" alt="AWS CloudFront: creating a distribution" />
+    <img src="cloudfront-create-empty@825.png" alt="An empty form for creating an AWS CloudFront distribution" />
   </a>
 </div>
 <div class="col-md-6">
   <a href="cloudfront-create-dropdown.png">
-    <img src="cloudfront-create-dropdown@825.png" alt="AWS CloudFront: creating a distribution" />
+    <img src="cloudfront-create-dropdown@825.png" alt='A form for creating an AWS CloudFront distribution where the user has clicked on the "Origin Domain Name" field. A dropdown is visible.' />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="s3-bucket-website-endpoint.png">
+    <img src="s3-bucket-website-endpoint@825.png" alt="The S3 bucket properties webpage. The static website endpoint URL has been highlighted." />
   </a>
 </div>
 <div class="col-md-6">
   <a href="cloudfront-create-filled.png">
-    <img src="cloudfront-create-filled@825.png" alt="AWS CloudFront: creating a distribution" />
+    <img src="cloudfront-create-filled@825.png" alt='A form for creating an AWS CloudFront distribution. The "Origin Domain Name" field has been filled in with the static website endpoint URL.' />
   </a>
 </div>
-<div class="clearfix"></div>
 
 Next, scroll down to the "Distribution Settings" section. Just above it,
 there's a field called "Compress Objects Automatically": set that to "Yes".
