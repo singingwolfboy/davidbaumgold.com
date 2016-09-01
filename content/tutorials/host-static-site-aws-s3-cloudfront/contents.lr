@@ -1,4 +1,4 @@
-title: Deploying a Static Site on AWS, with S3 and CloudFront
+title: Host a Static Site on AWS, using S3 and CloudFront
 ---
 last_updated: 2016-08-08
 ---
@@ -7,7 +7,7 @@ intro:
 Static website are great: they're easy to create, and easy to test on your
 local computer. However, once you've created your static website,
 how do you get it on the internet? This tutorial will
-show you how to use [Amazon Web Services](https://aws.amazon.com/) to deploy
+show you how to use [Amazon Web Services](https://aws.amazon.com/) to host
 a static website. Using these technologies, you can run a bulletproof
 static website that is immune to traffic spikes, at a cost of
 about $20 per _year_. You'll also learn how to get
@@ -26,7 +26,7 @@ or static site generator.
 ---
 summary:
 
-A simple tutorial demonstrating how to deploy a static website to AWS using S3, CloudFront, Route 53, and Certificate Manager.
+A simple tutorial demonstrating how to host a static website on AWS using S3, CloudFront, Route 53, and Certificate Manager.
 ---
 toc_ad_id: 3610826013
 ---
@@ -79,7 +79,7 @@ S3, CloudFront, Route 53, and Certificate Manager.
 
 # Register a Domain
 
-To deploy your static site on AWS, the first thing you need to do is register
+To host your static site on AWS, the first thing you need to do is register
 a domain for it. A [domain](https://en.wikipedia.org/wiki/Domain_name) is the
 first part of the URL that you type in to access your site, often ending in
 ".com". (That ".com" part is called a
