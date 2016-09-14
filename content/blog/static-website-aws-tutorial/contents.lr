@@ -23,7 +23,7 @@ and I've gotten some requests to write a [tutorial](/tutorials) for how
 to do that.
 
 Well, your wish is my command. [There's a shiny new tutorial for how to deploy
-a static website on AWS](/tutorials/deploy-static-site-aws-s3-cloudfront/),
+a static website on AWS](/tutorials/host-static-site-aws-s3-cloudfront/),
 and although it's focused on Lektor-based websites, the tutorial can be
 easily adapted to work with any static website or static site generator.
 This tutorial will take you from AWS newbie to running a bulletproof static
@@ -38,7 +38,7 @@ running a static website on AWS can be shockingly cheap! The whole thing
 only costs about $20 per _year_.
 
 What are you waiting for?
-[Read the tutorial](/tutorials/deploy-static-site-aws-s3-cloudfront/),
+[Read the tutorial](/tutorials/host-static-site-aws-s3-cloudfront/),
 and don't forget to give me some feedback! I love comments, emails, and tweets,
 but will accept smoke signals and messenger pidgeons as well.
 The only way to improve is by getting feedback!
