@@ -214,10 +214,15 @@ As long as it continues downloading and installing things for you,
 don't interrupt it. When Homebrew stops displaying status messages and
 is ready for you to type in a new command, Wine is installed and ready to go!
 
-Note: If you get an error message at this step that reads
+If you get an error message at this step that reads
 `error: C compiler cannot create executables` or `Failed to locate 'make' in path`,
 it means you forgot to install Xcode, or it installed incorrectly.
 See Part 0 of this tutorial.
+
+If you get an error message at this step that indicates that Homebrew has
+accidentally downloaded a file that is empty or incorrect, you can delete
+Homebrew's downloaded files by running `brew cleanup`. Then try running
+this step again, and Homebrew will redownload the file -- hopefully correctly!
 
 # Part 5: Install Windows Programs Using Wine
 
