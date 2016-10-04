@@ -37,5 +37,6 @@ add your idea to this list!
   * non-verbal communication is important
 * Work to live, don't live to work
 * Travel hacking
+* Etherium smart contracts
 
 

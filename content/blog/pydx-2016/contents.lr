@@ -1,0 +1,168 @@
+title: PyDX 2016
+---
+pub_date: 2016-10-04
+---
+summary:
+
+I attended PyDX, the local Python conference for Portland, OR. I had a great time and met some fun people. Portland's a pretty cool place!
+---
+body:
+
+I'm back in Portland, land of the hipsters. [PyDX](http://pydx.org/) was this
+past weekend, and I had a great time! To be honest, I was looking for an excuse
+to visit the Pacific Northwest again after
+[going there for PyCon](/blog/2016/06/pycon-us-2016/),
+so when PyDX accepted my talk proposal, I knew I had found the right excuse. :)
+
+# About PyDX
+
+PyDX is a pun on "PDX", the abbreviation for Portland. It bills itself as a
+"Community-Driven Python Workshop in Portland", with "Post-Ironic Artisanal
+Code from Local ~~Farmers~~ Programmers" and "Small-Batch Gluten-free Vegan
+Workshops and Talks". Direct quotes from the conference website. Clearly,
+the conference organizers know their target audience.
+
+PyDX is a small, local conference. The conference sold out at 150 attendees,
+which felt like a good amount. There were two speaker tracks plus
+a large area for hanging out and chatting: the "hallway track",
+as it's often called. I spent most of my time attending talks,
+which I kind of regret -- I should have pushed myself to be more social
+and spent more time on the hallway
+track. Oh well, there's always the next conference!
+
+# Day 1
+
+[Juliana Arrighi's](https://github.com/jarrighi) keynote was about
+creating "learning adventures": managing risk to find a balance between
+low-risk low-reward guided instruction,
+and high-risk high-reward personal challenges. Learning new topics by yourself
+involves a lot of "unknown unknowns": roadblocks that you don't know about
+ahead of time. It's hard to find the motivation and perseverance to succeed,
+but if you do, you'll end up with some valuable knowledge that you won't
+soon forget! I really enjoyed Jules' keynote. :)
+
+The other presentations were also good. I liked
+[Josh Simmons'](https://madeinsonoma.org/) presentation on building community
+in open source, and [Chris Neugebauer's](https://chris.neugebauer.id.au/)
+presentation on organizing tech conference. (A presentation _at_ a tech
+conference _about_ tech conferences -- it was very meta.) I also really
+enjoyed [Tom Offermann](http://www.offermann.us/) talking about the
+[`trace`](https://docs.python.org/3/library/trace.html) module in Python,
+taking a complex topic and making it approachable and understandable. And
+[Jeremy "Penguin" Tanner](http://jeremytanner.com/) had a fantastic presentation
+about using Python to make smart picks on daily fantasy sports websites.
+He's so engaging that he could make _any_ topic interesting, and while I have
+no interest in sports or fantasy leagues, I thoroughly enjoyed myself.
+
+The conference provided free pizza for lunch, and after that,
+[Philip James](http://www.philipjohnjames.com/) led an expedition to the
+nearby [Portland Saturday Market](http://www.portlandsaturdaymarket.com/),
+which was so quintisenntially Portland. Full of handmade crafts, artisinal
+what-nots, and delicious streetfood, and populated by stand-out locals and
+blend-in tourists. I was only there for a few minutes, but I had a great time,
+and [took a few pictures](https://twitter.com/singingwolfboy/status/782307593075077121).
+
+Dinner was an interesting affair, as well. We all divided into five groups
+and went to five different restaurants, and the conference paid for everyone's
+dinner, including tip! [Thursday Bram](http://www.thursdaybram.com/), who helped
+organize PyDX and was in my dinner group, explained that it was actually cheaper
+to pay for everyone's dinner at a restaurant than to organize a catered event,
+and they wanted to encourage attendees to eat with and talk with each other.
+Small groups also makes it easier for people to talk, and the groups were
+organized in a "Birds of a Feather" style: anyone could propose a topic,
+and others who were interested in that topic could sign up to join. Our
+group's topic was "static site generators," proposed by yours truly (because
+I'll take any opportunity I can to talk about
+[Lektor](https://www.getlektor.com)!), but the conversation ranged across
+many different topics. We went to
+[Sushi Ichiban](https://www.yelp.com/biz/sushi-ichiban-portland), which was
+not only delicious, but had an adorable little choo-choo train that went around
+the main bar carrying small plates of sushi. It was the most creative take I've
+ever seen on conveyor-belt sushi!
+
+# Day 2
+
+[Portia Burton's](http://www.thegeekyhustle.com/) keynote on Bitcoin,
+Etherium, and blockchain technology was a really interesting start to the second
+day of PyDX. She created a new cryptocurrency called "Snake Dollars" during
+the presentation! Seems like cryptocurrencies aren't going away, although
+they haven't risen to prominence yet, either. Portia also talked about
+Etherium's "smart contracts", which personally I'm very skeptical about,
+but that's another topic for another blog post.
+
+Next, [Heidi Waterhouse](http://www.heidiwaterhouse.com/) talked about applying
+principles of garbage collection to documentation: a brilliant idea! The older
+and less referenced a piece of documentation is, the more likely it is to be
+outdated and incorrect, so why not mark it as such? After that, I heard from
+[Jerome Comeau](http://jeromecomeau.com) about the role of support in technical
+organizations: informative, but bleak. He claimed that one out of every four
+people in tech suffers from migranes, and that for people in support positions,
+the ratio rises to one in two. Shocking, and yet not unbelievable; I'd love to
+see a source for those claims. [Nicholle James](https://twitter.com/oboechick_)
+gave a presentation about how to run a workshop and help people learn;
+she mentioned a few principles I plan to put into action the next time
+I teach a class, including pairing up more
+experienced people with less experienced people.
+[Nate Smith](https://tilde.town/~vilmibm/) talked about some basic optimization
+techniques for Python: I didn't learn anything new, but it was nice to see
+how to put basic knowledge about IO and Python types put to work gracefully.
+Finally, [Sev Leonard](https://twitter.com/gizm0_0) did an awesome presentation
+about getting started with hardware: he built the "Internet of Cats", an
+<abbr title="Internet of Things">IoT</abbr> device that displays cat pictures
+in response to HTTP requests. His excitement was infectious, and I really
+enjoyed hearing about hardware, a topic that I still know comparatively little
+about.
+
+After all that, I gave my presentation on Advanced Git. It was the same
+presentation I gave at PyCon, OSCON, and PyGotham, and I think word is getting
+around, because the room was _packed_. The presentation went off without
+a hitch, and the attendees asked some good questions, so I count it as a great
+success. A lot of people seemed interested in my [book](/book), as well: I guess
+I need to hurry up and finish writing the damn thing!
+
+# Other Thoughts
+
+PyDX was the first "dry" tech conference I've ever attended: there was no
+alcohol allowed. The [code of conduct](http://blog.pydx.org/code-of-conduct/)
+stated that if anyone brought alcohol into the conference venue, or showed up
+drunk, they would be asked to leave. While I don't think that _every_ tech
+conference should be dry, I'm really glad that there are at least a few that
+are trying it out. I thought it worked quite well, and certainly made me feel
+more comfortable, since I don't drink. Alcohol is deeply entrenced in tech
+culture, and being in a space where choosing not to imbibe was a complete
+non-issue was really nice.
+
+I heard _many_ people talking about how much they enjoyed
+[Philip James'](http://www.philipjohnjames.com/)
+talk: "Frog and Toad Learn About Django Security." Apparently, it was
+given in the style of Arnold Lobel's
+[Frog and Toad](https://en.wikipedia.org/wiki/Frog_and_Toad) books, inspired
+by the blog
+[Frog and Toad are Cofounders](https://medium.com/frog-and-toad-are-cofounders).
+I really want to see this talk when the video is available online!
+
+I learned more about the [Internet Archive](http://archive.org/) from
+[Vicky Brasseur](http://www.vmbrasseur.com/), and particularly about its
+capabilities for hosting slides and video for talks. She even has a great
+[blog post about how to upload video to the Internet Archive](http://anonymoushash.vmbrasseur.com/2016/07/25/uploading-a-video-to-internet-archive/),
+which I plan to reference when finding and uploading my OSCON video. I also
+learned from Barbara Miller that
+[the Internet Archive provides APIs](https://developers.archive.org/), and
+provides infinite storage for free, including
+[an S3-like API](https://developers.archive.org/services/upload-v1/)!
+This is _definitely_ something I'll need to investigate futher.
+In the past, I've hosted my slide decks on
+[SpeakerDeck](https://speakerdeck.com/singingwolfboy/), which has a very
+pretty interface. However, moving forward, I think I'll be using the
+Internet Archive.
+
+Thursday Bram, one of the conference organizers, declared that [she would get
+a PyDX tattoo if the conference sold
+out](https://twitter.com/thursdayb/status/781977516336488448). Well, the
+conference sold out, and [she's very excited to be getting that
+tattoo!](https://twitter.com/thursdayb/status/782300335792529408) That's
+awesome, and I look forward to seeing it when it's done!
+
+I'll still be in Portland for a few more days. If you'd like to say hello
+while I'm in the area, please let me know! I love hanging out with people and
+making new friends. :)
