@@ -71,14 +71,14 @@ ol.toc {
   margin-bottom: 1rem;
 
   img {
-    @include center-block();
+    justify-content: center;
     border: 1px solid black;
   }
 }
 
 @include media-breakpoint-up(sm) {
   .image {
-    @include pull-right();
+    @include float-right();
     margin-bottom: .1rem;
     margin-left: 1rem;
   }
