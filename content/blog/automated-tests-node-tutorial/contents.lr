@@ -1,0 +1,29 @@
+title: Tutorial: Automated Tests for Node.js
+---
+pub_date: 2016-12-30
+---
+summary:
+
+Announcing a new tutorial for how to set up automated tests for Node.js
+---
+body:
+
+The company that I'm currently [consulting](/consulting) for has a codebase
+with a large, complex front-end written in
+[React](https://facebook.github.io/react/). Not only does this codebase
+actually have automated tests, but their test coverage is pretty good, and
+every new feature needs to include automated tests before it can be merged.
+This is _incredible_, and every software company should work like this --
+sadly, very few of them do. This means that in order to do my job, I need to
+know how to write and debug automated tests for Node. I've been learning how
+to do this very quickly, and there have been a few stumbles and hurdles
+on the way.
+
+[I decided to take all the knowledge I've learned about automated testing
+in a modern JavaScript codebase, and pull it together into one tutorial.](/tutorials/automated-tests-node/)
+It is by no means exhaustive, and the JavaScript community is moving so fast
+these days that most of what's in this tutorial will probably be out of date
+in six months or so. But I've already found myself wishing that I had written
+more notes to myself about JavaScript testing in the past, so hopefully
+this blog post will help me out in the future. If you find it useful as well,
+let me know!
