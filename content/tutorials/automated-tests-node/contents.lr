@@ -24,8 +24,7 @@ However, getting automated tests in Node up and running is not easy, and the
 JavaScript community is moving so quickly these days that it's hard to keep
 up with the latest best practices. In the past, I found myself wishing for a
 tutorial that would get you up and running with automated testing in Node.
-Since I couldn't find one, I took all that I've learned about JS testing, and
-turned it into this tutorial.
+Since I couldn't find one, I wrote it myself!
 
 ---
 body:
