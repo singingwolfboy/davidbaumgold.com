@@ -7,9 +7,18 @@ technical conferences. Here are a few examples:
 
 # PyDX 2016
 
-30 min: [Advanced Git](http://blog.pydx.org/talk-list/#advancedgit)
-([slides available](https://archive.org/details/AdvancedGit),
- video not yet available)
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/ZdIuFuIM3dM" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="http://blog.pydx.org/talk-list/#advancedgit">Advanced Git</a>
+      (<a href="https://archive.org/details/AdvancedGit">slides</a>)
+    </p>
+  </div>
+</div>
 
 # PyGotham 2016
 
