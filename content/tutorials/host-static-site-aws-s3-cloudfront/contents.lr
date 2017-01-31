@@ -625,123 +625,178 @@ AWS offers a hosted email service called
 but it costs $4 per user per month, which is expensive!
 There are many hosted email services out there, and they all have
 different price ranges and feature sets. However, I recommend
-[Zoho Mail](https://www.zoho.com/mail/) because they have a free plan.
+[Migadu](https://www.migadu.com/?src=davidbaumgold) because they have a free plan.
 
-[Sign up for Zoho's free plan](https://payments.zoho.com/ResellerCustomerSignUp.do?id=26ea8ad5f635094a3d40394e07c4a9899bb09994842e9bc813a9a5b210e28055)[^zoho-referral]
--- the phone number is optional. Once you have a Zoho account, you'll be able
-to set up hosted email service for your domain. Click on the "Add Domain"
-link, then type in the domain you bought from Route 53 and click the "OK"
-button. Next, you'll need to prove to Zoho that you own that domain.
+[Create an account on the Migadu website](
+https://www.migadu.com/en/my_account.html?src=davidbaumgold)[^migadu-referral],
+and you'll automatically be set up on their free plan. (Their paid plans are
+very reasonable, but the free plan has everything you need and then some.)
+Once you're signed in, add your domain to Migadu, and be sure to check the
+checkbox for creating recommended RFC email addresses.
 
-[^zoho-referral]:
+[^migadu-referral]:
     This is a [referral link](https://en.wikipedia.org/wiki/Referral_marketing)
-    for Zoho. If you sign up for a Zoho account using this link, and then later
-    decide that you like Zoho so much that you want to upgrade to a paid
-    account, then Zoho will send me a bit of money for referring you to them.
-    It doesn't cost you anything extra at all, and it's a great way to say
-    "thank you" if you found this tutorial useful! So if you decide to sign
-    up for Zoho, [please use my referral link!](https://payments.zoho.com/ResellerCustomerSignUp.do?id=26ea8ad5f635094a3d40394e07c4a9899bb09994842e9bc813a9a5b210e28055)
+    for Migadu. If you sign up for a Migadu account using this link, and then
+    later decide that you like them so much that you want to upgrade to a paid
+    plan, then Migadu will [send me a bit of money](
+    https://www.migadu.com/en/affiliates.html?src=davidbaumgold)
+    for referring you to them. It doesn't cost you anything extra at all,
+    and it's a great way to say "thank you" if you found this tutorial useful!
+    So if you decide to sign up for Migadu,
+    [please use my referral link!](https://www.migadu.com/?src=davidbaumgold)
 
 <div class="col-md-6">
-  <a href="zoho-signup.png">
-    <img src="zoho-signup@825.png" alt="Zoho: sign up for a new account" />
-  </a>
-</div>
-<div class="col-md-6">
-  <a href="zoho-list-domains.png">
-    <img src="zoho-list-domains@825.png" alt="Zoho: listing your domains" />
+  <a href="migadu-login.png">
+    <img src="migadu-login@825.png" alt="Migadu: sign up for a new account" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="zoho-add-domain.png">
-    <img src="zoho-add-domain@825.png" alt="Zoho: add a new domain to your account" />
+  <a href="migadu-signed-in.png">
+    <img src="migadu-signed-in@825.png" alt="Migadu: signed in" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="zoho-domain-added.png">
-    <img src="zoho-domain-added@825.png" alt="Zoho: domain has been added to your account" />
-  </a>
-</div>
-
-[![Zoho: verify ownership of your domain](zoho-verify@825.png)](zoho-verify.png)
-
-Zoho can provide instructions for how to verify your domain for a few
-different domain registrars, but Route 53 isn't on that list, so select
-"Others...". Zoho will give you three different options for how to verify
-your domain: CNAME, TXT, or HTML. You can use whichever method you like, but
-this tutorial will use the CNAME method.
-
-<div class="col-lg-4">
-  <a href="route53-zoho-cname.png">
-    <img src="route53-zoho-cname@825.png" alt="Route 53: set up a CNAME for Zoho verification" />
-  </a>
-</div>
-<div class="col-lg-8">
-  <p>The CNAME method requires that you set a specific value in your domain's
-  DNS, which means you're going back to AWS Route 53! Take note of the "zb" code
-  that Zoho gives you: in the screenshot above, the zb code is "zb14705986", but
-  yours will be different. Then go back to the
-  <a href="https://console.aws.amazon.com">AWS Console</a>
-  click on Route 53, and add another record set for your domain.
-  Put your zb code into the "Name" field, set the "Type" field to "CNAME",
-  set "Alias" to No, and put "zmverify.zoho.com" in the "Value" field.
-  Then click the "Create" button.</p>
-</div>
-<div class="clearfix"></div>
-
-Once you've added the record in Route 53, you'll need to wait a few minutes
-for the DNS change to apply. When you think it has, go back to the Zoho
-website and click on the big green "Verify by CNAME" button at the bottom
-of the page. If you get a "Verification Failed" message, wait a little longer
-and try again -- it shouldn't take more than an hour for the DNS change
-to apply.
-
-Once Zoho has successfully verified your domain, you'll be asked to pick a
-username for your new email address at your domain. Put in "admin": this name
-will be important later on, when you set up HTTPS for your website. You can
-make multiple different email addresses at your domain, but make sure that
-at least one of them has the username "admin".
-
-<div class="col-md-6">
-  <a href="zoho-create-email.png">
-    <img src="zoho-create-email@825.png" alt="Zoho: create email address" />
+  <a href="migadu-add-domain.png">
+    <img src="migadu-add-domain@825.png" alt="Migadu: add a new domain to your account" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="zoho-mx-records.png">
-    <img src="zoho-mx-records@825.png" alt="Zoho: set MX records" />
+  <a href="migadu-configure-external-dns.png">
+    <img src="migadu-configure-external-dns@825.png" alt="Migadu: configure external DNS" />
   </a>
 </div>
 
-The next step is to set MX records in DNS.
-These records are used by email systems all around the world,
-to make sure that email gets sent to the right place. In this
-case, you want your email to be delivered to Zoho so they can handle it for you.
+## Configure DNS for Email
 
-<div class="col-lg-4">
-  <a href="route53-zoho-mx.png">
-    <img src="route53-zoho-mx@825.png" alt="Route 53: set up MX for Zoho email" />
+In order to use Migadu's hosted email service, you need to tell everyone in the
+world that when email is sent to your domain, it should _really_ go to Migadu's
+email service. DNS can handle that, and we're using Route 53 to handle DNS,
+so we're going to select "External DNS" (because Route 53 is external to
+Migadu). Once you do that, Migadu will tell you exactly _how_ to configure
+Route 53 so that everything works right. You'll need four different kinds of
+DNS records: MX, SPF, DKIM, and DMARC. It sounds complicated, but we can
+take this step by step!
+
+Open a new tab in your browser, go back to the
+[AWS Console](https://console.aws.amazon.com) and click on Route 53.
+We're going to add a few new record sets, just like we did with CloudFront.
+Let's start with the MX record set.
+
+<div class="col-md-7">
+  <a href="migadu-dns-mx.png">
+    <img src="migadu-dns-mx@825.png" alt="Migadu: instructions for setting up MX records in DNS" />
   </a>
 </div>
-<div class="col-lg-8">
-  <p>Once again, we're modifying DNS, which means going back to Route 53.
-  (This step and the CNAME domain verification step can be done simultaneously,
-  if you want.) This time, when you add a DNS record to your domain, leave
-  the "Name" field blank and set the "Type" field to "MX". Set "Alias" to No,
-  and put the following text into the "Value" field:</p>
-
-  <pre>10 mx.zoho.com.
-20 mx2.zoho.com.</pre>
-
-  <p>Note the trailing period in the <code>zoho.com</code> URLs:
-  it's important!</p>
+<div class="col-md-5">
+  <a href="route53-migadu-mx.png">
+    <img src="route53-migadu-mx@825.png" alt="Route 53: configuring MX records" />
+  </a>
 </div>
-<div class="clearfix"></div>
 
-Once that DNS change takes effect, emails to `admin@my-website.com` will be
-delivered to your Zoho inbox. Try sending some email to that email address!
-You can also set up other email addresses at your domain, if you want.
-[Consult Zoho's documentation to learn more.](https://www.zoho.com/mail/help/adminconsole/adding-users.html)
+As Migadu's instructions explain, MX records are what declare that your email
+should go to Migadu's email service. Leave the "name" field blank, and select
+"MX" from the type dropdown menu. Set the TTL to 3600, and copy-paste the
+value from Migadu's instructions into the "value" field in Route 53. Then click
+the "Create" button.
+
+If spam didn't exist, MX records would be all you need -- but it does,
+and the other DNS records that Migadu wants you to set up are designed
+to make it more difficult for spammers to use Migadu.
+(It's protection for you, _and_ for Migadu!)
+
+<div class="col-md-7">
+  <a href="migadu-dns-spf.png">
+    <img src="migadu-dns-spf@825.png" alt="Migadu: instructions for setting up SPF records in DNS" />
+  </a>
+</div>
+<div class="col-md-5">
+  <a href="route53-migadu-spf.png">
+    <img src="route53-migadu-spf@825.png" alt="Route 53: configuring SPF records" />
+  </a>
+</div>
+
+SPF is a bit misleading with Route 53. The "type" dropdown menu includes an
+"SPF" option, but _don't use it_. Use the "TXT" type instead, like Migadu's
+instructions say. Leave "name" blank, set the TTL to 3600, and copy-paste
+the value from Migadu's instructions into the "value" field.
+When you click outside the "value" field, Route 53 will automatically put
+quotation marks around what you've pasted in, which is totally fine.
+Click "Create" again.
+
+<div class="col-md-7">
+  <a href="migadu-dns-dkim.png">
+    <img src="migadu-dns-dkim@825.png" alt="Migadu: instructions for setting up DKIM records in DNS" />
+  </a>
+</div>
+<div class="col-md-5">
+  <a href="route53-migadu-dkim.png">
+    <img src="route53-migadu-dkim@825.png" alt="Route 53: configuring DKIM records" />
+  </a>
+</div>
+
+DKIM is straightforward. Set the "name" field to "default._domainkey", and
+select the "TXT" record type again. Set the TTL to 3600. Copy-paste the value
+from Migadu's instructions into the "value" field. Note that your value
+will be different from the one in the screenshots above! If Route 53 puts
+quotation marks around the value, that's fine. Click "Create" again.
+
+<div class="col-md-7">
+  <a href="migadu-dns-dmarc.png">
+    <img src="migadu-dns-dmarc@825.png" alt="Migadu: instructions for setting up DMARC records in DNS" />
+  </a>
+</div>
+<div class="col-md-5">
+  <a href="route53-migadu-dmarc.png">
+    <img src="route53-migadu-dmarc@825.png" alt="Route 53: configuring DMARC records" />
+  </a>
+</div>
+
+DMARC is straightforward, as well. Set the "name" field to "_dmarc", and
+select the "TXT" record type again. Set the TTL to 3600. Copy-paste the value
+from Migadu's instructions into the "value" field. Note that your value
+will be different from the one in the screenshots above! If Route 53 puts
+quotation marks around the value, that's fine. Click "Create" again.
+
+Great, you've made all the necessary DNS changes! Now, you just need to wait
+for these DNS changes to apply. Just as before, it could take anywhere
+from 5 minutes to an hour. You can visit Migadu's "Health Check" page to see
+if it's ready. Once it is, you can move on.
+
+## Check Email on the Web
+
+Now that the DNS is all setup, you'll need to set up email addresses at your
+domain. You should already have an "admin" email address set up
+(`admin@my-website.com`), which is the email address we want to use. However,
+you need to set a password for this email address before you can use it.
+In the settings for your domain, click on "Mailboxes", then "Administrator",
+then "Password", and you'll be able to set a password. You can use the same
+password as your Migadu account if you want, or you can pick a different one.
+
+<div class="col-md-6">
+  <a href="migadu-set-admin-email-password.png">
+    <img src="migadu-set-admin-email-password@825.png" alt="Migadu: set password for admin email address" />
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="migadu-webmail-login.png">
+    <img src="migadu-webmail-login@825.png" alt="Log in to Migadu webmail" />
+  </a>
+</div>
+
+Once the admin email address has a password set, you can log into the webmail
+interface. Go to [webmail.migadu.com](https://webmail.migadu.com/) and log
+in with the admin email address at your domain, and the password you just set
+for that admin email address.
+
+Now you should be able to send and receive email at your domain! Try sending
+an email from a different email address to the admin email address at your
+domain, and make sure it shows up in the Migadu webmail interface. Try sending
+an email from the webmail interface to a different email address, and make
+sure it arrives properly. You can even [hook up your own mail client
+to Migadu](https://www.migadu.com/en/guides/config.html?src=davidbaumgold),
+like Microsoft Outlook or Apple Mail, and send and receive email on your own
+domain without ever using the Migadu website! [Check out Migadu's documentation
+to learn more.](https://www.migadu.com/en/guides/index.html?src=davidbaumgold)
 
 # Setup HTTPS
 
@@ -781,7 +836,7 @@ a second line to show up.
 Review your domains on the next screen, and click the "Confirm and request"
 button. When you do that, Certificate Manager will send an email to a few
 special email addresses on your domain, including the "admin" email address
-you set up. Go to Zoho and check the inbox for your "admin" email address.
+you set up. Go to Migadu and check the inbox for your "admin" email address.
 When you receive the email from Amazon Certificates, click on the approval
 link, and you'll have your certificate!
 
