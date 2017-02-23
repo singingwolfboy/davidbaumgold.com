@@ -687,9 +687,11 @@ all of these tools:
 ```json
 {
   "name": "learning-to-test",
-  "description": "Learning about automated tests in Node.js, via davidbaumgold.com",
   "version": "0.0.1",
-  "license": "MIT",
+  "description": "via davidbaumgold.com",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "test": "nyc mocha",
     "test:repl": "mocha debug",
