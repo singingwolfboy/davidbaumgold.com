@@ -572,8 +572,8 @@ principles of good software development is "don't repeat yourself", or DRY.
 So, how do we avoid this repetition?
 
 Fortunately, Mocha has a way. It will automatically look for a file called
-`test/mocha.opts` on startup, and if it finds it, it will read the file treat
-it as configuration. In this case, we want to always configure Mocha to use
+`test/mocha.opts` on startup, and if it finds it, it will read the file and
+treat it as configuration. In this case, we want to always configure Mocha to use
 the `babel-register` compiler, so we can do so using this `test/mocha.opts`
 file. Create that file with the following content:
 
