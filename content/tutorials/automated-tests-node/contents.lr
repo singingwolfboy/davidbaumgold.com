@@ -90,8 +90,9 @@ There are a few things to notice here:
   to be used with numbers, so if someone tries to use it with a string, it
   should throw an error!
 
-We'll put the `increment` function in a file called `index.js`, and the tests
-in a file called `test.js`. Now, how do we actually _run_ these tests? This
+We'll put the `increment` function in a file called `index.js`. We generally
+keep tests in a directory called `test`, so these tests can go in a file called
+`test/index.js`. Now, how do we actually _run_ these tests? This
 is where Mocha comes in.
 
 ```bash
@@ -139,14 +140,15 @@ JavaScript files via Node's `require` function. Then, we'll add two lines
 at the top of the `test.js` function:
 
 ```js
-var increment = require('./index');
+var increment = require('../index');
 var assert = require('assert');
 ```
 
 The first line loads the `increment` function we defined in the `index.js` file.
-Note that we use a `./` in front to indicate that we want to load from a file
-_in the current directory_ named `index.js`. The second line loads the
-`assert` module. There's no `./` in front, because we don't know where that
+Note that we use a `../` in front to indicate that we want to load from a file
+in the parent directory -- remember that the test files are in their own `test`
+directory. The second line loads the
+`assert` module. There's no `../` in front, because we don't know where that
 module is defined, and we don't care -- Node can look it up for us, and just
 return the result.
 
@@ -170,8 +172,8 @@ to record metadata about your project. This metadata includes the project
 name, dependencies, configuration information, and lots more.
 We'll need a `package.json` file to hold information about how to run tests,
 so we might as well create one now. Fortunately, `npm` has a tool to help
-you do so! While you're in the same directory as your `index.js` and `test.js`
-files, run `npm init`, and you'll see an interactive prompt that will help you
+you do so! While you're in the same directory as your `index.js` file,
+run `npm init`, and you'll see an interactive prompt that will help you
 create your `package.json` file. It looks a little like this:
 
 ```
@@ -270,7 +272,7 @@ export const increment = (value) => {
 and the tests:
 
 ```js
-import { increment } from './index';
+import { increment } from '../index';
 import assert from 'assert';
 
 describe('increment function', () => {
@@ -299,7 +301,7 @@ Let's see how Mocha handles ES6!
 ```
 $ npm test
 /tmp/test.js:1
-(function (exports, require, module, __filename, __dirname) { import { increment } from './index';
+(function (exports, require, module, __filename, __dirname) { import { increment } from '../index';
                                                               ^^^^^^
 SyntaxError: Unexpected token import
     at Object.exports.runInThisContext (vm.js:53:16)
@@ -453,7 +455,7 @@ debug> cont
 <   increment function
 <     ✓ increments a positive number
 <     ✓ increments a negative number
-break in test.js:24
+break in test/index.js:24
  22
  23   it('fails on strings', function () {
 >24     debugger;
@@ -562,6 +564,38 @@ In spite of this, the Chrome DevTools are still the best debugging experience
 I've found so far for Node -- not least of all because they're so familiar,
 from debugging front-end JavaScript code.
 
+# mocha.opts
+
+We're calling `mocha` in three different ways, but there's one option that's
+consistent across all of them: `--compilers babel-register`. One of the
+principles of good software development is "don't repeat yourself", or DRY.
+So, how do we avoid this repetition?
+
+Fortunately, Mocha has a way. It will automatically look for a file called
+`test/mocha.opts` on startup, and if it finds it, it will read the file treat
+it as configuration. In this case, we want to always configure Mocha to use
+the `babel-register` compiler, so we can do so using this `test/mocha.opts`
+file. Create that file with the following content:
+
+```
+--compilers babel-register
+```
+
+Then modify the scripts in your `package.json` file to look like this:
+
+```js
+"scripts": {
+  "test": "mocha",
+  "test:repl": "mocha debug",
+  "test:debug": "mocha --inspect --debug-brk"
+}
+```
+
+Try running `npm test`, `npm run test:repl` and `npm run test:debug` again.
+They should still work just fine! You can also add other options to the
+`test/mocha.opts` file, and they will automatically apply to every time you
+run `mocha` in this project. That's _much_ DRYer!
+
 # Coverage
 
 Once you've got your tests written and debugged, you'll want to know how much
@@ -600,9 +634,9 @@ Then put the `nyc` command in front of your "test" script, like this:
 
 ```js
 "scripts": {
-  "test": "nyc mocha --compilers babel-register",
-  "test:repl": "mocha --debug --compilers babel-register",
-  "test:debug": "mocha --inspect --debug-brk --compilers babel-register"
+  "test": "nyc mocha",
+  "test:repl": "mocha debug",
+  "test:debug": "mocha --inspect --debug-brk"
 }
 ```
 
@@ -657,9 +691,9 @@ all of these tools:
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "test": "nyc mocha --compilers babel-register",
-    "test:repl": "mocha debug --compilers babel-register",
-    "test:debug": "mocha --inspect --debug-brk --compilers babel-register"
+    "test": "nyc mocha",
+    "test:repl": "mocha debug",
+    "test:debug": "mocha --inspect --debug-brk"
   },
   "devDependencies": {
     "babel-plugin-istanbul": "^3.0.0",
