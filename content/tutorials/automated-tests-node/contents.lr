@@ -90,7 +90,7 @@ There are a few things to notice here:
   to be used with numbers, so if someone tries to use it with a string, it
   should throw an error!
 
-We'll put the `increment` function in a file called `code.js`, and the tests
+We'll put the `increment` function in a file called `index.js`, and the tests
 in a file called `test.js`. Now, how do we actually _run_ these tests? This
 is where Mocha comes in.
 
@@ -128,7 +128,7 @@ the `increment` function that we want to test, nor did it find the `assert`
 module. We can fix both of those problems with the
 [`require`](https://nodejs.org/api/modules.html#modules_modules) function.
 
-First, we'll add a line at the bottom of the `code.js` file, that looks like this:
+First, we'll add a line at the bottom of the `index.js` file, that looks like this:
 
 ```js
 module.exports = increment;
@@ -139,13 +139,13 @@ JavaScript files via Node's `require` function. Then, we'll add two lines
 at the top of the `test.js` function:
 
 ```js
-var increment = require('./code');
+var increment = require('./index');
 var assert = require('assert');
 ```
 
-The first line loads the `increment` function we defined in the `code.js` file.
+The first line loads the `increment` function we defined in the `index.js` file.
 Note that we use a `./` in front to indicate that we want to load from a file
-_in the current directory_ named `code.js`. The second line loads the
+_in the current directory_ named `index.js`. The second line loads the
 `assert` module. There's no `./` in front, because we don't know where that
 module is defined, and we don't care -- Node can look it up for us, and just
 return the result.
@@ -169,28 +169,58 @@ Node uses a file called [`package.json`](https://docs.npmjs.com/files/package.js
 to record metadata about your project. This metadata includes the project
 name, dependencies, configuration information, and lots more.
 We'll need a `package.json` file to hold information about how to run tests,
-so we might as well create one now: we'll start with something
-minimal, and add features as we go. Create a file called `package.json` in
-the same directory as your `code.js` and `test.js` files, with the following
-content:
+so we might as well create one now. Fortunately, `npm` has a tool to help
+you do so! While you're in the same directory as your `index.js` and `test.js`
+files, run `npm init`, and you'll see an interactive prompt that will help you
+create your `package.json` file. It looks a little like this:
 
-```json
+```
+$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (learning-to-test)
+version: (1.0.0) 0.0.1
+description: via davidbaumgold.com
+entry point: (index.js)
+test command: mocha
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /private/tmp/learning-to-test/package.json:
+
 {
   "name": "learning-to-test",
-  "description": "Learning about automated tests in Node.js, via davidbaumgold.com",
   "version": "0.0.1",
-  "license": "MIT",
+  "description": "via davidbaumgold.com",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }
+
+
+Is this ok? (yes)
 ```
 
-You can change the `name`, `description`, `version`, and `license` fields
-however you'd like: these are just some reasonable defaults. There's also a
-`scripts` section, with a `test` script. This allows us to run tests by running
-`npm test`, which is much easier to remember than
-`./node_modules/.bin/mocha`.
+As you can see, `npm init` gives you some sensible defaults, but you can also
+type in information, like I did for the "version", "description", and
+"test command" fields.
+
+Notice that there is a "scripts" section of the `package.json` file.
+Since I indicated that the test command is `mocha`, the "test" script is filled
+out. This allows us to run tests by running `npm test`,
+which is much easier to remember than `./node_modules/.bin/mocha`.
 
 ```
 $ npm test
@@ -240,7 +270,7 @@ export const increment = (value) => {
 and the tests:
 
 ```js
-import { increment } from './code';
+import { increment } from './index';
 import assert from 'assert';
 
 describe('increment function', () => {
@@ -269,7 +299,7 @@ Let's see how Mocha handles ES6!
 ```
 $ npm test
 /tmp/test.js:1
-(function (exports, require, module, __filename, __dirname) { import { increment } from './code';
+(function (exports, require, module, __filename, __dirname) { import { increment } from './index';
                                                               ^^^^^^
 SyntaxError: Unexpected token import
     at Object.exports.runInThisContext (vm.js:53:16)
@@ -599,7 +629,7 @@ $ npm test
 File      |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ----------|----------|----------|----------|----------|----------------|
 All files |      100 |      100 |      100 |      100 |                |
- code.js  |      100 |      100 |      100 |      100 |                |
+ index.js |      100 |      100 |      100 |      100 |                |
 ----------|----------|----------|----------|----------|----------------|
 ```
 
