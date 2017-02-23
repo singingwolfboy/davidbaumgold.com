@@ -113,15 +113,15 @@ increment function
 
 1) increment function increments a positive number:
    ReferenceError: increment is not defined
-    at Context.<anonymous> (test.js:3:18)
+    at Context.<anonymous> (test/index.js:4:18)
 
 2) increment function increments a negative number:
    ReferenceError: increment is not defined
-    at Context.<anonymous> (test.js:7:18)
+    at Context.<anonymous> (test/index.js:9:18)
 
 3) increment function fails on strings:
    ReferenceError: assert is not defined
-    at Context.<anonymous> (test.js:11:5)
+    at Context.<anonymous> (test/index.js:14:5)
 ```
 
 Well, Mocha found our tests, which is good. But Mocha did _not_ find
