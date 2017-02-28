@@ -472,7 +472,7 @@ far as I know, can't be fixed right now.
 [Node's documentation explains how to use the debugger](https://nodejs.org/api/debugger.html#debugger_command_reference),
 but the most important commands are:
 
-* Type a variable name to see it's current value
+* Type a variable name to see its current value
 * Type `next` or `n` to proceed onto the next line of code
 * Type `step` or `s` to step into a function, and `out` or `o` to step out
   of it
