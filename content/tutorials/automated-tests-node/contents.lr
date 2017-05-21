@@ -547,6 +547,7 @@ browser. The URL you get will be different every time, so don't try to use
 the one I've provided above: it's just an example, and it won't work for you!
 Once you do open the URL in Chrome, it will look something like this:
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="devtools-mocha.png">
     <img src="devtools-mocha@825.png" alt="Chrome DevTools debugging Mocha" />
@@ -556,6 +557,7 @@ Once you do open the URL in Chrome, it will look something like this:
   <a href="devtools-debugger.png">
     <img src="devtools-debugger@825.png" alt="Chrome DevTools debugging an automated test" />
   </a>
+</div>
 </div>
 
 Again, we're debugging ES5 code from Babel rather than the ES6 code we wrote,

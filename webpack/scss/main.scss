@@ -1,5 +1,6 @@
 $font-family-base: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
 $headings-font-family: "Palatino", Georgia, "Times New Roman", Times, serif;
+$nav-link-padding: 0;
 $fa-font-path: "../node_modules/font-awesome/fonts";
 
 @import '~bootstrap/scss/bootstrap';
@@ -54,8 +55,14 @@ ol.toc {
   }
 }
 
-.resume-jobs .title, .resume-education .title {
-  font-size: 1.2rem;
+.resume-jobs, .resume-education {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  ul {
+    padding-bottom: 1em;
+  }
 }
 
 .adsbygoogle {
@@ -72,14 +79,14 @@ ol.toc {
   margin-bottom: 1rem;
 
   img {
-    @include center-block();
+    margin: 0 auto;
     border: 1px solid black;
   }
 }
 
 @include media-breakpoint-up(sm) {
   .image {
-    @include pull-right();
+    @include float-right();
     margin-bottom: .1rem;
     margin-left: 1rem;
   }

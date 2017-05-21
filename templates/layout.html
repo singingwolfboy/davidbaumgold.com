@@ -22,11 +22,11 @@
       <div class="sidebar col-md-3">
         <div class="fixed-container">
           <div class="fixed-sidebar">
-            <header class="center-block h-card">
+            <header class="d-block mx-auto h-card">
               <div class="row">
                 <div class="logo-block col-xs-3 col-md-12">
                   <a href="{{ '/'|url }}" class="logo-link">
-                    <img class="center-block logo u-logo" alt="DB"
+                    <img class="d-block mx-auto logo u-logo" alt="DB"
                          src="{{ '/static/images/db.png'|asseturl }}"
                          srcset="{{ '/static/images/db.svg'|asseturl }}"
                     />
@@ -34,9 +34,9 @@
                 </div>
                 <div class="contact-block col-xs-9 col-md-12">
                   <a href="{{ '/'|url }}" class="name-link u-url" rel="me">
-                    <div class="h5 text-xs-center font-weight-bold p-name">David Baumgold</div>
+                    <div class="h5 text-center font-weight-bold p-name">David Baumgold</div>
                   </a>
-                  <ul class="list-inline text-xs-center contact-icons">
+                  <ul class="list-inline text-center contact-icons">
                     <li class="list-inline-item">
                       <a href="mailto:david@davidbaumgold.com" title="Email: david@davidbaumgold.com" rel="me" class="u-email">
                         <i class="fa fa-lg fa-envelope"></i>
@@ -64,7 +64,7 @@
             </a>
 
             <nav id="nav-menu" class="collapse nav-menu">
-              <ul class="nav nav-first">
+              <ul class="nav nav-first flex-column">
                 {% for href, title, icon_class, icon_title, icon_href in [
                   ['/blog', 'Blog', 'rss', 'Atom Feed', '/blog/feed.xml'],
                   ['/projects', 'Projects', None, None, None],
@@ -75,11 +75,11 @@
                   ['/names', 'Names', None, None, None],
                 ] %}
                   <li class="nav-item">
-                    <a class="nav-link {% if this.is_child_of(href) %}active{% endif
+                    <a class="nav-link d-inline-block {% if this.is_child_of(href) %}active{% endif
                     %}"
                        href="{{ href|url }}">{{ title }}</a>
                     {% if icon_class %}
-                      <a href="{{ icon_href|url }}" class="hover-icon">
+                      <a href="{{ icon_href|url }}" class="d-inline-block hover-icon">
                         <i class="fa fa-{{ icon_class }}" title="{{ icon_title }}"></i>
                         <span class="sr-only">{{ icon_title }}</span>
                       </a>
@@ -87,7 +87,7 @@
                   </li>
                 {% endfor %}
               </ul>
-              <ul class="nav">
+              <ul class="nav flex-column">
                 {% for href, title in [
                   ['/training', 'Training'],
                   ['/consulting', 'Consulting'],

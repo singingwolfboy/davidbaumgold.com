@@ -61,6 +61,7 @@ I've included a screenshot so you can see how it looks, but it's in the process
 of being redesigned. The first picture is the new version, the second
 picture is the old version.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="aws-console-new.png">
     <img src="aws-console-new@825.png" alt="AWS Console, new design" />
@@ -70,6 +71,7 @@ picture is the old version.
   <a href="aws-console-old-1.png">
     <img src="aws-console-old-1@825.png" alt="AWS Console, old design" />
   </a>
+</div>
 </div>
 
 Yes, there's a _lot_ of links there -- and AWS keeps releasing new services,
@@ -112,6 +114,7 @@ click on the "Register Domain" button, type in the domain you want to register,
 select the TLD that you want to use, and click "Check". The pages should look
 like this:
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="route53-register-domain.png">
     <img src="route53-register-domain@825.png" alt="Route 53 domain registration page" />
@@ -121,6 +124,7 @@ like this:
   <a href="route53-choose-domain-name.png">
     <img src="route53-choose-domain-name@825.png" alt="Route 53, choose a domain name" />
   </a>
+</div>
 </div>
 
 When you click on the "Check" button, Route 53 will check DNS to see if someone
@@ -179,6 +183,7 @@ Go to the [AWS Console](https://console.aws.amazon.com) and click on "S3",
 under the "Storage & Content Delivery" section. Then click on the
 "Create Bucket" button. It should look like this:
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="s3-welcome.png">
     <img src="s3-welcome@825.png" alt="S3 welcome screen" />
@@ -188,6 +193,7 @@ under the "Storage & Content Delivery" section. Then click on the
   <a href="s3-bucket-name.png">
     <img src="s3-bucket-name@825.png" alt="S3 select bucket name" />
   </a>
+</div>
 </div>
 
 S3 will ask you to pick a name for your bucket. **This is important:**
@@ -227,6 +233,7 @@ To do that, first click the "Add more permissions" button, then select
 "Everyone" from the dropdown, and then click the checkbox marked
 "View permissions". Click the "Save" button to save your changes.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="s3-bucket-permissions-1.png">
     <img src="s3-bucket-permissions-1@825.png" alt="S3 bucket permissions" />
@@ -237,12 +244,14 @@ To do that, first click the "Add more permissions" button, then select
     <img src="s3-bucket-permissions-2@825.png" alt="S3 bucket permissions" />
   </a>
 </div>
+</div>
 
 Next, click on "Static Website Hosting" to open that section, and click on
 "Enable website hosting". Some more options will appear. Set the
 "Index Document" to "index.html" and the "Error Document" to "404.html".
 Click the "Save" button to save your changes.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="s3-bucket-site-hosting-1.png">
     <img src="s3-bucket-site-hosting-1@825.png" alt="S3 static site hosting permissions" />
@@ -252,6 +261,7 @@ Click the "Save" button to save your changes.
   <a href="s3-bucket-site-hosting-2.png">
     <img src="s3-bucket-site-hosting-2@825.png" alt="S3 static site hosting permissions" />
   </a>
+</div>
 </div>
 
 Great, your S3 bucket is all set to host a website! In fact, you may have
@@ -308,6 +318,7 @@ However, for the sake of simplicity, this tutorial won't go into generating new
 sets of credentials, and instead will stick with your default,
 full-permissions credentials.
 
+<div class="row no-gutters">
 <div class="col-md-3">
   <a href="aws-account-dropdown.png">
     <img src="aws-account-dropdown@825.png" alt="AWS Account dropdown menu" />
@@ -323,12 +334,14 @@ full-permissions credentials.
   which is what you want to click on.
   </p>
 </div>
+</div>
 
 You'll end up on a page that lists several options for security credentials,
 and a warning will immediately pop up, informing you that you should create
 users with limited permissions. That is beyond the scope of this tutorial,
 so dismiss the warning by clicking on "Continue to Security Credentials".
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="aws-credentials-warning.png">
     <img src="aws-credentials-warning@825.png" alt="AWS credentials warning" />
@@ -339,6 +352,7 @@ so dismiss the warning by clicking on "Continue to Security Credentials".
     <img src="aws-credentials-list@825.png" alt="AWS credentials list" />
   </a>
 </div>
+</div>
 
 Click on the "Access Keys" item in the list, and you'll see a list of your
 existing access keys. If you've never used AWS access keys before, this list
@@ -347,6 +361,7 @@ will be empty. Click on the "Create New Access Key" button, then click on
 be a long jumble of letters and numbers, and the "Secret Access Key" will be
 an _even longer_ jumble of letters and numbers.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="aws-credentials-create-access-key.png">
     <img src="aws-credentials-create-access-key@825.png" alt="AWS credentials: create an access key" />
@@ -356,6 +371,7 @@ an _even longer_ jumble of letters and numbers.
   <a href="aws-credentials-show-access-key.png">
     <img src="aws-credentials-show-access-key@825.png" alt="AWS credentials: show access key" />
   </a>
+</div>
 </div>
 
 **This is important:** once you leave this page, you will _never_ be able to
@@ -414,6 +430,7 @@ and click on "CloudFront", under the "Storage & Content Delivery" section.
 Click on the "Create Distribution" button to get started, and select that
 you want a Web distribution, instead of RTMP.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="cloudfront-start.png">
     <img src="cloudfront-start@825.png" alt="AWS CloudFront: Getting Started" />
@@ -423,6 +440,7 @@ you want a Web distribution, instead of RTMP.
   <a href="cloudfront-method.png">
     <img src="cloudfront-method@825.png" alt="AWS CloudFront: select web delivery method" />
   </a>
+</div>
 </div>
 
 The next page will be a _long_ form where you can specify many different options
@@ -445,6 +463,7 @@ look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
     [Check Amazon's documentation to learn all the differences between these
     two URLs.](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html)
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="cloudfront-create-empty.png">
     <img src="cloudfront-create-empty@825.png" alt="An empty form for creating an AWS CloudFront distribution" />
@@ -455,6 +474,8 @@ look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
     <img src="cloudfront-create-dropdown@825.png" alt='A form for creating an AWS CloudFront distribution where the user has clicked on the "Origin Domain Name" field. A dropdown is visible.' />
   </a>
 </div>
+</div>
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="s3-bucket-website-endpoint.png">
     <img src="s3-bucket-website-endpoint@825.png" alt="The S3 bucket properties webpage. The static website endpoint URL has been highlighted." />
@@ -464,6 +485,7 @@ look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
   <a href="cloudfront-create-filled.png">
     <img src="cloudfront-create-filled@825.png" alt='A form for creating an AWS CloudFront distribution. The "Origin Domain Name" field has been filled in with the static website endpoint URL.' />
   </a>
+</div>
 </div>
 
 Next, scroll down to the "Distribution Settings" section. Just above it,
@@ -475,6 +497,7 @@ you're using. Finally, scroll down to the bottom of the form, find the
 "Default Root Object" field, and type in "index.html". Then click
 "Create Distribution".
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="cloudfront-distribution-settings.png">
     <img src="cloudfront-distribution-settings@825.png" alt="AWS CloudFront: creating a distribution" />
@@ -484,6 +507,7 @@ you're using. Finally, scroll down to the bottom of the form, find the
   <a href="cloudfront-create-root-object.png">
     <img src="cloudfront-create-root-object@825.png" alt="AWS CloudFront: creating a distribution" />
   </a>
+</div>
 </div>
 
 AWS will start creating your CloudFront distribution, which takes a few minutes
@@ -518,6 +542,7 @@ To do this, we have to go back into Route 53, so go back to the
 [AWS Console](https://console.aws.amazon.com) and click on Route 53.
 Then click on your domain, and click "Manage DNS".
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="route53-manage-domain.png">
     <img src="route53-manage-domain@825.png" alt="AWS Route 53: manage a domain" />
@@ -528,6 +553,7 @@ Then click on your domain, and click "Manage DNS".
     <img src="route53-manage-dns@825.png" alt="AWS Route 53: manage DNS for a domain" />
   </a>
 </div>
+</div>
 
 On that screen, you need to add a new record set to point your domain to the
 CloudFront distribution. Click "Create Record Set", then type "www" into the
@@ -535,6 +561,7 @@ CloudFront distribution. Click "Create Record Set", then type "www" into the
 there's an "Alias" field with two options: select "Yes", which will cause
 the "Alias Target" field to appear.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="route53-make-cname.png">
     <img src="route53-make-cname@825.png" alt="AWS Route 53: create a CNAME record" />
@@ -544,6 +571,7 @@ the "Alias Target" field to appear.
   <a href="route53-alias-dropdown.png">
     <img src="route53-alias-dropdown@825.png" alt="AWS Route 53: select the alias target" />
   </a>
+</div>
 </div>
 
 When you click on the "Alias Target" field, Amazon will show another helpful
@@ -645,6 +673,7 @@ checkbox for creating recommended RFC email addresses.
     So if you decide to sign up for Migadu,
     [please use my referral link!](https://www.migadu.com/?src=davidbaumgold)
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="migadu-login.png">
     <img src="migadu-login@825.png" alt="Migadu: sign up for a new account" />
@@ -655,6 +684,8 @@ checkbox for creating recommended RFC email addresses.
     <img src="migadu-signed-in@825.png" alt="Migadu: signed in" />
   </a>
 </div>
+</div>
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="migadu-add-domain.png">
     <img src="migadu-add-domain@825.png" alt="Migadu: add a new domain to your account" />
@@ -664,6 +695,7 @@ checkbox for creating recommended RFC email addresses.
   <a href="migadu-configure-external-dns.png">
     <img src="migadu-configure-external-dns@825.png" alt="Migadu: configure external DNS" />
   </a>
+</div>
 </div>
 
 ## Configure DNS for Email
@@ -682,6 +714,7 @@ Open a new tab in your browser, go back to the
 We're going to add a few new record sets, just like we did with CloudFront.
 Let's start with the MX record set.
 
+<div class="row no-gutters">
 <div class="col-md-7">
   <a href="migadu-dns-mx.png">
     <img src="migadu-dns-mx@825.png" alt="Migadu: instructions for setting up MX records in DNS" />
@@ -691,6 +724,7 @@ Let's start with the MX record set.
   <a href="route53-migadu-mx.png">
     <img src="route53-migadu-mx@825.png" alt="Route 53: configuring MX records" />
   </a>
+</div>
 </div>
 
 As Migadu's instructions explain, MX records are what declare that your email
@@ -704,6 +738,7 @@ and the other DNS records that Migadu wants you to set up are designed
 to make it more difficult for spammers to use Migadu.
 (It's protection for you, _and_ for Migadu!)
 
+<div class="row no-gutters">
 <div class="col-md-7">
   <a href="migadu-dns-spf.png">
     <img src="migadu-dns-spf@825.png" alt="Migadu: instructions for setting up SPF records in DNS" />
@@ -714,6 +749,7 @@ to make it more difficult for spammers to use Migadu.
     <img src="route53-migadu-spf@825.png" alt="Route 53: configuring SPF records" />
   </a>
 </div>
+</div>
 
 SPF is a bit misleading with Route 53. The "type" dropdown menu includes an
 "SPF" option, but _don't use it_. Use the "TXT" type instead, like Migadu's
@@ -723,6 +759,7 @@ When you click outside the "value" field, Route 53 will automatically put
 quotation marks around what you've pasted in, which is totally fine.
 Click "Create" again.
 
+<div class="row no-gutters">
 <div class="col-md-7">
   <a href="migadu-dns-dkim.png">
     <img src="migadu-dns-dkim@825.png" alt="Migadu: instructions for setting up DKIM records in DNS" />
@@ -733,6 +770,7 @@ Click "Create" again.
     <img src="route53-migadu-dkim@825.png" alt="Route 53: configuring DKIM records" />
   </a>
 </div>
+</div>
 
 DKIM is straightforward. Set the "name" field to "default._domainkey", and
 select the "TXT" record type again. Set the TTL to 3600. Copy-paste the value
@@ -740,6 +778,7 @@ from Migadu's instructions into the "value" field. Note that your value
 will be different from the one in the screenshots above! If Route 53 puts
 quotation marks around the value, that's fine. Click "Create" again.
 
+<div class="row no-gutters">
 <div class="col-md-7">
   <a href="migadu-dns-dmarc.png">
     <img src="migadu-dns-dmarc@825.png" alt="Migadu: instructions for setting up DMARC records in DNS" />
@@ -749,6 +788,7 @@ quotation marks around the value, that's fine. Click "Create" again.
   <a href="route53-migadu-dmarc.png">
     <img src="route53-migadu-dmarc@825.png" alt="Route 53: configuring DMARC records" />
   </a>
+</div>
 </div>
 
 DMARC is straightforward, as well. Set the "name" field to "_dmarc", and
@@ -772,6 +812,7 @@ In the settings for your domain, click on "Mailboxes", then "Administrator",
 then "Password", and you'll be able to set a password. You can use the same
 password as your Migadu account if you want, or you can pick a different one.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="migadu-set-admin-email-password.png">
     <img src="migadu-set-admin-email-password@825.png" alt="Migadu: set password for admin email address" />
@@ -781,6 +822,7 @@ password as your Migadu account if you want, or you can pick a different one.
   <a href="migadu-webmail-login.png">
     <img src="migadu-webmail-login@825.png" alt="Log in to Migadu webmail" />
   </a>
+</div>
 </div>
 
 Once the admin email address has a password set, you can log into the webmail
@@ -822,6 +864,7 @@ Put in your domain name twice: once with the "www", and once without it.
 You'll need to click the "Add another name to this certificate" button to get
 a second line to show up.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="acm-domain-names.png">
     <img src="acm-domain-names@825.png" alt="AWS Certificate Manager: create a new certificate" />
@@ -831,6 +874,7 @@ a second line to show up.
   <a href="acm-in-progress.png">
     <img src="acm-in-progress@825.png" alt="AWS Certificate Manager: validation in progress" />
   </a>
+</div>
 </div>
 
 Review your domains on the next screen, and click the "Confirm and request"
@@ -854,6 +898,7 @@ You should see a field called "SSL Certificate", which is set to
 from the dropdown menu. Then scroll down to the bottom of the page and click
 "Yes, Edit" to save your changes.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="cloudfront-edit-general.png">
     <img src="cloudfront-edit-general@825.png" alt="CloudFront: edit a distribution's general settings" />
@@ -864,6 +909,7 @@ from the dropdown menu. Then scroll down to the bottom of the page and click
     <img src="cloudfront-certificate@825.png" alt="CloudFront: select SSL certificate" />
   </a>
 </div>
+</div>
 
 Next, click on the "Behaviors" tab, select the only item in the list of
 behaviors by checking the checkbox at the far left, and then click the "Edit"
@@ -871,6 +917,7 @@ button. Find the "Viewer Protocol Policy" field, and change it from
 "HTTP and HTTPS" to "Redirect HTTP to HTTPS". Then scroll down to the bottom
 of the page and click "Yes, Edit" to save your changes.
 
+<div class="row no-gutters">
 <div class="col-md-6">
   <a href="cloudfront-edit-behaviors.png">
     <img src="cloudfront-edit-behaviors@825.png" alt="CloudFront: edit a distribution's behaviors" />
@@ -880,6 +927,7 @@ of the page and click "Yes, Edit" to save your changes.
   <a href="cloudfront-redirect-to-https.png">
     <img src="cloudfront-redirect-to-https@825.png" alt="CloudFront: redirect HTTP to HTTPS" />
   </a>
+</div>
 </div>
 
 Don't forget to make these edits to *both* CloudFront distributions!
