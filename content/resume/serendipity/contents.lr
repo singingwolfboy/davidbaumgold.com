@@ -11,4 +11,17 @@ end_date:
 description:
 
 Currently working as a freelance consultant, helping companies develop robust
-and maintainable websites using Python and JavaScript.
+and maintainable websites using Python and JavaScript. Recent clients:
+
+* **[MIT's Office of Digital Learning](https://odl.mit.edu/)**:
+  I assisted with their [Micromasters](https://micromasters.mit.edu/)
+  project, using Django, <abbr title="Django Rest Framework">DRF</abbr>,
+  React, <abbr title="ECMAScript 6">ES6</abbr>, and Webpack.
+* **[Zeolearn](https://www.zeolearn.com/)**:
+  I [taught classes](/training) to Zeolearn's clients,
+  with topics including Django and Git/GitHub.
+* **[edX](https://www.edx.org/)**:
+  I took over an
+  [unmaintained Python project](https://github.com/edx/pa11ycrawler)
+  that edX depended on, and upgraded it to be more modern, reliable, and
+  documented.
