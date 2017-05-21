@@ -5,6 +5,29 @@ body:
 I enjoy public speaking, and I've done several presentations at meetups and
 technical conferences. Here are a few examples:
 
+# DjangoCon 2017
+
+<p>
+  30 min:
+  <a href="https://2017.djangocon.us/news/announcing-talk-lineup/">Django vs Flask</a>
+  <em>(upcoming)</em>
+</p>
+
+# PyCon 2017
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/u8g9scXeAcI" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      30 min:
+      <a href="https://us.pycon.org/2017/schedule/presentation/349/">Looping Like a Pro in Python</a>
+      (<a href="https://archive.org/details/pycon-2017-looping">slides</a>)
+    </p>
+  </div>
+</div>
+
 # PyDX 2016
 
 <div class="row">
