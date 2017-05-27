@@ -4,7 +4,7 @@ last_updated: 2016-08-08
 ---
 intro:
 
-Static website are great: they're easy to create, and easy to test on your
+Static websites are great: they're easy to create, and easy to test on your
 local computer. However, once you've created your static website,
 how do you get it on the internet? This tutorial will
 show you how to use [Amazon Web Services](https://aws.amazon.com/) to host
