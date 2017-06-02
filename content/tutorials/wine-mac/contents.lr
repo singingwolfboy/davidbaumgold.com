@@ -115,10 +115,10 @@ If the App Store tells you that you need a more recent version of OS X in order
 to install Xcode, there's one other option. Apple has a special
 [Apple Developer](https://developer.apple.com/) website, and if you make an
 account, you may be able to download and install an older version of Xcode
-that works with an older version of OS X. [Register as an Apple Developer]
-(https://developer.apple.com/register/index.action) and give it a try.
-(However, you're better off upgrading to a more recent version of the operating
-system, if possible.)
+that works with an older version of OS X.
+[Register as an Apple Developer](https://developer.apple.com/register/index.action)
+and give it a try. (However, you're better off upgrading to a more
+recent version of the operating system, if possible.)
 
 # Part 1: Install Homebrew
 
