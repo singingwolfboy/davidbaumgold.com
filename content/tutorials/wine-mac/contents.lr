@@ -73,7 +73,7 @@ to use a very obscure program!)
 
 To install Wine on your Mac, you will need the following:
 
-* OS X 10.9 (Mavericks) or above
+* OS X 10.10 (Yosemite) or above
 * Access to an Admin account, with password
 * An internet connection
 * An hour or two
@@ -81,7 +81,7 @@ To install Wine on your Mac, you will need the following:
 To [check what version of OS X you're running](https://support.apple.com/en-us/HT201260),
 click on the Apple logo on the far left side of the toolbar,
 select "About This Mac", and look at your version
-number under the big "OS X". If it's 10.9 or higher, you're all set.
+number under the big "OS X". If it's 10.10 or higher, you're all set.
 
 You need an Admin account on your Mac because only Admins can install software.
 You will need to be logged in to this Admin account during the installation.
@@ -110,6 +110,15 @@ called Xcode that has everything you need to compile source code, and
 Use the Mac App Store to install Xcode, and then run it and open the Preferences.
 Go to the Downloads tab, and if the "Command Line Tools" are available,
 install them. (If not, it means that they are already installed.)
+
+If the App Store tells you that you need a more recent version of OS X in order
+to install Xcode, there's one other option. Apple has a special
+[Apple Developer](https://developer.apple.com/) website, and if you make an
+account, you may be able to download and install an older version of Xcode
+that works with an older version of OS X. [Register as an Apple Developer]
+(https://developer.apple.com/register/index.action) and give it a try.
+(However, you're better off upgrading to a more recent version of the operating
+system, if possible.)
 
 # Part 1: Install Homebrew
 
