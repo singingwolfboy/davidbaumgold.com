@@ -185,13 +185,13 @@ under the "Storage & Content Delivery" section. Then click on the
 
 <div class="row no-gutters">
 <div class="col-md-6">
-  <a href="s3-welcome.png">
-    <img src="s3-welcome@825.png" alt="S3 welcome screen" />
+  <a href="s3-get-started.png">
+    <img src="s3-get-started@825.png" alt="Screenshot of the S3 getting started page" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="s3-bucket-name.png">
-    <img src="s3-bucket-name@825.png" alt="S3 select bucket name" />
+  <a href="s3-create-bucket.png">
+    <img src="s3-create-bucket@825.png" alt="Screenshot of the S3 bucket creation form" />
   </a>
 </div>
 </div>
@@ -211,66 +211,91 @@ grow to a massive size in the future. There are arguments
 are using the "www".
 
 You will also need to select a region for your bucket. This doesn't really
-matter, but I recommend that you select "US Standard" (also known as "US East")
+matter, but I recommend that you select "US East (N. Virginia)"
 because it's the cheapest and most popular option.
 
 Click the "Create" button, and S3 will create your bucket! Next, you'll need to
 modify some properties on the bucket to make it hold your website correctly.
-Click on the bucket you just created, and make sure that the "Properties"
-button is selected in the toolbar at the top of the page. It should look like
-this:
-
-[![S3 bucket properties screen](s3-bucket-properties@825.png)](s3-bucket-properties.png)
-
-In that properties sidebar, you need to modify two sections: "Permissions" and
-"Static Website Hosting". Let's do permissions, since it's right at the top.
-Click on it, and you'll see that the bucket is currently set up so that
-_you_ can do whatever you want with the bucket, but no one else can do
-_anything_ with it.
-
-Change the permissions so that everyone can view the contents of the bucket.
-To do that, first click the "Add more permissions" button, then select
-"Everyone" from the dropdown, and then click the checkbox marked
-"View permissions". Click the "Save" button to save your changes.
+Click on the row of the bucket you just created, and the details pane will
+open on the right side of the page. Then click on the "Properties" section
+of the page to modify the bucket properties. It should look like this:
 
 <div class="row no-gutters">
 <div class="col-md-6">
-  <a href="s3-bucket-permissions-1.png">
-    <img src="s3-bucket-permissions-1@825.png" alt="S3 bucket permissions" />
+  <a href="s3-bucket-details-pane.png">
+    <img src="s3-bucket-details-pane@825.png" alt="Screenshot of S3 bucket listing, with the details pane shown" />
   </a>
 </div>
 <div class="col-md-6">
-  <a href="s3-bucket-permissions-2.png">
-    <img src="s3-bucket-permissions-2@825.png" alt="S3 bucket permissions" />
-  </a>
-</div>
-</div>
-
-Next, click on "Static Website Hosting" to open that section, and click on
-"Enable website hosting". Some more options will appear. Set the
-"Index Document" to "index.html" and the "Error Document" to "404.html".
-Click the "Save" button to save your changes.
-
-<div class="row no-gutters">
-<div class="col-md-6">
-  <a href="s3-bucket-site-hosting-1.png">
-    <img src="s3-bucket-site-hosting-1@825.png" alt="S3 static site hosting permissions" />
-  </a>
-</div>
-<div class="col-md-6">
-  <a href="s3-bucket-site-hosting-2.png">
-    <img src="s3-bucket-site-hosting-2@825.png" alt="S3 static site hosting permissions" />
+  <a href="s3-bucket-properties.png">
+    <img src="s3-bucket-properties@825.png" alt="Screenshot of the properties page of an S3 bucket" />
   </a>
 </div>
 </div>
 
-Great, your S3 bucket is all set to host a website! In fact, you may have
-noticed that the description of the "Static Website Hosting" section
-includes a URL, which is one way that people will be able to access your site!
-However, there are two problems. One, this URL is very long and ugly:
-in my case, it's `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
-And two, your bucket still doesn't have any HTML files in it! Fortunately,
-both problems can be fixed.
+<div class="row no-gutters">
+<div class="col-md-6">
+  <a href="s3-bucket-site-hosting.png">
+    <img src="s3-bucket-site-hosting@825.png" alt="Screenshot of S3 bucket website hosting form" />
+  </a>
+</div>
+<div class="col-md-6">
+  <p>On the properties page, click on the "Static Website Hosting" section
+  to tell S3 that you want to use this bucket to host a website.
+  You'll need to set names for your index document and your error document;
+  the default values of "index.html" and "error.html" should do fine,
+  so type them in, and then click the "Save" button.</p>
+  <p>Do you see the "Endpoint" URL at the top of this form? It should look
+  something like
+  <code>http://www.my-website.com.s3-website-us-east-1.amazonaws.com</code>.
+  This URL is very important, and we'll come back to it later.</p>
+</div>
+</div>
+
+Next, you need to change the permissions on this bucket so that all the files
+in this bucket can be viewed by anyone. To do this, we're going to use
+something called a "bucket policy", which tells S3 how you want it to treat
+the contents of the bucket. This bucket policy is written in a special
+JSON-based format, and you don't need to understand the details of how it works
+-- it's very complicated. [(You can read Amazon's documentation if you want,
+though.)](https://docs.aws.amazon.com/console/s3/using-iam-policies)
+
+After you save the static website hosting form, scroll back up to the top
+of the page and click on the "Permissions" tab, to the right of the "Properties"
+tab. Then, click on the big "Bucket Policy" button, right below the tabs.
+You'll see a big text box, marked "Bucket policy editor".
+Copy-paste this text into the bucket policy editor:
+
+```json
+{
+  "Version": "2008-10-17",
+  "Statement": [{
+    "Sid": "AllowPublicRead",
+    "Effect": "Allow",
+    "Principal": {"AWS": "*"},
+    "Action": ["s3:GetObject"],
+    "Resource": ["arn:aws:s3:::www.my-website.com/*"]
+  }]
+}
+```
+
+In the line that starts with "Resource", you'll need to replace
+`www.my-website.com` with the name of *your* bucket. Then click the "Save"
+button. It should look like this:
+
+[![Screenshot of S3 bucket policy editor](s3-bucket-policy@825.png)](s3-bucket-policy.png)
+
+Note that Amazon might reformat the bucket policy, so it has different spacing.
+Notice how the spacing in the screenshot is different from the spacing of the
+text above. That's totally fine -- the spacing of the bucket policy
+doesn't matter at all.
+
+Great, your S3 bucket is all set to host a website! In fact, that "Endpoint"
+URL that you saw earlier is one way that people will be able to access your
+site. However, there are two problems. One, this URL is very long and ugly:
+`http://www.my-website.com.s3-website-us-east-1.amazonaws.com` is not exactly
+a memorable name. And two, your bucket still doesn't have any HTML files in
+it! Fortunately, both problems can be fixed.
 
 # Upload to S3
 
@@ -451,7 +476,8 @@ and Amazon will show a dropdown menu with your S3 buckets listed! Unfortunately,
 this dropdown menu is misleading: the URL in the dropdown menu is _not_ the URL
 that you want to use.[^website-endpoint] Instead, go back to your S3 bucket,
 find the website endpoint URL in the "Static Website Hosting" section of the
-properties, and paste that into the "Origin Default Name" field. It should
+properties, and paste that into the "Origin Default Name" field. You'll need to
+remove the `http://` from the front. It should
 look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
 
 [^website-endpoint]:
@@ -477,8 +503,8 @@ look something like `www.my-website.com.s3-website-us-east-1.amazonaws.com`.
 </div>
 <div class="row no-gutters">
 <div class="col-md-6">
-  <a href="s3-bucket-website-endpoint.png">
-    <img src="s3-bucket-website-endpoint@825.png" alt="The S3 bucket properties webpage. The static website endpoint URL has been highlighted." />
+  <a href="s3-bucket-site-hosting-endpoint-highlighted.png">
+    <img src="s3-bucket-site-hosting-endpoint-highlighted@825.png" alt="The S3 bucket properties webpage. The static website endpoint URL has been highlighted." />
   </a>
 </div>
 <div class="col-md-6">
@@ -605,28 +631,40 @@ Setting this up is pretty straightforward,
 and it uses the same three services you've already used: S3, CloudFront, and
 Route 53.
 
-Go back to the [AWS Console](https://console.aws.amazon.com) and click on S3.
-Make a new S3 bucket named after your domain _without_ the `www`. If your
-domain is `my-website.com`, then the bucket should be named `my-website.com`.
-(Once again, region doesn't matter, but "US Standard" or "US East" is probably
-a good choice.) Click on this newly-created bucket, make sure
-"Properties" is selected in the toolbar, and then click on the
-"Static Website Hosting" section in the bucket properties.
-
-[![AWS S3: set up website redirect](s3-redirect@825.png)](s3-redirect.png)
-
-In that section, click on "Redirect all requests to another host name".
-In the "Redirect all requests to" field, put in the name of your other
-S3 bucket that _does_ have the "www" in there. Then click the Save button
-to save your changes.
+<div class="row no-gutters">
+<div class="col-md-6">
+  <a href="s3-bucket-site-redirect.png">
+    <img src="s3-bucket-site-redirect@825.png" alt="S3: set up redirect" />
+  </a>
+</div>
+<div class="col-md-6">
+  <p>
+  Go back to the <a href="https://console.aws.amazon.com">AWS Console</a>
+  and click on S3.
+  Make a new S3 bucket named after your domain <em>without</em> the
+  <code>www</code>. If your domain is <code>my-website.com</code>,
+  then the bucket should be named <code>my-website.com</code>.
+  (Once again, region doesn't matter, but "US East" is probably
+  a good choice.) Click on this newly-created bucket to open the details pane,
+  click on the "Properties" section, and then click on the
+  "Static Website Hosting" section on the bucket properties page.
+  </p>
+  <p>
+  In the static website hosting form, select the "Redirect requests" option.
+  For the "Target bucket or domain" field, put in the name of your other
+  S3 bucket that <em>does</em> have the <code>www</code> in there.
+  Then click the Save button to save your changes.
+  </p>
+</div>
+</div>
 
 Next, we need to make a CloudFront distribution for this redirect bucket.
 Go back to the [AWS Console](https://console.aws.amazon.com) and click on
 CloudFront. Create a new CloudFront distribution just like before, but this
 time, put the URL for your bare domain S3 bucket in the "Origin Domain Name"
 field. Remember, the dropdown menu for this field is misleading:
-copy-paste the website endpoint URL from the S3 properties page, instead of
-selecting the S3 bucket from the dropdown menu. You should also
+copy-paste the website endpoint URL from the static website hosting form,
+instead of selecting the S3 bucket from the dropdown menu. You should also
 put the bare domain in the "Alternate Domain Names (CNAMEs)" field.
 Everything else is the same: still a web distribution rather than RTMP,
 and you can still leave most of the fields at their default values.
