@@ -623,8 +623,11 @@ to save your changes.
 Next, we need to make a CloudFront distribution for this redirect bucket.
 Go back to the [AWS Console](https://console.aws.amazon.com) and click on
 CloudFront. Create a new CloudFront distribution just like before, but this
-time select your bare domain S3 bucket for the "Origin Domain Name", and
-put in the bare domain in the "Alternate Domain Names (CNAMEs)" section.
+time, put the URL for your bare domain S3 bucket in the "Origin Domain Name"
+field. Remember, the dropdown menu for this field is misleading:
+copy-paste the website endpoint URL from the S3 properties page, instead of
+selecting the S3 bucket from the dropdown menu. You should also
+put the bare domain in the "Alternate Domain Names (CNAMEs)" field.
 Everything else is the same: still a web distribution rather than RTMP,
 and you can still leave most of the fields at their default values.
 
