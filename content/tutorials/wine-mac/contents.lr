@@ -377,7 +377,12 @@ However, in order to install Wine, Homebrew also had to install many other
 small programs that Wine relies upon to work correctly.
 (That's why the install process takes so long!)
 If you want to remove these as well,
-[download and run the Homebrew uninstallation script](https://gist.github.com/mxcl/1173223).
+[run this script](https://github.com/Homebrew/brew/blob/master/docs/FAQ.md#how-do-i-uninstall-homebrew):
+
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+```
+
 That script will remove everthing that you installed in this tutorial,
 including Homebrew, Wine, and all the other programs Homebrew installed
 to get Wine to work correctly.
