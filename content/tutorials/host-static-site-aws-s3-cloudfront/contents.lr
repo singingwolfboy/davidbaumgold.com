@@ -88,7 +88,7 @@ first part of the URL that you type in to access your site, often ending in
 [top-level domain](https://en.wikipedia.org/wiki/Top-level_domain), or TLD.
 There are many different TLDs, but ".com" is the most well-known.)
 
-"Registering" a domain basically claiming ownership of it for a specified
+"Registering" a domain basically means claiming ownership of it for a specified
 period of time, usually one to five years.
 There's a big, global network called the
 [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System), or DNS,
@@ -199,7 +199,7 @@ under the "Storage & Content Delivery" section. Then click on the
 S3 will ask you to pick a name for your bucket. **This is important:**
 you _must_ name your bucket with the _exact_ domain name that you want
 your site to be available at.
-For example, if you want my website to be available at `www.my-website.com`,
+For example, if you want your website to be available at `www.my-website.com`,
 and you own the `my-website.com` domain, then the bucket must be named
 `www.my-website.com` precisely.
 
