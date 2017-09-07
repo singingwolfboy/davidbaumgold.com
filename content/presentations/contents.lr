@@ -7,11 +7,18 @@ technical conferences. Here are a few examples:
 
 # DjangoCon 2017
 
-<p>
-  30 min:
-  <a href="https://2017.djangocon.us/news/announcing-talk-lineup/">Django vs Flask</a>
-  <em>(upcoming)</em>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/UY2JMZjQspY" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <p>
+      20 min:
+      <a href="https://2017.djangocon.us/talks/django-vs-flask/">Django vs Flask</a>
+      (<a href="https://archive.org/details/djangocon-us-2017-django-vs-flask">slides</a>)
+    </p>
+  </div>
+</div>
 
 # PyCon 2017
 
