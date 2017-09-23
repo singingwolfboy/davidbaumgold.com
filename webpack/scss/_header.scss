@@ -3,10 +3,10 @@ header {
   max-width: 22rem;
 
   a {
-    color: $gray-dark;
+    color: $gray-700;
 
     &:hover {
-      color: $gray-dark;
+      color: $gray-700;
       text-decoration: none;
     }
   }
@@ -15,7 +15,7 @@ header {
     margin-bottom: 0;
 
     a:hover {
-      color: $gray;
+      color: $gray-700;
     }
   }
 
@@ -29,16 +29,16 @@ header {
   text-align: center;
   background-image: linear-gradient(to right,
     rgba(0, 0, 0, 0),
-    $gray-dark,
-    $gray-dark,
+    $gray-700,
+    $gray-700,
     rgba(0, 0, 0, 0)
   );
-  color: $gray-lightest;
+  color: $gray-100;
   margin-top: 1rem;
   width: 100%;
 
   &:hover, &:focus {
-    color: $gray-lightest;
+    color: $gray-100;
     text-decoration: none;
   }
 }
@@ -72,7 +72,7 @@ header {
 
     .fixed-sidebar {
       width: 25%;
-      padding-right: $grid-gutter-width-base;
+      padding-right: $grid-gutter-width;
     }
   }
 }

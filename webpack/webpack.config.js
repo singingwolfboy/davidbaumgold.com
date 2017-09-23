@@ -3,10 +3,9 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
-var options = {
+module.exports = {
   entry: {
     'app': './js/main.js',
-    'styles': './scss/main.scss'
   },
   output: {
     path: path.dirname(__dirname) + '/assets/static/gen',
@@ -14,42 +13,44 @@ var options = {
   },
   // devtool: '#cheap-module-source-map',
   devtool: '#source-map',
-  resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js']
-  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: require.resolve('babel-loader'),
+        options: {
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.(woff2?|ttf|eot|svg|png|jpe?g|gif)(\?.*)?$/,
-        loader: 'file'
+        use: require.resolve('url-loader'),
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css', {
+    new ExtractTextPlugin({
+      filename: 'styles.css',
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
     }),
   ]
 };
-
-module.exports = options;

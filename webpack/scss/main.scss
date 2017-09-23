@@ -1,6 +1,7 @@
 $font-family-base: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
 $headings-font-family: "Palatino", Georgia, "Times New Roman", Times, serif;
-$nav-link-padding: 0;
+$nav-link-padding-y: 0;
+$nav-link-padding-x: 0;
 $fa-font-path: "../node_modules/font-awesome/fonts";
 
 @import '~bootstrap/scss/bootstrap';
@@ -18,7 +19,7 @@ $fa-font-path: "../node_modules/font-awesome/fonts";
 }
 
 div.highlight, pre {
-  background-color: $gray-lighter;
+  background-color: $gray-300;
   padding: 1em;
   margin-bottom: 1rem;
 
@@ -34,7 +35,7 @@ ul.projects {
 
   > li {
     margin-top: 1rem;
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid $gray-100;
     padding-top: 1rem;
   }
 }
@@ -51,7 +52,7 @@ ol.toc {
 
   .meta {
     font-style: italic;
-    color: $gray;
+    color: $gray-500;
   }
 }
 
@@ -115,7 +116,7 @@ form legend {
   @media print {
     th,
     td {
-      padding: $table-sm-cell-padding;
+      padding: $table-cell-padding-sm;
     }
   }
 }
