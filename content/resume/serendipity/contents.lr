@@ -6,13 +6,17 @@ title: Consultant
 ---
 start_date: 2016-01-01
 ---
-end_date:
+end_date: 2017-09-15
 ---
 description:
 
-Currently working as a freelance consultant, helping companies develop robust
-and maintainable websites using Python and JavaScript. Recent clients:
+Worked as a freelance consultant, helping companies develop robust
+and maintainable websites using Python and JavaScript. Clients included:
 
+*   **[Nylas](https://www.nylas.com/)**:
+    I helped update and modernize the
+    [Python SDK for Nylas](https://github.com/nylas/nylas-python),
+    revamping the test suite and adding Python 3 support.
 *   **[ClassForward](http://classforward.com/)**:
     I helped build out their Django-based website, working on a small team.
     I also provided mentorship and guidance for their junior developers, and

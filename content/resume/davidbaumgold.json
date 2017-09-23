@@ -7,9 +7,9 @@
     "website": "https://www.davidbaumgold.com",
     "summary": "I'm a full-stack web developer with a passion for clean, readable code. Python and JavaScript are my tools of choice.\n\nI'm an open sourcerer. I believe that sharing knowledge benefits everyone, and that community is more important than code.\n\nI'm a technical trainer and public speaker. I have a knack for explaining complicated topics in an approachable manner, and I'm not afraid to do so in front of an audience.",
     "location": {
-      "city": "Boston",
-      "region": "Massachusetts",
-      "countryCode": "US"
+      "city": "Amsterdam",
+      "region": "Netherlands",
+      "countryCode": "NL"
     },
     "profiles": [
       {
@@ -26,11 +26,19 @@
   },
   "work": [
     {
+      "company": "Impraise",
+      "position": "Senior Front-end Developer",
+      "website": "https://www.impraise.com/",
+      "startDate": "2017-09-15",
+      "summary": "React, GraphQL, Ruby on Rails. Leading a small team to develop a dynamic React-based front-end for the Impraise web application. Assisting in migrating from a legacy REST-based backend to one based on GraphQL."
+    },
+    {
       "company": "Serendipity Consulting",
       "position": "Consultant",
       "website": "https://www.davidbaumgold.com/consulting/",
       "startDate": "2016-01-01",
-      "summary": "Currently working as a freelance consultant, helping companies develop robust and maintainable websites using Python and JavaScript."
+      "endDate": "2017-09-15",
+      "summary": "Worked as a freelance consultant, helping companies develop robust and maintainable websites using Python and JavaScript."
     },
     {
       "company": "edX",
@@ -108,7 +116,8 @@
         "Javascript",
         "jQuery",
         "React",
-        "Backbone.js",
+        "Redux",
+        "GraphQL",
         "Bootstrap"
       ]
     },
@@ -128,7 +137,8 @@
       "keywords": [
         "Babel",
         "Webpack",
-        "Jasmine"
+        "Jasmine",
+        "Mocha"
       ]
     },
     {

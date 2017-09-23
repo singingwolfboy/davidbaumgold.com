@@ -2,13 +2,13 @@
 {% from "macros/project.html" import humanize_timespan %}
 {% block title %}Résumé | {{ super() }}{% endblock %}
 {% block body %}
-  <div class="hidden-print">
+  <div class="d-print-none">
     <h1>{{ this.title }}</h1>
     {{ this.description }}
   </div>
-  <div class="visible-print-block">
+  <div class="d-none d-print-block">
     <h1>David Baumgold</h1>
-    <p>Full-stack web developer, open source contributor, technical trainer, public speaker. Located in the Boston area.</p>
+    <p>Full-stack web developer, open source contributor, technical trainer, public speaker. Located in Amsterdam.</p>
 
     <table class="table table-sm-print">
       <tbody>
@@ -48,6 +48,7 @@
         <td>
           <a href="https://www.python.org/">Python</a>,
           JavaScript (<a href="https://nodejs.org">Node.js</a>),
+          <a href="http://graphql.org/">GraphQL</a>,
           SQL (<a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.mysql.com/">MySQL</a>),
           <a href="http://www.regular-expressions.info/" title="Regular Expressions">RegEx</a>
         </td>
@@ -60,7 +61,7 @@
           <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>,
           <a href="https://jquery.com/">jQuery</a>,
           <a href="https://facebook.github.io/react/">React</a>,
-          <a href="http://backbonejs.org/">Backbone.js</a>,
+          <a href="http://redux.js.org/">Redux</a>,
           <a href="https://getbootstrap.com/">Bootstrap</a>
         </td>
       </tr>
@@ -93,6 +94,7 @@
           <a href="http://pytest.org/">Pytest</a>,
           <a href="http://www.voidspace.org.uk/python/mock/">Mock</a>,
           <a href="https://jasmine.github.io/">Jasmine</a>,
+          <a href="https://mochajs.org/">Mocha</a>,
           <a href="https://travis-ci.org/">Travis CI</a>
         </td>
       </tr>
