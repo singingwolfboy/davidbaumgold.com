@@ -1,18 +1,18 @@
-title: Installing Wine on Mac OS X
+title: Installing Wine on Mac
 ---
-last_updated: 2016-05-18
+last_updated: 2017-09-28
 ---
 intro:
 
 This tutorial is for intermediate users who want to install and use
-[Wine](https://www.winehq.org/) on their computer running Mac OS X.
+[Wine](https://www.winehq.org/) on their computer running macOS.
 You should already know the basics of how to use the command line.
 If you don't, [read this tutorial first](/tutorials/command-line/).
 
 ---
 summary:
 
-A simple tutorial demonstrating how to install Wine on a Mac OS X computer.
+A simple tutorial demonstrating how to install Wine on a macOS computer.
 ---
 toc_ad_id: 3610826013
 ---
@@ -73,15 +73,14 @@ to use a very obscure program!)
 
 To install Wine on your Mac, you will need the following:
 
-* OS X 10.10 (Yosemite) or above
+* macOS 10.10 (Yosemite) or above
 * Access to an Admin account, with password
 * An internet connection
-* An hour or two
 
-To [check what version of OS X you're running](https://support.apple.com/en-us/HT201260),
+To [check what version of macOS you're running](https://support.apple.com/en-us/HT201260),
 click on the Apple logo on the far left side of the toolbar,
 select "About This Mac", and look at your version
-number under the big "OS X". If it's 10.10 or higher, you're all set.
+number under the big "macOS" or "OS X". If it's 10.10 or higher, you're all set.
 
 You need an Admin account on your Mac because only Admins can install software.
 You will need to be logged in to this Admin account during the installation.
@@ -89,36 +88,6 @@ If there is only one account on your computer, it is an Admin account.
 The account must have a password: if the account has no password,
 the `sudo` utility will fail. To set or change your password,
 go to the Accounts section in System Preferences.
-
-# Part 0: Install Xcode
-
-Computer programs are written in a format called "source code",
-which the computer can't use directly. However, a computer can use
-a set of tools to turn this source code into a working, runnable program.
-The most important one of these tools is called a "compiler", but other
-tools are important as well. Most programs that you download for your
-computer have already been passed through a compiler, and are all ready for
-you to run; but unfortunately, you can only download the Wine source code,
-not the working, runnable version of the program. Because most people don't
-need to compile source code on their computer, Macs don't have any of the
-command line tools installed by default, so we need to install them before
-we can get anywhere.
-
-Fortunately, it's pretty easy to do that: Apple makes a piece of software
-called Xcode that has everything you need to compile source code, and
-[it's available for free on the Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835).
-Use the Mac App Store to install Xcode, and then run it and open the Preferences.
-Go to the Downloads tab, and if the "Command Line Tools" are available,
-install them. (If not, it means that they are already installed.)
-
-If the App Store tells you that you need a more recent version of OS X in order
-to install Xcode, there's one other option. Apple has a special
-[Apple Developer](https://developer.apple.com/) website, and if you make an
-account, you may be able to download and install an older version of Xcode
-that works with an older version of OS X.
-[Register as an Apple Developer](https://developer.apple.com/register/index.action)
-and give it a try. (However, you're better off upgrading to a more
-recent version of the operating system, if possible.)
 
 # Part 1: Install Homebrew
 
@@ -168,38 +137,39 @@ sudo xcodebuild -license
 The Terminal window will fill up with the Xcode license:
 read it, type agree and hit enter to agree to the license.
 
-# Part 2: Install Homebrew Cask
+# Part 2: Install XQuartz Using Homebrew
 
-Homebrew uses an extension called [Homebrew Cask](https://caskroom.io/)
-to install other programs. Install the Cask extension by running:
-
-```bash
-brew tap caskroom/cask
-```
-
-# Part 3: Install Required Casks
-
-Wine needs both [Java](https://www.java.com/) and [XQuartz](http://www.xquartz.org/)
-to run correctly, and the easiest way to install them is with Homebrew Cask.
-Run the following command:
+Wine needs [XQuartz](http://www.xquartz.org/) to install correctly,
+and Homebrew won't automatically pull in this dependency for you.
+However, we can easily ask Homebrew to install it by running the following
+command:
 
 ```bash
-brew cask install java xquartz
+brew cask install xquartz
 ```
 
-Homebrew Cask will automatically download and install both Java and XQuartz
-for you. It may take a few minutes, but it will display messages to let
-you know what it's doing. Homebrew Cask may also ask you for your
-password while doing the installation. Just as in Step 1, this is the
-password to the Admin account on your computer, and the Terminal does
-not display anything as you type, not even asterisks. (If you don't
-get asked for your password, that's fine too.)
+Let's break down this command into parts. `brew` refers to Homebrew, which
+you just installed. `cask` refers to
+[Homebrew Cask](https://github.com/caskroom/homebrew-cask),
+an extension to Homebrew that is used to install GUI application on your
+computer. (GUI stands for "Graphical User Interface". A GUI application is
+an app that you can *see* running, as opposed to invisibly running
+in the background.) `install` refers to the fact that you're asking
+Homebrew Cask to *install* something on your computer, and `xquartz`
+is the name of the thing that you want it to install.
+We only need to include the word `cask` because XQuartz is a GUI application --
+by default, you use Homebrew to install applications that run on the command
+line, and don't have a graphical user interface.
 
-When Homebrew Cask is done installing both Java and XQuartz,
-it will stop displaying status messages and wait for you to type in
-a new command. Onto the next step!
+When you run this command, Homebrew will install the Cask extension
+automatically, and then Homebrew Cask will download and install XQuartz
+for you. (Lots of installers installing other installers!)
+Homebrew will display messages and progress bars on the Terminal to let you
+know what it's doing. When it's done installing XQuartz, it will stop
+displaying messages and wait for you to type in a new command. When that
+happens, move on to the next step!
 
-# Part 4: Install Wine Using Homebrew
+# Part 3: Install Wine Using Homebrew
 Now we get to actually install Wine! We'll let Homebrew do all the work,
 all you have to do is tell it what you want with this command:
 
@@ -207,33 +177,43 @@ all you have to do is tell it what you want with this command:
 brew install wine
 ```
 
-Just like in the last step, Homebrew will start automatically downloading
-and installing software onto your computer.
-We've already installed a bunch of things that Wine needs, but we haven't
-installed *everything* it needs: Homebrew can grab the rest.
-When Homebrew has installed everything that Wine needs, it will
-automatically download and install Wine, as well.
+You'll notice that this command is almost identical to the last one, except
+we're leaving out the word `cask` (because Wine doesn't have a graphical
+user interface), and we're replaced `xquartz` with `wine`.
 
-This step of the tutorial will probably take awhile -- anywhere from
-10 minutes to an hour or two. (It depends on the speed of your internet
-connection, and the speed of your computer.) The good news is, you don't
-need to be actually sitting at your computer during this time. Feel free
-to get up and do something else while Homebrew does its thing.
-As long as it continues downloading and installing things for you,
-don't interrupt it. When Homebrew stops displaying status messages and
-is ready for you to type in a new command, Wine is installed and ready to go!
+When you run this command, Homebrew will start automatically downloading
+and installing software onto your computer. Wine needs several different
+pieces of software to run correctly, not just XQuartz, so Homebrew is going
+to first install those *other* dependencies before it installs Wine.
+Just as before, Homebrew will display messages and progress bars on the
+Terminal to let you know what it's doing.
 
-If you get an error message at this step that reads
-`error: C compiler cannot create executables` or `Failed to locate 'make' in path`,
-it means you forgot to install Xcode, or it installed incorrectly.
-See Part 0 of this tutorial.
+This step of the tutorial might be very quick, or it might take a long, long
+time. You see, software like Wine normally needs to be compiled: transformed
+from human-readable source code into a form that a computer can use. This
+process usually takes a long time -- for a program like Wine and all of its
+depedencies, it might take an hour or two, even for a fast, modern computer.
+However, the people who make Homebrew know that people don't like to wait,
+and they've pre-compiled most of the software available in Homebrew, including
+Wine. Your computer will automatically download the pre-compiled versions
+if it is able to, which will make the installation process go a *lot* faster.
+However, if your computer is in an unusual configuration, it may not be able
+to use the pre-compiled versions. If that's the case, it will have to
+compile the software for itself, which will still work, but it will take awhile.
 
 If you get an error message at this step that indicates that Homebrew has
 accidentally downloaded a file that is empty or incorrect, you can delete
 Homebrew's downloaded files by running `brew cleanup`. Then try running
 this step again, and Homebrew will redownload the file -- hopefully correctly!
 
-# Part 5: Install Windows Programs Using Wine
+When Homebrew is finished installing Wine, it will stop displaying messages
+and wait for you to type in a new command. You may see a message that mentions
+a "Mac driver" and an "X11 driver". This message is related to that XQuartz
+thing we installed earlier, and it's an advanced configuration for people
+who like to adjust settings on their computers. If you just want to use Wine
+and don't care about adjusting settings, you can ignore that message.
+
+# Part 4: Install Windows Programs Using Wine
 
 To install a Windows program, first download the installer file:
 it should end with .exe. Remember the location you put it, and open up
@@ -256,10 +236,10 @@ if the installer file is named `setup.exe`, you would run:
 wine setup.exe
 ```
 
-XQuartz will open (if it isn't already), and soon you will see
-a regular graphical Windows installer. Click through it, and you're done!
+A window will pop up with a regular graphical Windows installer.
+Click through it, and you're done!
 
-# Part 6: Run Windows Programs Using Wine
+# Part 5: Run Windows Programs Using Wine
 
 Open up the Terminal and run this to get to your Program Files folder:
 
@@ -278,12 +258,15 @@ Type this into Terminal:
 wine $PROGRAM.exe
 ```
 
-Where `$PROGRAM` is the name of the `.exe` file.
-XQuartz will open (if it isn't already), and the program will pop up,
-ready to use! It will probably open fullscreen: to reduce it in size,
-go open the Window menu from the Mac OS X menu bar, and select Zoom Window.
-You can then resize the program normally. Enjoy using Windows on your Mac,
-freely and legally!
+Where `$PROGRAM` is the name of the `.exe` file. For example, if the program
+file is named `STARCRAFT.EXE`, you would run:
+
+```bash
+wine STARCRAFT.EXE
+```
+
+The program will pop up in a new window, ready to use!
+Enjoy using Windows on your Mac, freely and legally!
 
 # Making a Dock Icon
 Many people want to be able to run Windows programs the same way
@@ -353,7 +336,7 @@ every so often. We can use Homebrew to keep Wine up to date: it's easy!
 Just run this command:
 
 ```bash
-brew update && brew upgrade
+brew upgrade
 ```
 
 With this command, Homebrew will first update itself, if any updates
