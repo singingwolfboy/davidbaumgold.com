@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+import re
 from lektor.pluginsystem import Plugin
+
+
+TWO_HYPHENS = re.compile("\s--\s")
 
 
 class EmDashPlugin(Plugin):
@@ -9,7 +13,7 @@ class EmDashPlugin(Plugin):
     def on_markdown_config(self, config, **extra):
         class EmDashMixin(object):
             def paragraph(self, text):
-                dashed_text = text.replace(" -- ", " — ")
+                dashed_text = TWO_HYPHENS.sub(" — ", text)
                 return '<p>%s</p>\n' % dashed_text.strip(' ')
 
         config.renderer_mixins.append(EmDashMixin)
