@@ -25,7 +25,7 @@
 {% macro disqus_comments(post) %}
   {% set disqus_shortname = config.values.PROJECT.get("disqus") %}
   {% if disqus_shortname %}
-  <div id="disqus_thread"></div>
+  <div id="disqus_thread" class="d-print-none"></div>
   <script>
     var disqus_config = function() {
       this.page.url = {{ post|url(external=True)|tojson }};

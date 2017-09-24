@@ -26,7 +26,7 @@
   {% endfor %}
   </ul>
   {% if this.toc_ad_id and google_adsense %}
-    <ins class="adsbygoogle"
+    <ins class="adsbygoogle d-print-none"
       style="display:block"
       data-ad-client="{{ google_adsense }}"
       data-ad-slot="{{ this.toc_ad_id }}"
@@ -35,7 +35,7 @@
   {% endif %}
   {{ this.body }}
   {% if this.footer_ad_id and google_adsense %}
-    <ins class="adsbygoogle"
+    <ins class="adsbygoogle d-print-none"
       style="display:block"
       data-ad-client="{{ google_adsense }}"
       data-ad-slot="{{ this.footer_ad_id }}"
